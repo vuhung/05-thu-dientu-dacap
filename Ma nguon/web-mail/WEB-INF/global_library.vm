@@ -1,0 +1,458 @@
+#*
+ * Copyright 2003-2004 The Apache Software Foundation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * $Id: VM_global_library.vm 71992 2004-02-20 13:13:42Z marino $
+ *#
+
+## Display all queued Struts errors
+#macro (errorMarkup)
+    #if ($errors.exist() )
+        <ul>
+        #foreach ($e in $errors.all )
+            $e
+        #end
+        </ul>
+    #end
+#end
+
+## Display all queued Struts errors for a particular property
+#macro (errorMarkupForProperty $property)
+    #if ($errors.exist($property) )
+        <ul>
+        #foreach ($er in $errors.get($property))
+            $er
+        #end
+        </ul>
+    #end
+#end
+
+## Display all queued Struts errors
+#macro (messageMarkup)
+    #if ($messages.exist() )
+        <ul>
+        #foreach ($m in $messages.all )
+            $m
+        #end
+        </ul>
+    #end
+#end
+
+## Display all queued Struts action messages for a particular property
+#macro (messageMarkupForProperty $property)
+    #if ($messages.exist($property) )
+        <ul>
+        #foreach ($m in $messages.get($property))
+            $m
+        #end
+        </ul>
+    #end
+#end
+
+########################################################
+## 				GLOBAL MACRO
+########################################################
+#macro(either $var $def )
+#if("$var"=="")$!def#else$var#end
+#end
+
+## HTML SELECT control GENERATOR
+## @author Hien Nguyen
+##
+## $name The control name
+## $selected The selected value
+## $labels The list of labels for the options
+## $list The list of values for the options
+#macro (select $name $sel $labels $list)
+  #set($cnt=0 )
+  <select name="$name">
+  #foreach ($item in $list)
+  	<option value="$item"#if("$item"=="$sel") selected="true"#end>$!labels.get($cnt)</option>
+  	#set($cnt=1+$cnt)
+  #end
+  </select>
+#end
+
+## HTML MENU control GENERATOR
+## @author Hien Nguyen
+##
+## $name The control name
+## $selected The selected value
+## $labels The list of labels for the options
+## $list The list of values for the options
+#macro (textmenu $w $h $ali $text $url $mover $mout)
+  <td class="$mout" onmouseover="this.className='$mover'" onmouseout="this.className='$mout'" width="$w" height="$h" align="#either($ali 'left')">
+  <a href="$url">$text</a>
+  </td>
+#end
+
+## SELECTION CITY
+#macro(makeSelectionCity $name $selectedItem)
+	#set($listCity1 = ["TP. HCM","Hà Nội","An Giang","Bà Rịa – Vũng Tàu","Bạc Liêu","Bắc Giang","Bắc Kạn","Bắc Ninh","Bến Tre","Bình Dương","Bình Định","Bình Phước","Bình Thuận","Cao Bằng","Cà Mau","Cần Thơ","Đà Nẵng","Đăk Lăk","Đăk Nông","Điện Biên","Đồng Nai","Đồng Tháp","Gia Lai","Hà Giang","Hà Nam","Hà Tây","Hà Tĩnh","Hải Dương","Hải Phòng","Hậu Giang","Hòa Bình","Hưng Yên","Khánh Hòa","Kiên Giang","Kon Tum","Lai Châu","Lào Cai","Lạng Sơn","Lâm Đồng","Long An","Nam Định","Nghệ An","Ninh Bình","Ninh Thuận","Phú Quốc","Phú Thọ","Phú Yên","Quảng Bình","Quảng Nam","Quảng Ngãi","Quảng Ninh","Quảng Trị","Sóc Trăng","Sơn La","Tây Ninh","Thanh Hóa","Thái Bình","Thái Nguyên","Thừa Thiên – Huế","Tiền Giang","Trà Vinh","Tuyên Quang","Vĩnh Long","Vĩnh Phúc","Yên Bái"])
+	##set($listCity2 = ["Bình Định","Bình Phước","Bình Thuận","Cao Bằng","Cà Mau","Cần Thơ","Đà Nẵng","Đăk Lăk","Đăk Nông","Điện Biên"])
+	##set($listCity3 = ["Đồng Nai","Đồng Tháp","Gia Lai","Hà Giang","Hà Nam","Hà Tây","Hà Tĩnh","Hải Dương","Hải Phòng","Hậu Giang"])
+	##set($listCity4 = ["Hòa Bình","Hưng Yên","Khánh Hòa","Kiên Giang","Kon Tum","Lai Châu","Lào Cai","Lạng Sơn","Lâm Đồng","Long An"])
+	##set($listCity5 = ["Nam Định","Nghệ An","Ninh Bình","Ninh Thuận","Phú Quốc","Phú Thọ","Phú Yên","Quảng Bình","Quảng Nam","Quảng Ngãi"])
+	##set($listCity6 = ["Quảng Ninh","Quảng Trị","Sóc Trăng","Sơn La","Tây Ninh","Thanh Hóa","Thái Bình","Thái Nguyên","Thừa Thiên – Huế","Tiền Giang"])
+	##set($listCity7 = ["Trà Vinh","Tuyên Quang","Vĩnh Long","Vĩnh Phúc","Yên Bái"])
+	<select class="select" style="width:240px;" name="$name" id="$name">
+		#foreach($item in $listCity1)
+			<option value="$item" #if($null.isNotNull($selectedItem) && "$item"=="$selectedItem") selected="selected" #end>$item</option>
+		#end
+	</select>
+#end
+
+## MAKE LINK FOR TOP MENU 
+#macro(makeLink $path $url $module $action $params $text)
+	<a href="javascript:sAction.onAction('$!url','$!module','$!action',$!params)" #if($null.isNotNull($!request.getParameter("c")) && $!request.getParameter("c") == $!module) class="menu_top_hover" #else class="menu_top" #end>$!text</a>
+#end
+## MAKE DATE SELECTION
+#macro(renderDateSelection $date $month $year $hh $mm $selectedDate $selectedMonth $selectedYear $selectedHour $selectedMinute $styleClass)
+	#set($dates = [1..31])	
+	#set($months = [1..12])	
+	#set($years = [1980..2010])	
+	<div>
+		<span>
+			<span class="text">$!text.get("news.date","text")</span>
+			<select name="$!date" size="1" $styleClass style="width:50px">
+				#foreach($d in $dates)
+					#if("$d" == "$selectedDate")
+						<option value="$d" selected="selected">$d</option>						
+					#else	
+						<option value="$d">$d</option>						
+					#end
+				#end
+			</select>	
+			<span class="text">$!text.get("news.month","text")</span>
+			<select name="$!month" size="1" $styleClass style="width:50px">
+				#foreach($m in $months)
+					#if("$m" == "$selectedMonth")
+						<option value="$m" selected="selected">$m</option>
+					#else	
+						<option value="$m">$m</option>
+					#end
+				#end
+			</select>	
+			<span class="text">$!text.get("news.year","text")</span>
+			<select name="$!year" size="1" $styleClass style="width:60px">
+				#foreach($y in $years)
+					#if("$y" == "$selectedYear")
+						<option value="$y" selected="selected">$y</option>
+					#else	
+						<option value="$y">$y</option>
+					#end
+				#end
+			</select>	
+			<span class="text">$!text.get("news.hour","text")</span>
+			<input type="text" name="$!hh" value="$!selectedHour" maxlength="2" style="width:20px;border: 1px inset #000000" />
+			<span class="text">$!text.get("news.minute","text")</span>
+			<input type="text" name="$!mm" value="$!selectedMinute" maxlength="2" style="width:20px;border: 1px inset #000000"/>
+			$!errors.getMsgs("$!hh")
+			$!errors.getMsgs("$!mm")
+		</span>
+	</div>
+#end
+#macro(breakPage $url $option $previousPage $currentPage $nextPage  $maxpage)
+	#if($!maxpage > 1)
+	<a href="javascript:sendlink('$url','$!{option}&page=1')" 
+       style="text-decoration: none;font-family:Arial;font-size: 12px;color:#000000;">
+		&nbsp; $!text.get('firstpage')
+	</a>						
+	<a href="javascript:sendlink('$url','$!{option}&page=$!{previousPage}')" 
+       style="text-decoration: none;font-family: Arial; font-size:12px; color:#000000;">
+       &nbsp; $!text.get('previouspage') &nbsp;
+	</a>
+	#if($!maxpage > 10)						
+		#if($!currentPage > 5)
+				#set($startpage =($!currentPage + (-5)) )
+				#set($endpage = ($!currentPage + 5) )
+				#if($endpage > $!maxpage)
+					#set($endpage = $!maxpage)					
+				#end				
+		#else
+			   #set($startpage =1)
+			   #set($endpage =10) 
+		#end
+	#else
+		#set($startpage =1)
+		#set($endpage =$!maxpage) 
+	#end	    
+	#foreach ($listpage in [$startpage .. $endpage])
+		#if($listpage == $!currentPage)
+			<span style="color:red;font-size:12px;">
+			&nbsp; $listpage
+			</span>	
+		#else
+		&nbsp;<a href="javascript:sendlink('$!url','$!{option}&page=$!listpage')" 
+				style="text-decoration: none;font-family: Arial; font-size: 12px; color:#000000;">$!listpage</a>
+		#end						
+	#end
+	<a href="javascript:sendlink('$!url','$!{option}&page=$!{nextPage}')"  
+       style="text-decoration: none;font-family: Arial; font-size: 12px; color:#000000;">
+	   &nbsp; $!text.get('nextpage') 
+	</a>
+	<a href="javascript:sendlink('$!url','$!{option}&page=$!maxpage')"
+		style="text-decoration: none;font-family: Arial; font-size: 12px; color:#000000;">
+		&nbsp; $!text.get('endpage')
+	</a>      
+	<div style="display:inline;width:10px;"><spacer type="block" width="10"></div>
+	#end
+#end
+#macro(dayOfweek $day)
+	#if($day=="Mon")$!text.get('mondate','text')
+	#elseif($day=="Tue")$!text.get('tuesdate','text')
+	#elseif($day=="Wed")$!text.get('wednesdate','text')
+	#elseif($day=="Thu")$!text.get('thuesdate','text')
+	#elseif($day=="Fri")$!text.get('fridate','text')
+	#elseif($day=="Sat")$!text.get('saturdate','text')
+	#else$!text.get('sundate','text')
+	#end
+#end
+
+#macro(substring $data $len)
+	#if($!data.length() > $!len)
+		$!data.substring(0,$!data.lastIndexOf(" ",$!len)) ...
+	#else
+		$!data	
+	#end
+#end
+
+#macro(viewCell $width $height $color_bound $color_content $item $url)
+	<div ondblclick="rz(this.id)" onclick="return pz(this.id)" id="reldiv19" 
+		style="position:absolute;width: $!{width}px;" class="chip">
+		<div style="background-color: $!color_bound;" class="t1"> </div>
+		<div style="background-color: $!color_bound;" class="t2"> </div>
+		<div style="background-color: $!color_content;" class="chipbody edit">
+			<dl style="border-color : $!color_bound; height: $!{height}px;">
+				<dt style="background-color: $!color_bound;">  
+					<b unselectable="on">
+						<span class="timelabel">$!item.getHour()</span> 
+						<img width="9" height="7" src="$!path/user/calendar/style/images/alarm_white.gif"/>
+					</b>
+				</dt>
+				#set($len = $width*(($height/20)+((3/2)*-1)))
+				<dd>
+					<div>
+						##onclick="qz('reldiv19',event)" onmouseout="rM(this)" onmouseover="RN(this)"
+						<span  style="cursor: pointer;">
+							#if($!item.title.length() > $len)
+								#if($len > 1 && $!item.title.lastIndexOf(" ",$len) > 1)
+								$!item.title.substring(0,$!item.title.lastIndexOf(" ",$len))
+								#else ...
+								#end
+							#else
+								$!item.title
+							#end													
+						</span>
+						#if($len > $!item.title.length() + $width)
+						<br/>
+						<span  style="cursor: pointer;">
+							#set($lenBrief = $!len +(($!item.title.length() + 35)*(-1)))
+							#if($!item.brief.lastIndexOf(" ",$lenBrief) > 0)
+							$!item.brief.substring(0, $!item.brief.lastIndexOf(" ",$lenBrief))
+							#end
+						</span>
+						#end						
+					</div>
+				</dd>
+				<dd class="tooltip" style="vertical-align:bottom;">
+					<div>
+					<a href="javascript:sendlink('$!path/calendar/CalendarView$!{ext}','$!{url}&id=$!{item.id}')" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/ViewIcon.gif" style="border:0px;"/></a>
+					<a href="javascript:sendlink('$!path/calendar/CalendarEdit$!{ext}','$!{url}&id=$!{item.id}')" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/EditEvent.gif" style="border:0px;"/></a>
+					<a href="javascript:sendlink('$!path/calendar/CalendarDelete$!{ext}','$!{url}&id=$!{item.id}')" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/DeleteEvent.gif" style="border:0px;"/></a>															
+					</div>
+				</dd>							
+				<dd class="resize"/>				
+			</dl>
+		</div>
+		<div style="border-color:$!color_bound;background-color: $!color_content;" class="b2"></div>
+		<div style="background-color:$!color_bound;" class="b1"></div>
+	</div>
+	<div style="clear:both;"></div>
+#end
+
+## load FCK/Editor
+## load FCK/Editor ,Default is that selected the $!path/fck/fckconfig.js file 
+## $width    == 700px
+## $height   == 300px
+## $basePath == $!path/fck/
+## $barName	 == "Basic"
+## $inputName== "content"
+## $defaultValue = ""
+##macro(FCKEditor $width $height $basePath $barName $inputName $defaultValue)
+##	#set($fckeditor = $!fck.create($request))
+##	$!fckeditor.setHeight($!height)
+##	$!fckeditor.setWidth($!width)
+##	$!fckeditor.setBasePath($!basePath)														
+##	$!fckeditor.setToolbarSet($!barName)							
+##	$!fckeditor.setInstanceName($!inputName)	
+##	#if($null.isNull($defaultValue))
+##		$!fckeditor.setValue('')																											
+##	#else
+##		$!fckeditor.setValue($!defaultValue)																											
+##	#end
+##	$!fckeditor.create()	
+###end
+
+## USING FOR MAKING PAGGER
+#macro(Pagger $url $params)
+	#set($endPage = $numOfPage - 1)  ## $numOfPage variable in on com.inet.portal.util.IConstants
+	#set($nextPage = $page + 1)		 ## $page variable in on com.inet.portal.util.IConstants
+	#set($previousPage = $page - 1)
+	#if($nextPage != 0 && $numOfPage != 0)
+		<table class="adminlist">
+			<tbody>
+				<tr>
+					<th colspan="3">
+						#if("$page"=="0")
+							<span class="pagenav"><< Start</span>
+							<span class="pagenav">< Previous</span>
+						#else	
+							<a style="font-weight:bold" href="$!url?page=0$!{params}"><span class="pagenav"><< Start</span></a>
+							<a style="font-weight:bold" href="$!url?page=$!{previousPage}$!{params}"><span class="pagenav">< Previous</span></a>
+						#end
+						<span class="pagenav"> <span style="color:red">$nextPage</span> / $numOfPage </span>
+						#if("$nextPage"=="$numOfPage")
+							<span class="pagenav">Next ></span>
+							<span class="pagenav">End >></span>
+						#else
+							<a style="font-weight:bold" href="$!url?page=$!{nextPage}$!{params}"><span class="pagenav">Next ></span></a>
+							<a style="font-weight:bold" href="$!url?page=$!{endPage}$!{params}"><span class="pagenav">End >></span></a>
+						#end
+					</th>
+				</tr>
+				<tr>
+					<td width="48%" nowrap="nowrap" align="right">Display #</td>
+					<td>
+						<select onchange="document.adminForm.submit();" size="1" class="inputbox" name="limit">
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+							<option value="25">25</option>
+							<option selected="selected" value="30">30</option>
+							<option value="50">50</option>
+						</select>
+					</td>
+					<td width="48%" nowrap="nowrap" align="left">Results 1 - 4 of 4</td>
+				</tr>
+			</tbody>
+		</table>
+	#end
+#end
+## MAKE PAGGING, AND USING JAVASCRIPT FUNCTION TO SUBMIT
+#macro(SearchResultPagger $funcName)
+	#set($endPage = $numOfPage - 1)   ## $numOfPage variable in on com.inet.portal.util.IConstants
+	#set($nextPage = $page + 1)       ## $page variable in on com.inet.portal.util.IConstants
+	#set($previousPage = $page - 1)
+	#if($nextPage != 0 && $numOfPage != 0)
+		<table class="adminlist">
+			<tbody>
+				<tr>
+					<th colspan="3">
+						#if($page == 0)
+							<span class="pagenav"><< Start</span>
+							<span class="pagenav">< Previous</span>
+						#else	
+							<a style="font-weight:bold" href="javascript:$funcName(0);"><span class="pagenav"><< Start</span></a>
+							<a style="font-weight:bold" href="javascript:$funcName($!previousPage);"><span class="pagenav">< Previous</span></a>
+						#end
+						<span class="pagenav"> <span style="color:red">$nextPage</span> / $numOfPage </span>
+						#if("$nextPage"=="$numOfPage")
+							<span class="pagenav">Next ></span>
+							<span class="pagenav">End >></span>
+						#else
+							<a style="font-weight:bold" href="javascript:$funcName($!nextPage);"><span class="pagenav">Next ></span></a>
+							<a style="font-weight:bold" href="javascript:$funcName($!endPage);"><span class="pagenav">End >></span></a>
+						#end
+					</th>
+				</tr>
+				<tr>
+					<td width="48%" nowrap="nowrap" align="right">Display #</td>
+					<td>
+						<select onchange="document.adminForm.submit();" size="1" class="inputbox" name="limit">
+							<option value="5">5</option>
+							<option value="10">10</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+							<option value="25">25</option>
+							<option selected="selected" value="30">30</option>
+							<option value="50">50</option>
+						</select>
+					</td>
+					<td width="48%" nowrap="nowrap" align="left">Results 1 - 4 of 4</td>
+				</tr>
+			</tbody>
+		</table>
+	#end
+#end
+
+## view cell for calendar
+
+#macro(viewCell $width $height $color_bound $color_content $item $url)
+	<div ##ondblclick="rz(this.id)" onclick="return pz(this.id)" id="reldiv19" 
+		ondblclick="javascript:sendlink('$!path/calendar/CalendarView$!{ext}','$!{url}&id=$!{item.id}')"
+		style="position:absolute;width: $!{width}px;color:$!{vtl.getCalendarTextColor($!item)};" class="chip">
+		<div style="background-color: $!{vtl.getCalendarBoundColor($!item)};" class="t1"> </div>
+		<div style="background-color: $!{vtl.getCalendarBoundColor($!item)};" class="t2"> </div>
+		<div style="background-color: $!{vtl.getCalendarContentColor($!item)};color:$!{vtl.getCalendarTextColor($!item)};" class="chipbody edit">
+			<dl style="border-color : $!{vtl.getCalendarBoundColor($!item)}; height: $!{height}px;">
+				<dt style="background-color: $!{vtl.getCalendarBoundColor($!item)};">  
+					<b unselectable="on">
+						<span class="timelabel">$!{date.format("hh:mm a",$!item.beginDate)}-$!{date.format("hh:mm a",$!item.endDate)}</span> 
+						<img width="9" height="7" src="$!path/user/calendar/style/images/alarm_white.gif"/>
+					</b>
+				</dt>
+				#set($height_view = $!height +(1*-1))
+				<dd>
+					<div>
+						##onclick="qz('reldiv19',event)" onmouseout="rM(this)" onmouseover="RN(this)"
+						<span  style="cursor: pointer;">							
+							$!vtl.getDataWidth($!item.title,12,$!width)													
+						</span>
+						#if($!height_view > 0)
+						<br/>
+						<span  style="cursor: pointer;">
+							$!vtl.getDataWidth($!item.brief,12,$!width,$!height_view)
+						</span>
+						#end						
+					</div>
+				</dd>
+				<dd class="tooltip" style="vertical-align:bottom;">
+					<div>
+					<a name="$!{item.id}" id="$!{item.id}" href="javascript:onCalendarStatusPopup(this,'$!path','$!{item.id}','$!{url}&id=$!{item.id}');" title="$!{text.get($!{item.status},'calendar')}" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/$!{vtl.getCalendarIcon($!item)}" style="border:0px;"/></a>	
+					##<a href="javascript:sendlink('$!path/calendar/CalendarView$!{ext}','$!{url}&id=$!{item.id}')" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/ViewIcon.gif" style="border:0px;"/></a>
+					<a href="javascript:sendlink('$!path/calendar/Calendar$!{vtl.getEditPrivacy($!item)}Edit$!{ext}','$!{url}&id=$!{item.id}')" title="$!text.get('form.bt.update','calendar')" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/EditEvent.gif" style="border:0px;"/></a>
+					<a href="javascript:sendlink('$!path/calendar/CalendarDelete$!{ext}','$!{url}&id=$!{item.id}')" title="$!text.get('form.bt.delete','calendar')" style="text-decoration:none;"><img src="$!path/user/calendar/style/images/calendar/DeleteEvent.gif" style="border:0px;"/></a>															
+					</div>
+				</dd>							
+				<dd class="$!vtl.lowercase('$!{vtl.getEditPrivacy($!item)}')"/>				
+			</dl>
+		</div>
+		<div style="border-color:$!{vtl.getCalendarBoundColor($!item)};background-color: $!{vtl.getCalendarContentColor($!item)};" class="b2"></div>
+		<div style="background-color:$!{vtl.getCalendarBoundColor($!item)};" class="b1"></div>
+	</div>
+	<div style="clear:both;"></div>
+	<div id="title$!{item.id}" style="visibility: hidden; position: absolute; z-index: -1; top: 0px; left: 0px;"><span>$!item.title</span></div>
+#end
+#macro(viewRow $width $item $parameter)
+	<div class="EventOnDayContent" style="background:$!{vtl.getCalendarContentColor($!item)};border:1px solid $!{vtl.getCalendarBoundColor($!item)};">
+		<div style="float:left;margin:3px 0px 0px 2px;"></div>												
+		<div class="EventOnDayLabel" title="$!item.title $!item.brief "><a href="javascript:sendlink('$!path/calendar/CalendarDateLoad$!{ext}','$!{parameter}');" style="text-decoration:none;" >
+			$!vtl.getDataWidth($!item.title,12,$!width)
+		</a></div>												
+	</div>
+#end
+
+## end view cell for calendar

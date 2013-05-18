@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Authenticate manager bean -->
+	<bean id="authenticateManager" class="com.inet.lotus.auth.ldap.LdapAuthenticateManager" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="ldapOperations"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>ou=common</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>2</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- The bean configure for administrator of mail system -->
+	<bean id="mailConfiguration" class="com.inet.lotus.mail.conf.MailConfiguration">
+		<!-- The administrator name.
+			 This user must be an user existing in system accounts) -->
+		<constructor-arg index="0" value="admin"/>
+		
+		<!-- The flag to know that the administrator of 
+				system can change the owner of mail account or not -->
+		<constructor-arg index="1" value="false"/>
+	</bean>	
+		
+	<!-- Account manager bean -->
+	<bean id="accountManager" class="com.inet.lotus.account.manage.ldap.LotusLdapAccountManager" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="ldapOperations"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>ou=common</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>2</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- The base DN contains all organizations -->
+	<bean id="orgBaseDN" class="java.lang.String">
+		<constructor-arg value="ou=org"/>
+	</bean>
+	
+	<!-- The base DN contains all organization people -->
+	<bean id="peopleBaseDN" class="java.lang.String">
+		<constructor-arg value="people"/>
+	</bean>
+	
+	<!-- The base DN contains all organization groups -->
+	<bean id="groupsBaseDN" class="java.lang.String">
+		<constructor-arg value="groups"/>
+	</bean>
+	
+	<!-- user manager -->
+	<bean id="userManager" class="com.inet.lotus.org.permission.manage.ldap.LdapUserManager">
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="orgBaseDN"/>
+		<property name="parentRDN" ref="peopleBaseDN"/>
+	</bean>
+	
+	<!-- group manager -->
+	<bean id="groupManager" class="com.inet.lotus.org.permission.manage.ldap.LdapGroupManager">
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="orgBaseDN"/>
+		<constructor-arg index="2" ref="userManager"/>
+		<property name="parentRDN" ref="groupsBaseDN"/>
+		<property name="accountManager" ref="accountManager"/>
+	</bean>
+	
+	<!-- The LDAP operation bean -->
+	<bean id="mailLdapOperations" class="com.inet.ldap.support.spring.LdapTemplate">
+		<constructor-arg ref="contextSource"/>
+	</bean>
+	
+	<!-- The base DN contains all mail accounts -->
+	<bean id="mailBaseDN" class="java.lang.String">
+		<constructor-arg value="ou=mail"/>
+	</bean>
+	
+	<!-- The base DN contains all personal contact -->
+	<bean id="contactBaseDN" class="java.lang.String">
+		<constructor-arg value="ou=contact"/>
+	</bean>
+	
+	<!-- mail domain administrator manager -->	
+	<bean id="domainAdministratorManager" class="com.inet.lotus.mail.manage.domain.ldap.LdapDomainAdminManager" lazy-init="false">
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="mailBaseDN"/>
+		<constructor-arg index="2" ref="mailConfiguration"/>
+	</bean>
+		
+	<!-- mail domain manager -->
+	<bean id="mailDomainManager" class="com.inet.lotus.mail.manage.domain.ldap.LdapMailDomainManager" lazy-init="false">
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="mailBaseDN"/>
+		<constructor-arg index="2" value="2"/>
+		<constructor-arg index="3" ref="domainAdministratorManager"/>
+		<constructor-arg index="4"><null/></constructor-arg>
+		<constructor-arg index="5" ref="accountManager"/>
+		<constructor-arg index="6"><null/></constructor-arg>
+	</bean>
+	
+	<!-- global contact manager -->
+	<bean id="globalContactManager" class="com.inet.lotus.mail.manage.contact.ldap.LdapGlobalContactManager" >
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="mailBaseDN"/>
+	</bean>	
+	
+	<!-- personal contact owner manager -->
+	<bean id="contactOwnerManager" class="com.inet.lotus.mail.manage.contact.ldap.LdapContactOwnerManager" >
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="contactBaseDN"/>
+	</bean>	
+	
+	<!-- personal contact manager -->
+	<bean id="personalContactManager" class="com.inet.lotus.mail.manage.contact.ldap.LdapPersonalContactManager" >
+		<constructor-arg index="0" ref="ldapOperations"/>
+		<constructor-arg index="1" ref="contactBaseDN"/>
+		<constructor-arg index="2" ref="contactOwnerManager"/>
+	</bean>	
+	
+	<!-- Mail account manager bean -->
+	<bean id="mailAccountManager" class="com.inet.lotus.mail.manage.ldap.LdapMailAccountManager" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="ldapOperations"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>ou=mail</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Change password of user in organizatiom-->
+   <bean id="orgChangepasswdService" class="com.inet.web.service.support.LotusOrgChagepwdService" lazy-init="false">
+       <constructor-arg index="0">
+           <ref bean="userManager"/>
+       </constructor-arg>
+	</bean> 
+	
+	<!-- MailHeader facade bean object-->
+	<bean id="mailHeaderBF" class="com.inet.web.bf.mail.MailHeaderBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailFolder facade bean object-->
+	<bean id="mailFolderBF" class="com.inet.web.bf.mail.MailFolderBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailBridge facade bean object-->
+	<bean id="mailBridgeBF" class="com.inet.web.bf.mail.MailBridgeBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+		
+	<!-- MailConfigure facade bean object-->
+	<bean id="mailConfigureBF" class="com.inet.web.bf.mail.MailConfigureBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailFilter facade bean object-->
+	<bean id="mailFilterBF" class="com.inet.web.bf.mail.MailFilterBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailSignatureInfoBF facade bean object-->
+	<bean id="mailSignatureInfoBF" class="com.inet.web.bf.mail.MailSignatureInfoBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- followUpBF facade bean object-->
+	<bean id="followUpBF" class="com.inet.web.bf.mail.FollowUpBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- address book management facade bean object-->
+	<bean id="addressBookManagementBF" class="com.inet.web.bf.addressbook.AddressBookManagementBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Distributed mapping -->
+	<bean id="distributedUploadFacadeBF" class="com.inet.web.common.upload.bf.DistributedUploadFacadeBF" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>GridFacadeSLBean</value>
+		</constructor-arg>		
+	</bean>
+	
+	<!-- mail recipient facade bean object-->
+	<bean id="mailRecipientBF" class="com.inet.web.bf.mail.MailRecipientBF" lazy-init="false">
+		<constructor-arg>
+			<ref bean="applicationServer"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- WEBOS Business Objects Mapping  -->
+	
+	<!-- MailHeader business object -->
+	<bean id="mailHeaderBO" class="com.inet.web.bo.mail.MailHeaderBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailHeaderBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailFolder business object -->
+	<bean id="mailFolderBO" class="com.inet.web.bo.mail.MailFolderBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailFolderBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailBridge business object -->
+	<bean id="mailBridgeBO" class="com.inet.web.bo.mail.MailBridgeBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailBridgeBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailConfigure business object -->
+	<bean id="mailConfigureBO" class="com.inet.web.bo.mail.MailConfigureBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailConfigureBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- AddressBookManagement business object -->
+	<bean id="addressBookManagementBO" class="com.inet.web.bo.addressbook.AddressBookManagementBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="addressBookManagementBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailFilter business object -->
+	<bean id="mailFilterBO" class="com.inet.web.bo.mail.MailFilterBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailFilterBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MailSignatureInfo business object -->
+	<bean id="mailSignatureInfoBO" class="com.inet.web.bo.mail.MailSignatureInfoBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailSignatureInfoBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- FollowUp business object -->
+	<bean id="followUpBO" class="com.inet.web.bo.mail.FollowUpBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="followUpBF"/>
+		</constructor-arg>
+	</bean>
+	
+	
+	<!-- Distributed mapping -->
+	<bean id="distributedUploadFacadeBO" class="com.inet.web.common.upload.bo.DistributedUploadFacadeBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="distributedUploadFacadeBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Mail Recipient business object -->
+	<bean id="mailRecipientBO" class="com.inet.web.bo.mail.MailRecipientBO" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailRecipientBF"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- WEBOS Services Mapping -->
+	<!-- WebOS user service -->
+	<bean id="webosUserService" class="com.inet.web.service.permission.WebOSUserService" lazy-init="false">
+		<constructor-arg>
+			<ref bean="accountManager"/>
+		</constructor-arg>
+	</bean>
+	
+	
+	<!-- Bind context service -->
+	<bean id="bindContextService" class="com.inet.web.service.BindContextService" lazy-init="false">
+		<constructor-arg>
+			<ref bean="accountManager"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Mail Folder service -->
+	<bean id = "mailFolderService" class = "com.inet.web.service.mail.MailFolderService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailFolderBO"/>
+		</constructor-arg>
+	</bean>	 
+
+	<!-- Mail Header service -->
+	<bean id = "mailHeaderService" class = "com.inet.web.service.mail.MailHeaderService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailHeaderBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+	</bean>	
+	
+	<!-- Mail Composer service -->
+	<bean id = "mailComposerService" class = "com.inet.web.service.mail.MailComposerService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailHeaderBO"/>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<ref bean="mailRecipientBO"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Mail Content service -->
+	<bean id = "mailContentService" class = "com.inet.web.service.mail.MailContentService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+	</bean>	
+	
+	<!-- Mail configure service -->
+	<bean id = "mailConfigureService" class = "com.inet.web.service.mail.MailConfigureService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailConfigureBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<ref bean="mailSignatureInfoBO"/>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<ref bean="mailAccountManager"/>
+		</constructor-arg>
+		<constructor-arg index="5">
+			<ref bean="mailReceiverObject"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Mail filter service -->
+	<bean id = "mailFilterService" class = "com.inet.web.service.mail.MailFilterService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailFilterBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailFolderBO"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Mail follow up service -->
+	<bean id = "followUpService" class = "com.inet.web.service.mail.FollowUpService" lazy-init = "false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="followUpBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Mail download attach service -->
+	<bean id = "mailAttachContentWriterSPI" class = "com.inet.web.service.spi.download.MailAttachContentWriterSPI" lazy-init = "false">
+		<constructor-arg>
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+	</bean>
+	<!-- Mail download review attach service -->
+	<bean id = "mailReviewAttachContentWriterSPI" class = "com.inet.web.service.spi.download.MailReviewAttachContentWriterSPI" lazy-init = "false">		
+	</bean>
+	<!-- Mail download eml attach service -->
+	<bean id = "mailEmlAttachContentWriterSPI" class = "com.inet.web.service.spi.download.MailEmlAttachContentWriterSPI" lazy-init = "false">
+		<constructor-arg>
+			<ref bean="mailBridgeBO"/>
+		</constructor-arg>
+	</bean>
+
+	<!-- Search Address Book Service -->
+	<bean id="searchAddressBookService" class="com.inet.web.service.addressbook.SearchAddressBookService" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailDomainManager"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="globalContactManager"/>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<ref bean="personalContactManager"/>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<ref bean="groupManager"/>
+		</constructor-arg>
+		<constructor-arg index="5">
+			<value>DOMAIN</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Address Book Service -->
+	<bean id="addressBookService" class="com.inet.web.service.addressbook.AddressBookService" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="personalContactManager"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Change password service -->
+	<bean id="changepasswdService" class="com.inet.web.service.support.LotusChagepasswdService" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="authenticateManager"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="mailChangepasswdService" class="com.inet.web.service.support.LotusMailChagepasswdService" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailAccountManager"/>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="mailConfigChagepasswdService" class="com.inet.web.service.support.MailConfigChagepasswdService" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>		
+		<constructor-arg index="1">
+			<ref bean="mailConfigureBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailAccountManager"/>
+		</constructor-arg>
+	</bean>	
+	
+	<bean id="lotusSystemChangepwdService" class="com.inet.web.service.support.LotusSystemChangepwdService" lazy-init="false">
+		<constructor-arg index="0">
+			<list>
+				<ref bean="orgChangepasswdService"/>
+				<ref bean="mailChangepasswdService"/>
+			</list>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="changepasswdService"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>SMD5</value>
+		</constructor-arg>		
+	</bean>
+	
+	<!-- Mail Quota service  -->
+	<bean id="quotaService" class="com.inet.web.service.mail.QuotaService" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="mailHeaderBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="mailConfigureBO"/>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<ref bean="mailAccountManager"/>
+		</constructor-arg>		
+	</bean>
+	
+	<bean id="mailRecipientService" class="com.inet.web.service.mail.MailRecipientService" lazy-init="false">
+		<constructor-arg index="0">
+			<ref bean="accountManager"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="mailRecipientBO"/>
+		</constructor-arg>
+	</bean>	
+	
+	<!-- //////////////////////////////////////////////////////////-->
+	<!-- The mail server configuration information -->
+	<bean id="mailReceiverObject" class="com.inet.mail.data.MailReceiverObject">
+		<constructor-arg value=""/>			
+		
+		<!-- The POP3 SERVER INFORMATION -->
+		<property name="serverName" value="mail.truthinet.com.vn" />
+		<property name="serverPort" value="110" />
+		<property name="security" value="NONE" />
+		
+		<!-- The SMTP SERVER INFORMATION -->
+		<property name="SMTPServerName" value="mail.truthinet.com.vn" />
+		<property name="SMTPServerPort" value="25" />
+		<property name="SMTPSecurity" value="TLS" />
+	</bean>	
+</beans>

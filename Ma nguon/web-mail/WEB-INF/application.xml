@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+	<!-- defines database context environment -->
+	<bean id="applicationServer" class="com.inet.web.application.spring.ApplicationServerProvider" lazy-init="false" singleton="true">
+		<property name="host">
+			<value>iwebos-server2.truthinet.com.vn:1099</value>
+		</property>
+		<property name="name">
+			<value>jboss</value>
+		</property>
+		<property name="securityMode">
+			<value>true</value>
+		</property>
+		<property name="jaasDomain">
+			<value>iDeskSecure</value>
+		</property>
+		<property name="authentication">
+			<ref bean="serverAuthenticate"/>
+		</property>
+	</bean>
+	
+	<!-- LDAP context source -->
+    <bean id="contextSource" class="com.inet.ldap.support.spring.LdapContextSource" lazy-init="false">
+    	<property name="urls">
+        	<list>
+            	<value>ldap://inet-linux21.truthinet.com.vn/</value>
+            </list>
+        </property>
+        <property name="pooled">
+        	<value>true</value>
+        </property>
+        <property name="base">
+        	<value>dc=truthinet,dc=com,dc=vn</value>
+        </property>
+        <property name="userName">
+        	<value>cn=admin,dc=truthinet,dc=com,dc=vn</value>
+        </property>
+        <property name="password">
+        	<value>inet@0106</value>
+        </property>
+        <property name="dirObjectFactory">
+        	<value>com.inet.ldap.support.DefaultDirObjectFactory</value>
+        </property>
+        <property name="authenticatedReadOnly">
+        	<value>true</value>
+        </property>
+	</bean>
+
+    <!-- LDAP operation -->
+    <bean id="ldapOperations" class="com.inet.ldap.support.spring.LdapTemplate" lazy-init="false">
+    	<constructor-arg>
+        	<ref bean="contextSource"/>
+        </constructor-arg>
+    </bean>	
+	
+	<!-- define application server authentication -->
+	<bean id="serverAuthenticate" class="com.inet.web.secure.authenticate.AcegiAuthentication" lazy-init="false"/>
+	
+	<!-- register bean -->
+	<bean id="contextRefreshedListener" class="com.inet.web.context.SpringContextRefreshedListener" />
+	
+	<!-- end of the template engine environment definition-->
+	<bean id="language" class="com.inet.web.language.LanguageSupport" init-method="init">
+		<property name="languages">
+      		<set>
+        		<value>vi</value>
+        		<value>en</value>
+        	</set>	
+    	</property>
+    	<property name="defaultLanguage">
+    		<value>vi</value>
+    	</property>
+    	<property name="parameter">
+    		<value>.intl</value>
+    	</property>
+    	<property name="resourceBase">
+    		<value>common.ApplicationResources</value>
+    	</property>
+	</bean>
+	
+	<!-- Upload content locator mapping -->
+	<!-- random generate file name strategy -->
+	<bean id="randomGenerateFileNameStrategy" class="com.inet.web.common.upload.RandomGenerateFileNameStrategy" lazy-init="false">
+		<constructor-arg index="0">
+			<value>iwebos</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>beta</value>
+		</constructor-arg>		
+	</bean>
+	
+	<!-- file upload content locator -->
+	<bean id="fileUploadContentLocator" class="com.inet.web.common.upload.impl.FileUploadContentLocator" lazy-init="false">
+		<constructor-arg index="0">
+			<value>/home/dungnguyen/upload</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="randomGenerateFileNameStrategy"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- distributed upload content locator -->
+	<bean id="distributedUploadContentLocator" class="com.inet.web.common.upload.impl.DistributedUploadContentLocator" lazy-init="false">
+		<constructor-arg>
+			<ref bean="distributedUploadFacadeBO"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- used to login throug LDAP -->
+	<bean id="userInvocationBindContextService" class="com.inet.web.service.support.userservice.BindUserContext">
+		<constructor-arg index="0">
+			<ref bean="securityBO"/>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<ref bean="userBO"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="configurationBO"/>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<value>true</value>
+		</constructor-arg>						
+	</bean>
+</beans>

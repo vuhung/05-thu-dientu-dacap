@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans >
+	<!-- defines database context environment -->
+	<!-- bean id="applicationServer" class="com.inet.web.application.spring.ApplicationServerProvider" lazy-init="false" singleton="true">
+		<property name="host">
+			<value>iwebos-server2.truthinet.com.vn:1099</value>
+		</property>
+		<property name="name">
+			<value>jboss</value>
+		</property>
+		<property name="securityMode">
+			<value>false</value>
+		</property>
+	</bean -->
+	
+	<!-- LDAP context source -->
+    <bean id="contextSource" class="com.inet.ldap.support.spring.LdapContextSource" lazy-init="false">
+    	<property name="urls">
+        	<list>
+            	<value>ldap://ldap.truthinet.com.vn/</value>
+            </list>
+        </property>
+        <property name="pooled">
+        	<value>true</value>
+        </property>
+        <property name="base">
+        	<value>dc=truthinet,dc=com,dc=vn</value>
+        </property>
+        <property name="userName">
+        	<value>cn=admin,dc=truthinet,dc=com,dc=vn</value>
+        </property>
+        <property name="password">
+        	<value>inet@0106</value>
+        </property>
+        <property name="dirObjectFactory">
+        	<value>com.inet.ldap.support.DefaultDirObjectFactory</value>
+        </property>
+        <property name="authenticatedReadOnly">
+        	<value>true</value>
+        </property>
+	</bean>
+
+    <!-- LDAP operation -->
+    <bean id="ldapOperations" class="com.inet.ldap.support.spring.LdapTemplate" lazy-init="false">
+    	<constructor-arg>
+        	<ref bean="contextSource"/>
+        </constructor-arg>
+    </bean>
+	
+    <!-- Account manager -->
+    <bean id="accountManager" class="com.inet.lotus.account.manage.ldap.LotusLdapAccountManager" lazy-init="false">
+    	<constructor-arg index="0">
+    		<ref bean = "ldapOperations"/>
+    	</constructor-arg>
+    	<constructor-arg index="1">
+    		<value>ou=common</value>
+    	</constructor-arg>
+    	<constructor-arg index="2">
+    		<value>1</value>
+    	</constructor-arg>
+    </bean>		
+</beans>

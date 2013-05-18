@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="webmail" basedir="." default="dist">
+	<property environment="env" />
+	<property name="resources.dir" value="${basedir}/resources" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.dest.dir" value="${build.dir}/dest" />
+	<property name="build.resources.dir" value="${build.dest.dir}/WEB-INF/classes" />
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property file="build.properties" />
+	
+	<!-- ================================= 
+          target: init              
+         ================================= -->
+	<target name="init" description="--> initialze">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.dist.dir}"/>
+		<mkdir dir="${build.resources.dir}"/>
+		
+		<copy todir="${build.dest.dir}" >
+			<fileset dir="${basedir}">
+				<exclude name="build.xml"/>
+				<exclude name="build.properties"/>
+				<exclude name="*.project"/>
+				<exclude name="build/**"/>
+				<exclude name="resources/**"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${build.resources.dir}">
+			<fileset dir="${resources.dir}"/>
+		</copy>
+	</target>
+	
+	<!-- ================================= 
+          target: webos              
+         ================================= -->
+	<target name="webmail-folder" depends="init" description="--> build webos GUI">
+		<copydir dest="${build.dist.dir}/${build.webos.name}.war" src="${build.dest.dir}">
+		</copydir>
+	</target>
+	
+	<!-- ================================= 
+	          target: webos              
+		================================= -->
+	<target name="webmail-war" depends="init" description="--> build webos GUI">
+		<war destfile="${build.dist.dir}/${build.webos.name}.war">
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-admin.info}">
+					<attribute name="Specification-Title" value="${build.webos.title}" />
+					<attribute name="Specification-Version" value="${build.webos.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.webos.title}" />
+					<attribute name="Implementation-Version" value="${build.webos.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+
+			<fileset dir="${build.dest.dir}"/>
+		</war>
+	</target>
+	
+	<!-- ================================= 
+          target: dist              
+         ================================= -->
+	<target name="dist" depends="webmail-war" description="--> dist">		
+			<delete dir="${build.dest.dir}" />
+	</target>
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="--> clean product">
+		<delete dir="${build.resources.dir}" />
+		<delete dir="${build.dist.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+</project>	

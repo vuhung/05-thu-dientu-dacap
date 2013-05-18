@@ -1,0 +1,23 @@
+<table cellspacing="0" class="nav main-nav">
+	<tr>
+		#if(! $null.isNull($request.getParameter("active")))
+			#set( $activeTab = $request.getParameter("active"))
+		#end
+		
+		#if($null.isNull($activeTab) || $activeTab == "mail-link")
+			<td class="active">
+				<a id="mail-link" href="$!{path}/welcome.iws?active=mail-link"><span>$text.get('lotus.menu.mail_manager','rlotus')</span></a>
+	        </td>	        	       
+	        <td>
+	        	<a id="user-link" href="$!{path}/user.iws?active=user-link"><span>$text.get('lotus.menu.user_manager','rlotus')</span></a>
+	        </td>		
+	    #elseif($activeTab == "user-link")
+	    	<td>
+				<a id="mail-link" href="$!{path}/welcome.iws?active=mail-link"><span>$text.get('lotus.menu.mail_manager','rlotus')</span></a>
+	        </td>	        
+	        <td class="active">
+	        	<a id="user-link" href="$!{path}/user.iws?active=user-link"><span>$text.get('lotus.menu.user_manager','rlotus')</span></a>
+	        </td>
+	    #end	
+	</tr>
+</table>

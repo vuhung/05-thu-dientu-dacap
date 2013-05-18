@@ -1,0 +1,11 @@
+	</div>
+</div>
+
+<div class="flyout-menu" id="option-menu" style="display:none;">
+	<div style="width:130px;">
+		<ul>
+			<li><a href="#" onClick="openConfigPanel();">$text.get('iwebos.msg.configure')</a></li>
+			<li><a href="$!{path}/changepw.iws">$text.get('iwebos.msg.changepw')</a></li>
+		</ul>
+	</div>
+</div>

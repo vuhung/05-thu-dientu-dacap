@@ -1,0 +1,229 @@
+/*****************************************************************
+   Copyright 2006 by Dung Nguyen (dungnguyen@truthinet.com)
+
+   Licensed under the iNet Solutions Corp.,;
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.truthinet.com/licenses
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*****************************************************************/
+/* Main header image */
+#header{background:url(../images/bg-header.png);}
+#hd h1 a {background:transparent url(../images/i-logo.png) no-repeat;position:relative;float:left;top: 5px;left:10px;height:31px;width:228px;}
+#hd h1 a span {display:none;}
+
+/* Menu styles */
+#hd {background:transparent url(../images/topbar.png)  repeat-x 5px bottom;height:55px;margin:0px 0px 0px 0px;position:relative;}
+
+
+/* Main nav */
+#hd table.main-nav {left:15px;top:40px;}
+#hd table.main-nav tr {height:28px;}
+#hd table.main-nav a:hover {text-decoration:underline;}
+#hd table.main-nav a:hover span {text-decoration:underline;}
+#hd table.main-nav td.active a {background:transparent url(../images/nav-left.png) repeat-x;text-decoration:none;}
+#hd table.main-nav td.active a span {background:transparent url(../images/nav-right.png) no-repeat right 0;font-weight:bold;padding:7px 15px 6px 15px;text-decoration:none;}
+
+/* Sub nav */
+#hd .sub-nav {position:absolute;left:7px;top:32px;height:21px;}
+#hd .sub-nav td {font-size:11px;color:#777;font-family:tahoma,helvetica,arial,sans-serif;}
+#hd .sub-nav td span {color:#777;}
+#hd .sub-nav td a {color:#046BCA;font-family:tahoma,helvetica,arial,sans-serif;}
+#hd .sub-nav td.spacer {padding:0 5px;}
+
+/**
+ * welcome stylesheet.
+ */
+.welcome{position:relative;top:5px;float:right;color:#444444;}
+.welcome .user{font-weight:bold;}
+.welcome .logout{color:#4444bb;font-weight:bold;}
+/**
+ * Ok, cancel button stylesheet.
+ */
+.ok-btn{background-image:url(../images/ics16/ok.png) !important;}
+.cancel-btn{background-image:url(../images/ics16/cancel.png) !important;}
+
+/**
+ * User tree control stylesheet.
+ */
+div.user-tree-ctl{float:left;margin:20px;border:1px solid #c3daf9;}
+.user-dlg-hd-img{background:url(../images/common/userswzd.png) no-repeat right bottom;background-position-y:bottom;margin:0 0 0 0;width:80px;}
+.search-doc-hd-img{background:url(../images/common/search-doc.png) no-repeat right bottom;background-position-y:bottom;margin:0 0 0 0;width:80px;}
+.user-dlg-group-img{background-image:url(../images/ics16/group.gif) !important; background-repeat: no-repeat;}
+.comp-dlg-root-img{background-image:url(../images/ics16/participants.png) !important; background-repeat: no-repeat;}
+.user-dlg-person-img{background-image:url(../images/ics16/person.png) !important; background-repeat: no-repeat;}
+input.x-tree-node-cb{vertical-align:middle;margin-right:2px;}
+.document-statistic{border: 0px solid #c8c8c8;}
+.recent-task{border: 0px solid #c8c8c8;}
+.reminder-task{border: 0px solid #c8c8c8;}
+.iwebos-form-group {padding-bottom:5px;overflow:hidden;background:white;}
+.iwebos-form-group .iwebos-form-group-header{padding:0;border-bottom:1px solid #4e79b2; background:white;}
+.iwebos-form-group .iwebos-form-group-header-text{font-size:11px;font-family:tahoma,arial,sans-serif;line-height:13px;font-weight: bolder;text-transform: uppercase;position:relative;left:5px;top:5px;padding:1px 5px 1px 5px;color:#4e79b2;background:white;}
+.iwebos-form-group-body{overflow:hidden;}
+.iwebos-form-group-bwrap{overflow:hidden;zoom:1;}
+.iwebos-form-group-bbar .x-toolbar{overflow:hidden;padding:2px;}
+.iwebos-form-group-tbar .x-toolbar{overflow:hidden;padding:2px;}
+.iwebos-form-group-label .x-form-item-label{font-weight:bolder;}
+.x-panel-collapsed .iwebos-form-group-header-text{background-position: 2px -15px;}
+.inet-date{text-align:right;}
+.inet-number{text-align:right;}
+
+/**
+ * webos grid.
+ */
+.important-col-hd{width:98%;height:12px;background:transparent url(../images/ics16/important.png) no-repeat center center;cursor:default;}
+.important-default{width:98%; height:16px;background:transparent url(../images/important/normal.png) no-repeat center 0;cursor:default;}
+.important-low{width:98%; height:16px;background:transparent url(../images/important/normal.png) no-repeat center 0;cursor:default;}
+.important-normal{width:98%; height:16px;background:transparent url(../images/important/high.png) no-repeat center 0;cursor:default;}
+.important-high{width:98%; height:16px;background:transparent url(../images/important/very-high.png) no-repeat center 0;cursor:default;}
+.security-col-hd{width:98%;height:12px;background:transparent url(../images/ics16/security.png) no-repeat center center;cursor:default;}
+.security-default{width:98%; height:16px;background:transparent url(../images/security/normal.png) no-repeat center 0;cursor:default;}
+.security-normal{width:98%; height:16px;background:transparent url(../images/security/normal.png) no-repeat center 0;cursor:default;}
+.security-secure{width:98%; height:16px;background:transparent url(../images/security/secure.png) no-repeat center 0;cursor:default;}
+.security-very-secure{width:98%; height:16px;background:transparent url(../images/security/very-secure.png) no-repeat center 0;cursor:default;}
+.security-extreme-secure{width:98%; height:16px;background:transparent url(../images/security/extreme-secure.png) no-repeat center 0;cursor:default;}
+.flag-col-hd{width:98%;height:12px;background:transparent url(../images/flags/default.png) no-repeat center center;cursor:default;}
+/**
+ * task completed and overdue.
+ */
+.task-over{background: transparent url(../images/flags/all.png) no-repeat center -94px;}
+.task-check{width:98%;height:16px;background: transparent url(../images/flags/all.png) no-repeat center -48px;cursor:pointer;}
+.task-today{width:98%;height:16px;background: transparent url(../images/flags/all.png) no-repeat center 0;cursor:pointer;}
+.task-tomorrow{width:98%;height:16px;background: transparent url(../images/flags/all.png) no-repeat center -16px;cursor:pointer;}
+.task-week{width:98%;height:16px;background: transparent url(../images/flags/all.png) no-repeat center -32px;cursor:pointer;}
+.task-nextweek{width:98%;height:16px;background: transparent url(../images/flags/all.png) no-repeat center -32px;cursor:pointer;}
+.task-nodate{width:98%;height:16px;background: transparent url(../images/flags/all.png) no-repeat center -64px;cursor:pointer;}
+.task-completed .task-check{background: transparent url(../images/flags/all.png) no-repeat center -80px;}
+.task-completed .task-today{background: transparent url(../images/flags/all.png) no-repeat center -80px;}
+.task-completed .task-tomorrow{background: transparent url(../images/flags/all.png) no-repeat center -80px;}
+.task-completed .task-week{background: transparent url(../images/flags/all.png) no-repeat center -80px;}
+.task-completed .task-nextweek{background: transparent url(../images/flags/all.png) no-repeat center -80px;}
+.task-completed .task-nodate{background: transparent url(../images/flags/all.png) no-repeat center -80px;}
+.task-overdue .x-grid3-cell-inner{color:#fb223a;}
+.task-completed .x-grid3-cell-inner{text-decoration:line-through;color:gray;}
+.task-published .x-grid3-cell-inner{color:#15328f;}
+.task-processing .x-grid3-cell-inner{color:#8b3215;}
+.task-pre-completed .x-grid3-cell-inner{color:#328d15;}
+.task-watched .x-grid3-cell-inner{color:#8d328f;}
+.task-booked .x-grid3-cell-inner{color:black;}
+.task-view-only .x-grid3-cell-inner{color:gray;}
+.task-processing .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.task-published .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.task-completed .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.task-pre-completed .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.task-watched .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.task-view-only .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.task-booked .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+/**
+ * paperwork status.
+ */
+.progress-col-hd{width:98%; height:12px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/created.png) no-repeat center 0;cursor:default;}
+.progress-processing{width:98%; height:16px;background:transparent url(../images/paperwork/forward.png) no-repeat center 0;cursor:default;}
+.progress-default{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.ed-progress-processing .x-grid3-cell-inner{text-decoration:line-through;color: #8b3215;}
+.ed-progress-booked .progress-created{width:98%; height:16px;background:transparent url(../images/paperwork/normal.png) no-repeat center 0;cursor:default;}
+.ed-progress-booked .x-grid3-cell-inner{color:black;}
+
+/**
+ * Group by and filter by.
+ */
+.grid-show-all{background-image:url(../images/view/all.png) !important;}
+.grid-show-booked{background-image:url(../images/view/booked.png) !important;}
+.grid-show-not-book{background-image:url(../images/view/notbook.png) !important;}
+.grid-show-created{background-image:url(../images/view/created.png) !important;}
+.grid-show-processing{background-image:url(../images/view/processing.png) !important;}
+.grid-show-published{background-image:url(../images/view/published.png) !important;}
+.grid-show-completed{background-image:url(../images/view/completed.png) !important;}
+.grid-show-late{background-image:url(../images/view/late.png) !important;}
+.grid-by-date{background-image:url(../images/grid/by-date.gif) !important;}
+.grid-by-status{background-image:url(../images/grid/by-status.gif) !important;}
+.grid-by-agency{background-image:url(../images/grid/by-agency.gif) !important;}
+
+.grid-show-only{background-image:url(../images/view/view-only.png) !important;}
+.grid-show-approving{background-image:url(../images/view/approving.png) !important;}
+
+/**
+ * action panel style.
+ */
+.x-panel-trans{background:transparent;}
+.x-layout-split-west{cursor:move;background-color:#cad9ec}
+.x-panel-header-text{color:#3764a0}
+#action-panel .x-panel{margin-bottom:3px; margin-right:0;}
+#action-panel .x-panel-body{border:0 none;}
+#action-panel .x-panel-body li{margin: 3px;}
+#action-panel .x-panel-body li img{width:16px; height:16px;vertical-align:middle;margin-right:2px;margin-bottom:2px;}
+#action-panel .x-panel-body li a{text-decoration:none;color:#3764a0;}
+#action-panel .x-plain-body{background-color:#cad9ec;padding:3px 0 0 5px;}
+#action-panel .x-panel-body li a:hover{text-decoration:underline;color:#15428b;}
+
+/**
+ * document format.
+ */
+.oo-word{width:16px; height:16px;background:transparent url(../images/formats/writer.gif) no-repeat center 0;cursor:default;}
+.oo-excel{width:16px; height:16px;background:transparent url(../images/formats/calc.gif) no-repeat center 0;cursor:default;}
+.oo-powerpoint{width:16px; height:16px;background:transparent url(../images/formats/impress.gif) no-repeat center 0;cursor:default;}
+.oo-graph{width:16px; height:16px;background:transparent url(../images/formats/draw.gif) no-repeat center 0;cursor:default;}
+.oo-math{width:16px; height:16px;background:transparent url(../images/formats/math.gif) no-repeat center 0;cursor:default;}
+.oo-database{width:16px; height:16px;background:transparent url(../images/formats/base.gif) no-repeat center 0;cursor:default;}
+.ms-word{width:16px; height:16px;background:transparent url(../images/formats/word.gif) no-repeat center 0;cursor:default;}
+.ms-excel{width:16px; height:16px;background:transparent url(../images/formats/excel.gif) no-repeat center 0;cursor:default;}
+.ms-powerpoint{width:16px; height:16px;background:transparent url(../images/formats/powerpoint.gif) no-repeat center 0;cursor:default;}
+.ms-access{width:16px; height:16px;background:transparent url(../images/formats/database.gif) no-repeat center 0;cursor:default;}
+.ms-project{width:16px; height:16px;background:transparent url(../images/formats/project.png) no-repeat center 0;cursor:default;}
+.ms-visio{width:16px; height:16px;background:transparent url(../images/formats/visio.png) no-repeat center 0;cursor:default;}
+.doc-text{width:16px; height:16px;background:transparent url(../images/formats/txt.png) no-repeat center 0;cursor:default;}
+.doc-html{width:16px; height:16px;background:transparent url(../images/formats/html.png) no-repeat center 0;cursor:default;}
+.doc-xml{width:16px; height:16px;background:transparent url(../images/formats/xml.png) no-repeat center 0;cursor:default;}
+.doc-pdf{width:16px; height:16px;background:transparent url(../images/formats/pdf.gif) no-repeat center 0;cursor:default;}
+.doc-img{width:16px; height:16px;background:transparent url(../images/formats/img.png) no-repeat center 0;cursor:default;}
+.doc-inet{width:16px; height:16px;background:transparent url(../images/formats/inet.png) no-repeat center 0;cursor:default;}
+.doc-other{width:16px; height:16px;background:transparent url(../images/formats/unknown.png) no-repeat center 0;cursor:default;}
+.document-format-col-hd{width:98%; height:12px;background:transparent url(../images/s.gif) no-repeat center 0;cursor:default;}
+
+/**
+ * follow up.
+ */
+.icon-followup-today{width:16px;height:16px;background:transparent url(../images/flags/today.png) no-repeat center 0; cursor:default;}
+.icon-followup-tomorrow{width:16px;height:16px;background:transparent url(../images/flags/tomorrow.png) no-repeat center 0; cursor:default;}
+.icon-followup-week{width:16px;height:16px;background:transparent url(../images/flags/week.png) no-repeat center 0; cursor:default;}
+.icon-followup-nextweek{width:16px;height:16px;background:transparent url(../images/flags/week.png) no-repeat center 0; cursor:default;}
+.icon-followup-others{width:16px;height:16px;background:transparent url(../images/flags/nodate.png) no-repeat center 0; cursor:default;}
+.icon-followup-view{width:16px;height:16px;background:transparent url(../images/flags/view.png) no-repeat center 0; cursor:default;}
+.icon-followup-remove{width:16px;height:16px;background:transparent url(../images/flags/delete.gif) no-repeat center 0; cursor:default;}
+.icon-followup-flags{width:16px;height:16px;background:transparent url(../images/flags/default.png) no-repeat center 0; cursor:default;}
+
+/**
+ * action grid icon.
+ */
+.remider-col-hd{width:15px; height:15px;background:transparent url(../images/summary/reminder.png) no-repeat;cursor:default;}
+.remider-task{width:16px; height:16px;background:transparent url(../images/summary/reminder.png) no-repeat;cursor:default;}
+.remider-note{width:16px;height:16px;background:transparent url(../images/summary/action_note.png) no-repeat center 0; cursor:default;}
+.remider-mail{width:16px;height:16px;background:transparent url(../images/summary/action_mail.png) no-repeat center 0; cursor:default;}
+
+/**
+ * note box
+ */
+.note-box{padding:1px 1px 1px 1px;border:0;background:#c2d3eb url(../images/box/content.gif) repeat-x scroll 0 0;}
+.note-box .tlconner{width:4px;height:4px;background: transparent url(../images/box/tlconner.gif) no-repeat scroll top left}
+.note-box .blconner{width:4px;height:4px;background: transparent url(../images/box/blconner.gif) no-repeat scroll bottom left}
+.note-box .trconner{width:4px;height:4px;background: transparent url(../images/box/trconner.gif) no-repeat scroll top right}
+.note-box .brconner{width:4px;height:4px;background: transparent url(../images/box/brconner.gif) no-repeat scroll bottom right}
+.note-box .lvert{width:4px;background: transparent url(../images/box/lvert.gif) repeat-y scroll 0 0}
+.note-box .rvert{width:4px;background: transparent url(../images/box/rvert.gif) repeat-y scroll 0 0}
+.note-box .thorz{height:4px;background: transparent url(../images/box/thorz.gif) repeat-x scroll 0 0}
+.note-box .bhorz{height:4px;background: transparent url(../images/box/bhorz.gif) repeat-x scroll 0 0}
+.note-box .content{background: transparent url(../images/box/content.gif) repeat-x scroll 0 0}
+
+/**
+ * header dialog icon
+ */
+.icon-dw-ed-dialog{background:transparent url(../images/paperwork/dialog/ed-dialog.png) no-repeat 0 6px !important; cursor:default;}
+.icon-dw-ucb-dialog{background:transparent url(../images/paperwork/dialog/cb-dialog.png) no-repeat 0 6px !important; cursor:default;}
+.icon-dw-uad-dialog{background:transparent url(../images/paperwork/dialog/ad-dialog.png) no-repeat 0 6px !important; cursor:default;}

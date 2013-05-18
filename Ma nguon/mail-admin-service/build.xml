@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mail-admin-service" default="dist" basedir=".">
+	<property environment="env" />
+	<property name="src.base.dir" value="${basedir}/src" />
+	<property name="src.dir" value="${src.base.dir}" />
+	<property name="resources.dir" value="${basedir}/resource" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property name="build.resources.dir" value="${build.dir}/resource" />	
+	<property name="build.javadocs.dir" value="${build.dir}/apidocs" />
+	<property file="build.properties" />
+	
+	<path id="compile.classpath">
+		<pathelement location="${web-ejb-base.jar}"/>		
+		<pathelement location="${iwebos-core.jar}"/>
+		<pathelement location="${iwebos-common.jar}"/>
+		<pathelement location="${iwebos-security.jar}"/>
+		<pathelement location="${inet-ldap-full.jar}"/>
+		<pathelement location="${inet-lotus.jar}"/>
+		<pathelement location="${inet-lotus-mail.jar}"/>
+		<pathelement location="${imail-client.jar}"/>
+		<pathelement location="${json-lib.jar}"/>
+		<pathelement location="${servlet-api.jar}"/>
+		<pathelement location="${jta.jar}"/>
+		<pathelement location="${grid-client.jar}"/>
+		<pathelement location="${spring.jar}"/>
+		<pathelement location="${spring-security-core.jar}"/>
+		<pathelement location="${acegi-security.jar}"/>
+		<pathelement location="${jboss-ejb3.jar}"/>
+		<pathelement location="${poi.jar}"/>	
+	</path>	
+	
+	<selector id="select.mail-admin-service.libmodule" description="--> iwebos business service package">
+		<or>
+			<filename name="com/inet/web/**"/>
+		</or>
+	</selector>
+	
+	<!-- mail admin for CAS -->
+	<selector id="select.mail-admin-service-cas.libmodule" description="--> iwebos business service package for CAS">
+		<or>
+			<filename name="com/inet/web/service/mail/MailAuthenticationService.class"/>			
+			<filename name="com/inet/web/service/mail/utils/UserCacheService.class"/>
+			<filename name="com/inet/web/service/mail/utils/LongLiveRegionService.class"/>
+		</or>
+	</selector>
+	
+	<selector id="select.resource.client">
+		<or>
+			<filename name="resources/**" />
+		</or>
+	</selector>
+		
+	<!-- ================================= 
+          target: init              
+         ================================= -->
+	<target name="init" description="--> initialization">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${build.dist.dir}" />
+		<mkdir dir="${build.resources.dir}" />
+		
+		<copy todir="${build.resources.dir}">
+			<fileset dir="${resources.dir}">
+			</fileset>
+		</copy>
+	</target>	
+	
+	<!-- ================================= 
+          target: check-required              
+         ================================= -->
+	<target name="check-required" depends="init" description="--> check dependency libraries">
+		<condition property="required.lib">
+			<and>
+				<available file="${web-ejb-base.jar}" />
+				<available file="${iwebos-common.jar}" />
+				<available file="${iwebos-core.jar}" />
+			</and>
+		</condition>
+	</target>	
+	
+	<!-- ================================= 
+          target: javadoc              
+         ================================= -->
+    <target name="javadocs" description="--> Create the API documentation">
+        <mkdir dir="${build.javadocs.dir}"/>
+    	<javadoc source="${compile.source}" packagenames="${doc.package}" sourcepath="${src.dir}" destdir="${build.javadocs.dir}" author="true" 
+    		version="true" use="true" splitindex="true" noindex="false" windowtitle="${doc.title} v${doc.version} &lt;br> API Specification"
+    		header="&lt;b>${doc.title}&lt;br>&lt;font size='-1'>${doc.version}&lt;/font>&lt;/b>" 
+    		bottom="Copyright &#169; ${doc.year} iNet Solutions, Corp. All Rights Reserved.">
+    		<classpath refid="compile.classpath"/>
+    	</javadoc>
+    	<zip destfile="${build.dist.dir}/${doc.name}.zip" basedir="${build.javadocs.dir}">
+    	</zip>
+    </target>
+
+	
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="check-required" description="--> compile">
+		<javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="${compile.debug}" debuglevel="${compile.debuglevel}" deprecation="${compile.deprecation}" source="${compile.source}" target="${compile.target}">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>	
+	
+	<!--=================================
+		  target: mail-admin-service
+		================================= -->
+	<target name="mail-admin-service" depends="compile" description="--> build mail business service library">
+		<jar destfile="${build.dist.dir}/${build.mail-admin-service.name}-${build.mail-admin-service.version}.jar">
+			<metainf dir="${build.resources.dir}/META-INF" includes="*.xml"/>
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-admin-service.info}">
+					<attribute name="Specification-Title" value="${build.mail-admin-service.title}" />
+					<attribute name="Specification-Version" value="${build.mail-admin-service.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-admin-service.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-admin-service.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-admin-service.libmodule" />
+			</fileset>
+			
+			<fileset dir="${build.dir}">
+				<selector refid="select.resource.client" />
+			</fileset>
+		</jar>
+		
+		<jar destfile="${build.dist.dir}/${build.mail-admin-service-cas.name}-${build.mail-admin-service-cas.version}.jar">
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-admin-service-cas.info}">
+					<attribute name="Specification-Title" value="${build.mail-admin-service-cas.title}" />
+					<attribute name="Specification-Version" value="${build.mail-admin-service-cas.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-admin-service-cas.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-admin-service-cas.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>			
+			
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-admin-service-cas.libmodule"/> 
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="dist" depends="mail-admin-service, javadocs" description="--> dist">		
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${build.resources.dir}" />
+		<delete dir="${build.javadocs.dir}"/>
+	</target>
+	
+	<!-- ================================= 
+          target: deploy              
+         ================================= -->
+	<target name="deploy" depends="dist" description="--> deploy product">
+		<copy file="${build.dist.dir}/${build.mail-admin-service.name}-${build.mail-admin-service.version}.jar" tofile="${deploy.client}/${build.mail-admin-service.name}.jar" />
+	</target>
+	
+	<!-- ================================= 
+          target: movetolib              
+         ================================= -->
+    <target name="movetolib" depends="mail-admin-service, javadocs" description="--> copy build file to library">
+        <mkdir dir="${home.lib.path}/mail-admin-service/${compile.target}"/>
+    	<mkdir dir="${home.lib.path}/mail-admin-service/${compile.target}/api-docs"/>
+    	
+    	<copy todir="${home.lib.path}/mail-admin-service/${compile.target}">
+    		<fileset dir="${build.dist.dir}">
+    			<include name="**/*.jar"/>
+    		</fileset>
+    	</copy>
+    	
+    	<copy todir="${home.lib.path}/mail-admin-service/${compile.target}/api-docs">
+    		<fileset dir="${build.dist.dir}">
+    			<include name="**/*.zip"/>
+    		</fileset>
+    	</copy>
+    </target>
+
+	<!-- ================================= 
+          target: all              
+         ================================= -->
+    <target name="all" depends="movetolib" description="--> default target">        
+    	<delete dir="${build.classes.dir}"/>
+    	<delete dir="${build.resources.dir}"/>
+    	<delete dir="${build.javadocs.dir}"/>
+    </target>
+			
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="--> clean product">
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${build.javadocs.dir}" />
+		<delete dir="${build.dist.dir}" />
+		<delete dir="${build.dir}" />
+	</target>	
+</project>

@@ -1,0 +1,136 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>iWebOS - eMail</title>
+	
+	<script type="text/javascript" src="../../../js/inet/ui/paperwork/ed/jstemp.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/paperwork/ed/CheckValidator.js"></script>
+	
+    <script type="text/javascript" src="../../../js/inet/ui/common/store/WebOSDBStore.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/store/WebOSDBGroupingStore.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/store/WebOSGroupingStore.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/store/WebOSSimpleStore.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/grid/HttpProxyWrapper.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/grid/WebOSGrid.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/grid/WebOSColumn.js"></script>
+    <script type="text/javascript" src="../../../js/inet/ui/common/grid/WebOSEditorGrid.js"></script>
+	
+	<script type="text/javascript" src="../../../js/inet/utils/Date.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailView.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailViewPanel.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/TreeMailbox.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/TreeSelectContact.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailSearch.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailSearchPanel.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailToolbar.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailReader.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailCompose.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/MailComposeToolbar.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogCreateFolder.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogRenameFolder.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogConfigAccount.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogSelectContact.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogMailFilter.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogMailAddFilter.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogSignature.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/DialogCheckMail.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/ConfigAccount.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/FilterClauseUnitPanel.js"></script>
+	<script type="text/javascript" src="../../../js/inet/ui/mail/PersonalCalendarPanel.js"></script>
+    </head>
+    <body>
+        <div id="header" class="x-hidden">
+            <div id="hd">
+                <h1><a href="#" title="Home Page"><span>iNet Solutions</span></a></h1>
+                <table cellspacing="0" class="nav main-nav">
+                    <tr>
+                        <td>
+                            <a id="home-link" href="#"><span>Trang chính</span></a>
+                        </td>
+                        <td>
+                            <a id="product-link" href="#"><span>Sản phẩm</span></a>
+                        </td>
+                        <td>
+                            <a id="service-link" href="#"><span>Dịch vụ</span></a>
+                        </td>
+                        <td>
+                            <a id="iwebos-link" href="#"><span>Cổng tác nghiệp</span></a>
+                        </td>
+                        <td>
+                            <a id="support-link" href="#"><span>Hỗ trợ</span></a>
+                        </td>
+                        <td>
+                            <a id="help-link" href="#"><span>Trực tuyến</span></a>
+                        </td>
+                        <td class="active">
+                            <a id="mail-link" href="#"><span>Thư điện tử</span></a>
+                        </td>
+                    </tr>
+                </table>
+                <table cellspacing="0" class="sub-nav">
+                    <tr>
+                        <td>
+                            <span><b>iNet Solutions Inc., a foundation you can trust on.&nbsp;&nbsp;&nbsp;&nbsp;</b></span>
+                        </td>
+                        <td class="spacer">
+                            <img src="../../../images/c-sep.gif"><span>&nbsp;Mail</span> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="flyout-menu" id="iwebos-menu" style="display:none;">
+            <div style="width:200px;">
+                <h3><a href="#">Tổng quát</a></h3>
+                <p>
+                    Cổng tác nghiệp trực tuyến là một trong những dịch vụ hỗ trợ tác nghiệp từ xa để tiết kiệm thời gian và tăng tính hiệu quả trong xử lý công việc hàng ngày.
+                </p>
+                <ul>
+                    <li>
+                        <a href='receivedoc.htm'>Tiếp nhận công văn</a>
+                    </li>
+                    <li>
+                        <a href='publishdoc.htm'>Phát hành công văn</a>
+                    </li>
+                    <li>
+                        <a href='recordindoc.htm'>Sổ công văn đi</a>
+                    </li>
+                    <li>
+                        <a href='recordoutdoc.htm'>Sổ công văn đến</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="task-action" class="x-hidden">
+            <li class="task-action-create">
+                <a id="action-create" href="#"><b>Soạn Thư</b></a>
+            </li>
+            <li class="task-action-viewall">
+                <div id="task-action-message-href"><a id="action-check" href="#"><b>Kiểm tra</b></a></div><div id="task-action-message-loading" style="display:none;"></div>
+            </li>
+            <li class="task-action-calendar">
+                <a id="action-calendar-panel" href="#"><b>Lịch cá nhân</b></a>
+            </li>
+			<li class="icon-config-account">
+                <a href="#" id="action-config-account"><b>Cấu hình tài khoản</b></a>
+            </li>
+        </ul>
+        <ul id="task-views" class="x-hidden">
+            <li class="task-views-all">
+                <a id="view-all" href="#">Xem tất cả</a>
+            </li>
+            <li class="task-views-reader">
+                <a id="view-reader" href="#">Thư đã đọc</a>
+            </li>
+            <li class="task-views-unread">
+                <a id="view-unread" href="#">Thư chưa đọc</a>
+            </li>
+            <li class="task-views-attachment">
+                <a id="view-attachment" href="#">Thư có file đính kèm</a>
+            </li>
+            <li class="task-views-important">
+                <a id="view-important" href="#">Những thư quan trọng</a>
+            </li>
+        </ul>
+    </body>
+</html>

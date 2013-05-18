@@ -1,0 +1,13 @@
+<script language="javascript">
+	iNet.INET_PAGE_LIMIT=$!{pageLimit};
+#if($null.isNotNull($user))	
+	iNet.INET_USER_NAME="$!{account.fullName}";
+	iNet.INET_USER_CODE="$!{account.code}";
+#end	
+</script>
+<div id="header" class="x-hidden">
+	<div id="hd">
+		<h1>
+			<a href="$!{path}/welcome.iws" title="Home Page"><span>iNet Solutions</span></a>	
+		</h1>
+		<div class="welcome">$text.get('iwebos.msg.welcome')&nbsp;<span class="user">$!account.fullName</span>&nbsp;|&nbsp;<a class="logout" href="$!{path}/changepw.iws">$text.get('iwebos.msg.changepw')</a>&nbsp;&nbsp;|&nbsp;<a class="logout" href="$!{path}/logout.iws">$text.get('iwebos.msg.logout')</a>&nbsp;&nbsp;</div>

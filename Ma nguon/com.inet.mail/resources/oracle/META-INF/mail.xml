@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iwebos xmlns="http://www.truthinet.com.vn/schema/iwebos"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.truthinet.com.vn/schema/iwebos http://www.truthinet.com.vn/schema/iwebos/iwebos-1.0.xsd">
+	<!-- core configuration -->
+	<core integrated-with-spring="true" support-cache="true" web-data-scope="REQUEST">
+		<cache 	prefix="iwebos"
+				separate-character="."
+				provider-class="com.inet.web.cache.provider.MemcachedProvider"
+				provider-config-file="META-INF/cache/memcached-service.xml"/>
+		<application-server
+				name="jboss"
+				security-mode="false"
+				domain="iDeskSecure"
+				host="localhost"
+				port="1099"/>
+		<client-security
+				mode="1"
+				key-size="128"/>
+	</core>
+	
+	<!-- mail configuration -->
+	<custom name="mail" factory="SUN" handler="com.inet.mail.conf.MailFactoryBeanDefinitionParser">
+		<cache-expire content="30" time-unit="d"/>
+		<smtp host="mail.truthinet.com.vn" port="25"/>
+		<pop host="mail.truthinet.com.vn" port="110"/>
+		<config>
+			<configuration>
+				SMTP_SERVER=mail.truthinet.com.vn
+				SMTP_SERVER_PORT=25
+				DOMAIN=truthinet.com.vn
+				SERVER_TYPE_DEFAULT=POP3
+				SERVER_SECURITY_DEFAULT=NONE
+				SMTP_SERVER_SECURITY=NONE
+				SERVER=mail.truthinet.com.vn
+				SERVER_PORT=110
+			</configuration>
+		</config>
+		
+		<spam level="0.5">
+			<addr-resolver class="com.inet.mail.spam.support.InetAddressResolverSupport"/>
+			<dns-resolver class="com.inet.mail.spam.support.DNSResolverSupport"/>
+			<calculator class="com.inet.mail.spam.calculator.CompoundProbabilityCalculator"/>
+			<header-parser class="com.inet.mail.spam.parser.support.GenericReceivedHeaderParserSupport"/>
+			
+			<!-- check spam based on the subject. -->
+			<plugin class="com.inet.mail.spam.plugin.support.sun.SunSubjectSpamPluginSupport">
+				<element-parser class="com.inet.mail.spam.parser.support.SpamPluginElementParserSupport"/>
+				<constraints max="1.0" min="0.0" average="0.5" calculator="com.inet.mail.spam.calculator.CompoundProbabilityCalculator">
+					<constraint value="***SPAM***" probability="0.99"/>
+					<constraint value="FREE!!!" probability="0.367"/>
+				</constraints>
+			</plugin>
+			
+			<!-- check SPAM based on the header -->
+			<plugin class="com.inet.mail.spam.plugin.support.sun.SunXSpamPluginSupport">
+				<element-parser class="com.inet.mail.spam.parser.support.SpamPluginElementParserSupport"/>
+				<constraints max="1.0" min="0.0" average="0.5" calculator="com.inet.mail.spam.calculator.CompoundProbabilityCalculator">
+					<constraint value="YES" name="X-Spam-Flag" probability="0.99" operator="EQ"/>
+					<constraint value="50" name="X-Spam-Score" probability="0.99" operator="GE" type="LONG"/>
+				</constraints>
+			</plugin>
+			
+			<!-- check SPAM based on the received -->
+			<!-- plugin class="com.inet.mail.spam.plugin.support.sun.SunReceivedSpamPluginSupport">
+				<element-parser class="com.inet.mail.spam.parser.support.SpamPluginElementParserSupport"/>
+				<constraints max="0.675" min="0.0" average="0.325"/>
+			</plugin -->						
+		</spam>		
+	</custom>
+</iwebos>

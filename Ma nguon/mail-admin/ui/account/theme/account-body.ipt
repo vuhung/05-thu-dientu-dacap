@@ -1,0 +1,15 @@
+<script type="text/javascript" src="js/inet/ui/account/Account.js"></script>
+<ul id="panelTop" class="x-hidden">
+	<li id="li-action-create" class="icon-menu-account-create-new">
+		<a href="#" id="account-creat-new">$text.get('lotus.account.create','rlotus')</a>
+	</li>	
+	<li id="li-action-save">
+		<img src="$path/images/s.gif" class="icon-menu-mail-save"/>
+		<a href="#" id="account-save">$text.get('lotus.account.save','rlotus')</a>
+	</li>
+	<li id="li-action-search">
+		<hr/><p><b><font color="#0A4BA3">$text.get('lotus.account.exist_account','rlotus')</font></b></p>
+		<img src="$path/images/s.gif" class="icon-menu-mail-search"/>
+		<a href="#" id="account-search">$text.get('lotus.account.search','rlotus')</a>
+	</li>		
+</ul>

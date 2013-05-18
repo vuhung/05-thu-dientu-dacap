@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+	<!-- =========================================================== -->
+	<!-- Define Memcached configuration. -->
+	<!-- =========================================================== -->
+	<mbean code="com.inet.web.cache.support.mc.jmx.MemCacheJmxWrapper"
+			name="inet.cache:service=WebOSMemcached">
+
+		<depends>jboss:service=Naming</depends>
+
+		<!--
+			Connection factory configuration:
+				net.spy.memcached.DefaultConnectionFactory
+				net.spy.memcached.KetamaConnectionFactory
+				net.spy.memcached.BinaryConnectionFactory
+		 -->
+		 <attribute name="ConnectionFactory">net.spy.memcached.DefaultConnectionFactory</attribute>
+
+		<!--
+			HashAlgorithm : NATIVE_HASH
+							CRC32_HASH
+							FNV1_32_HASH
+							FNV1A_32_HASH
+							FNV1_64_HASH
+							FNV1A_64_HASH
+							KETAMA_HASH
+		 -->
+		<attribute name="HashAlgorithm">KETAMA_HASH</attribute>
+
+		<!--
+		 	The cache queue length
+		-->
+		<attribute name="QueueLength">16384</attribute>
+
+		<!--
+			Clear all memcached data when shutdown the machine.
+		 -->
+		<attribute name="ClearAllWhenShutdown">false</attribute>
+
+		<!--
+		 	The cache buffer size
+		-->
+		<attribute name="BufferSize">16384</attribute>
+
+		<!--
+			Configure the Transcoder
+				net.spy.memcached.transcoders.SerializingTranscoder
+				net.spy.memcached.transcoders.IntegerTranscoder
+				net.spy.memcached.transcoders.LongTranscoder
+				net.spy.memcached.transcoders.WhalinTranscoder
+		 -->
+		<attribute name="Transcoder">net.spy.memcached.transcoders.SerializingTranscoder</attribute>
+
+		<!--
+			Configure the Clustering
+		 -->
+		 <attribute name="ClusterConfig">
+		 	<config>
+		 	<!--
+				<attribute name="cas.truthinet.com.vn" port="11212"/>
+				<attribute name="cas.truthinet.com.vn" port="11213"/>
+				<attribute name="cas.truthinet.com.vn" port="11214"/>
+				<attribute name="cas.truthinet.com.vn" port="11215"/>
+				<attribute name="cas.truthinet.com.vn" port="11216"/>
+				<attribute name="cas.truthinet.com.vn" port="11217"/>
+				<attribute name="cas.truthinet.com.vn" port="11218"/>
+			-->
+				<attribute name="localhost" port="11211"/>
+			<!--
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11212"/>
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11213"/>
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11214"/>
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11215"/>
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11216"/>
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11217"/>
+				<attribute name="iwebos-server1.truthinet.com.vn" port="11218"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11212"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11213"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11214"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11215"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11216"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11217"/>
+				<attribute name="iwebos-server2.truthinet.com.vn" port="11218"/>
+			 -->
+		 	</config>
+		 </attribute>
+
+		 <!--
+		 	Configure the region.
+		  -->
+		<attribute name="RegionConfig">
+			<config>
+				<attribute name="defaultReadTimeout">1</attribute>
+				<attribute name="defaultWriteTimeout">5</attribute>
+				<attribute name="defaultCacheExpired">3600</attribute>
+				<region name="iwebos.default">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">3600</attribute>
+				</region>
+				<region name="iwebos.longlive">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">0</attribute>
+				</region>
+				<region name="iwebos.security">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">0</attribute>
+				</region>
+				<region name="iwebos.cas-ticket">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">0</attribute>
+				</region>
+				<region name="iwebos.ticket">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">0</attribute>
+				</region>
+				<region name="iwebos.module">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">0</attribute>
+				</region>
+				<region name="iwebos.ajax">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">3600</attribute>
+				</region>
+				<region name="iwebos.bean">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">3600</attribute>
+				</region>
+				<region name="iwebos.action">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">3600</attribute>
+				</region>
+				<region name="iwebos.service">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">3600</attribute>
+				</region>
+				<region name="iwebos.wmail">
+					<attribute name="readTimeout">1</attribute>
+					<attribute name="writeTimeout">5</attribute>
+					<attribute name="cacheExpired">3600</attribute>
+				</region>
+			</config>
+		</attribute>
+	</mbean>
+</server>

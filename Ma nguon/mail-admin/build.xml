@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="mail-admin" basedir="." default="dist">
+	<property environment="env" />
+	<property name="resources.dir" value="${basedir}/resources" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.dest.dir" value="${build.dir}/dest" />
+	<property name="build.resources.dir" value="${build.dest.dir}/WEB-INF/classes" />
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property file="build.properties" />
+	
+	<!-- ================================= 
+          target: init              
+         ================================= -->
+	<target name="init" description="--> initialze">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.dist.dir}"/>
+		<mkdir dir="${build.resources.dir}"/>
+		
+		<copy todir="${build.dest.dir}" >
+			<fileset dir="${basedir}">
+				<exclude name="build.xml"/>
+				<exclude name="build.properties"/>
+				<exclude name="*.project"/>
+				<exclude name="build/**"/>
+				<exclude name="resources/**"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${build.resources.dir}">
+			<fileset dir="${resources.dir}"/>
+		</copy>
+	</target>
+	
+	<!-- ================================= 
+          target: mail admin              
+         ================================= -->
+	<target name="mail-admin" depends="init" description="--> build mail admin GUI">
+		<!--war destfile="${build.dist.dir}/${build.mail-admin.name}.war">
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-admin.info}">
+					<attribute name="Specification-Title" value="${build.mail-admin.title}" />
+					<attribute name="Specification-Version" value="${build.mail-admin.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-admin.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-admin.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+
+			<fileset dir="${build.dest.dir}"/>
+		</war-->
+		<copydir dest="${build.dist.dir}/${build.mail-admin.name}.war" src="${build.dest.dir}">
+		</copydir>
+	</target>
+	
+	<!-- ================================= 
+          target: dist              
+         ================================= -->
+	<target name="dist" depends="mail-admin" description="--> dist">		
+			<delete dir="${build.dest.dir}" />
+	</target>
+	
+</project>	

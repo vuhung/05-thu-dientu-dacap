@@ -1,0 +1,15 @@
+dn: uid=master,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: iNetPerson
+objectClass: iNetCommonPerson
+birthday: 20080930085931Z
+c: VN
+deleted: FALSE
+mail: admin@daklak.gov.vn
+preferredLanguage: vi
+sn: Administrator
+timeZone: +0700
+uid: master
+userCode: 814949A9-013A-1000-F4AA-001485E4698H
+userPassword:: e01ENX02d29aRjVkaVRkT2tqNmFCMHdZU0VnPT0=
+

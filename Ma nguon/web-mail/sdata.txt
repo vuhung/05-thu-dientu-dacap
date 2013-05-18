@@ -1,0 +1,6 @@
+[[1,'Quy Nhon','Binh Dinh','QN', 'abc'],
+[2,'pleiku','Gia Lai','PK','abc'],
+[3,'Dalat','Lam Dong','DL','abc'],
+[4,'Buon Ma Thuot','DakLak','BMT','abc']
+
+]

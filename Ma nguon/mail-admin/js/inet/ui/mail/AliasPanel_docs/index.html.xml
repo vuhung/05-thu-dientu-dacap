@@ -1,0 +1,450 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="AliasPanel.js">
+    <property name="iNet" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <property name="iwebos" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            <property name="ui" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="mail" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                        <function name="AliasPanel" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                            <function name="__tabAlias" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>add new tab</description>
+                                <parameters>
+                                    <parameter name="type" type="Object">
+                                    </parameter>
+                                </parameters>
+                                <property name="__mainTab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="__tab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="__type" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="_fnNewTab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>add new tab</description>
+                                <parameters>
+                                    <parameter name="type" type="Object">
+                                    </parameter>
+                                </parameters>
+                                <property name="__mainTab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="__tab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="__type" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="_newEmail" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>open composer new email tab</description>
+                                <property name="_newEmail" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                                    <description>open composer new email tab</description>
+                                </property>
+                                <property name="__tab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="addID" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="onContextClick" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>Right click</description>
+                                <parameters>
+                                    <parameter name="grid" type="Object">
+                                    </parameter>
+                                    <parameter name="index" type="Object">
+                                    </parameter>
+                                    <parameter name="e" type="Object">
+                                    </parameter>
+                                </parameters>
+                                <property name="this" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="menu" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </property>
+                            </function>
+                            <function name="onContextHide" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>hide context menu</description>
+                                <property name="this" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="ctxRow" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                                    </property>
+                                </property>
+                            </function>
+                            <function name="onDoubleClick" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>DoubleClick on Grid</description>
+                                <parameters>
+                                    <parameter name="grid" type="Object">
+                                    </parameter>
+                                    <parameter name="index" type="Object">
+                                    </parameter>
+                                    <parameter name="e" type="Object">
+                                    </parameter>
+                                </parameters>
+                                <property name="mainTab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="tab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="doAction" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>handle click action on action panel.</description>
+                                <parameters>
+                                    <parameter name="event" type="Object">
+                                        <description>- the given event to be handle.</description>
+                                    </parameter>
+                                    <parameter name="target" type="Object">
+                                        <description>- the target raised event.</description>
+                                    </parameter>
+                                </parameters>
+                                <property name="mainTab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="tab" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="activeTabId" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="onStore" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>store document information.</description>
+                                <function name="handlerFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                    <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="removeItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </function>
+                                <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="ids" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                </property>
+                                <object_literal name="baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                </object_literal>
+                                <property name="selectedIds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="onDelete" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>delete mail.</description>
+                                <function name="onSuccess" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                    <function name="handlerFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                        <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        </property>
+                                        <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        </property>
+                                        <property name="removeItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        </property>
+                                    </function>
+                                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="ids" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                    </property>
+                                    <object_literal name="baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                    </object_literal>
+                                    <property name="selectedIds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </function>
+                            </function>
+                            <function name="onTransfer" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>store document information.</description>
+                                <function name="okHandler" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                    <description>handler.</description>
+                                    <property name="data" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <function name="handlerFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                        <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        </property>
+                                        <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        </property>
+                                        <property name="updateItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        </property>
+                                        <property name="pos" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                                        </property>
+                                    </function>
+                                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="ids" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                    </property>
+                                    <object_literal name="baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                        <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                        <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                        </property>
+                                    </object_literal>
+                                    <property name="selectedIds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="users" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                    </property>
+                                    <property name="user" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="attributes" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+                                    </property>
+                                </function>
+                                <property name="this" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="dlg" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </property>
+                            </function>
+                            <function name="onRequestSuccess" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>Process when send request to server successful.</description>
+                                <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="panel" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="removeItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="_loadContent" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                            </function>
+                            <function name="__markFlag" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>Mark email from given</description>
+                                <parameters>
+                                    <parameter name="flag" type="Object">
+                                        <description>- value of flag</description>
+                                    </parameter>
+                                </parameters>
+                                <function name="handlerFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                    <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="updateItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="__indexRecord" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                                    </property>
+                                </function>
+                                <object_literal name="__baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                </object_literal>
+                                <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="ids" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                </property>
+                                <property name="selectedIds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="__markFlagWork" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag work</description>
+                            </function>
+                            <function name="__markFlagPersonal" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag personal</description>
+                            </function>
+                            <function name="__markFlagTodo" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag todo</description>
+                            </function>
+                            <function name="__markFlagLate" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag late</description>
+                            </function>
+                            <function name="__markFlagReply" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag reply</description>
+                            </function>
+                            <function name="__markFlagCall" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag call</description>
+                            </function>
+                            <function name="__markFlagReview" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag review</description>
+                            </function>
+                            <function name="__markFlagNothing" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark flag nothing</description>
+                            </function>
+                            <function name="_markRead" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <parameters>
+                                    <parameter name="read" type="String">
+                                    </parameter>
+                                </parameters>
+                                <function name="handlerFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                    <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="updateItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="__indexRecord" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                                    </property>
+                                </function>
+                                <object_literal name="__baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="read" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </object_literal>
+                                <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="ids" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                </property>
+                                <property name="selectedIds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="_markEmailRead" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark email is read</description>
+                            </function>
+                            <function name="_markEmailUnRead" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>mark email is unread</description>
+                            </function>
+                            <function name="_markPriority" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <parameters>
+                                    <parameter name="important" type="String">
+                                    </parameter>
+                                </parameters>
+                                <function name="handlerFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                    <property name="result" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="updateItems" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                    <property name="__indexRecord" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                                    </property>
+                                </function>
+                                <object_literal name="__baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                    </property>
+                                    <property name="priority" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </object_literal>
+                                <property name="grid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="selects" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="ids" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Array">
+                                </property>
+                                <property name="selectedIds" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <function name="_markEmailPriority" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                            </function>
+                            <function name="_markEmailNormal" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                            </function>
+                            <function name="onCellClick" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+                                <description>( Grid this, Number rowIndex, Number columnIndex, Ext.EventObject e )</description>
+                                <parameters>
+                                    <parameter name="grid" type="Grid">
+                                    </parameter>
+                                    <parameter name="rowIndex" type="Number">
+                                    </parameter>
+                                    <parameter name="columnIndex" type="Object">
+                                    </parameter>
+                                    <parameter name="e" type="Object">
+                                    </parameter>
+                                </parameters>
+                            </function>
+                            <object_literal name="sortInfo" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                <property name="field" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                                <property name="direction" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                            </object_literal>
+                            <object_literal name="defaultSort" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                <property name="field" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                                <property name="direction" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                            </object_literal>
+                            <object_literal name="baseParams" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                <property name="iwct" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                                <property name="iwm" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                                <property name="iwc" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                                <property name="iwa" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                                <property name="id" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Number">
+                                </property>
+                                <property name="action" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+                                </property>
+                            </object_literal>
+                            <property name="mailRecord" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                            </property>
+                            <property name="reader" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                            </property>
+                            <property name="columnModel" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                            </property>
+                            <function name="filterFn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                            </function>
+                            <function name="fnRowClass" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+                                <property name="read" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </function>
+                            <property name="followupColumn" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                            </property>
+                            <property name="this" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                <property name="viewer" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="emailMessageGrid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="adSearch" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <object_literal name="actions" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    <property name="&apos;task-view-alias&apos;" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                    </property>
+                                </object_literal>
+                                <property name="groupBy" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="gridMain" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                                <property name="main" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                                </property>
+                            </property>
+                        </function>
+                    </property>
+                </property>
+            </property>
+        </property>
+    </property>
+</javascript>

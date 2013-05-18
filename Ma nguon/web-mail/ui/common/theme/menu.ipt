@@ -1,0 +1,7 @@
+<table cellspacing="0" class="nav main-nav">
+	<tr>
+		<td class="active">
+			<a id="mail-link" href="$!{path}/welcome.iws"><span>$text.get('iwebos.mail.title')</span></a>
+		</td>
+	</tr>
+</table>

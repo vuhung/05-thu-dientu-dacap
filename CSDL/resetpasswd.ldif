@@ -1,0 +1,6 @@
+#Password reset for admin is admin@2010#
+dn: uid=admin,ou=common,dc=binhdinh,dc=gov,dc=vn
+changetype: modify
+replace: userPassword
+userPassword:: e01ENX1Ha29ELzBYbzB1TUlaWUpuQ3h1OG9nPT0=
+-

@@ -1,0 +1,254 @@
+/*
+ * Copyright by iNet Solutions 2008.
+ * 
+ * http://www.truthinet.com.vn/licenses
+*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote{margin:0;padding:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}ol,ul {list-style:none;}caption,th {text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;}
+
+body {
+	font-family:verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	font-size:13px;
+	color:#555;
+	line-height:20px;
+	background-color:#fff;
+	margin:0;padding:0;border:0;
+}
+
+td {
+	font-size:13px;
+}
+
+a:link, a:visited, a:active {
+	color: #0464BB;
+	text-decoration:none;
+}
+a:hover {
+	color: #1C417C;
+	text-decoration: underline;
+}
+
+/* header styles */
+#hd {
+	background:transparent url(../../gui/images/topbar.png)  repeat-x 5px bottom;
+   	height:90px;
+   	margin:0px 0px 0px 0px;
+   	position:relative;
+}
+
+#hd table.nav {
+	position:absolute;
+	margin-left:0;
+}
+
+#hd table.nav tr {
+}
+
+#hd table.nav tr td {
+	padding-top:1px;
+	padding-left:0;
+	padding-right:0;
+}
+
+#hd table.nav a, #hd table.main-nav a:hover, #hd table.main-nav a:visited {
+	color: #fff;
+}
+
+#hd table.nav a, #hd table.main-nav a span {
+	color: #fff;
+	display:block;
+}
+#hd table.nav a {
+	line-height:14px;
+}
+
+#hd table.nav a span {
+	padding:6px 15px 7px 15px;
+}
+
+#hd table.nav a span {
+	font-family:tahoma,helvetica,arial,sans-serif;
+	font-size:12px;
+}
+
+/* Main nav */
+#hd table.main-nav {
+	left:15px;
+	top:40px;
+}
+
+#hd table.main-nav tr {
+	height:28px;
+}
+
+#hd table.main-nav a:hover {
+	text-decoration:underline;
+}
+
+#hd table.main-nav a:hover span {
+	text-decoration:underline;
+}
+
+#hd table.main-nav td.active a {
+	background:transparent url(../../gui/images/nav-left.png) repeat-x;
+	text-decoration:none;
+}
+
+#hd table.main-nav td.active a span {
+	background:transparent url(../../gui/images/nav-right.png) no-repeat right 0;
+	font-weight:bold;
+	padding:7px 15px 6px 15px;
+	text-decoration:none;
+}
+
+/* Sub nav */
+#hd .sub-nav {
+	position:absolute;
+	left:7px;
+	top:67px;
+	height:21px;
+}
+#hd .sub-nav td {
+	font-size:11px;
+	color:#777;
+	font-family:tahoma,helvetica,arial,sans-serif;
+}
+#hd .sub-nav td span {
+	color:#777;
+}
+#hd .sub-nav td a {
+	color:#046BCA;
+	font-family:tahoma,helvetica,arial,sans-serif;
+}
+#hd .sub-nav td.spacer {
+	padding:0 5px;
+}
+
+/* Main header image */
+
+#hd h1 a {
+	background:transparent url(../../gui/images/idesk-webos.png) no-repeat;
+    position:relative;
+    float:left;
+    top: 5px;
+    left:10px;
+    height:18px;
+    width:227px;
+}
+
+#hd h1 a span {
+	display:none;
+}
+
+/* footer */
+#ft {
+	margin-top:25px;
+	text-align:center;
+	background: transparent url(../../gui/images/ft-bg.png) no-repeat center 0;
+	padding-top:5px;
+}
+#ft table.nav {
+	margin: 0 auto;
+}
+
+#ft table.nav a, #ft table.nav a:hover, #ft table.nav a:visited {
+	color:#789030;
+	font-size:12px;
+	display:block;
+	padding:5px 15px 0;
+}
+
+#ft div.copy {
+	margin: 0 auto;
+	padding:10px 0 25px;
+	color:gray;
+}
+
+
+/* feature list */ 
+ul.features, .content-box ul, .side-box ul {
+	margin-left:15px;
+	list-style-image: url(../../gui/images/c-sep-l.gif);
+}
+ul.features li,  .content-box ul li, .side-box ul li {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+/* flyout menus */
+.flyout-menu {
+	position:absolute;
+	left:-200px;
+	top:-200px;
+	background:#fff;
+	padding:10px 15px;
+	text-align:left;
+	border:1px solid #aaa;
+	font-family: helvetica,arial,tahoma,sans-serif;
+}
+.flyout-menu a {
+	color:#046BCA;
+}
+.flyout-menu p {
+	margin:4px 0;
+	font-size:11px;
+	color:#555;
+	line-height:16px;
+}
+.flyout-menu br {
+	line-height:10px;
+}
+.flyout-menu h3 {
+	font-size:12px;
+	font-weight:bold;
+	line-height:16px;
+}
+.flyout-menu ul {
+	font-size:11px;
+	list-style-type: square;
+	margin-left:15px;
+}
+.flyout-menu li {
+	color:#ccc;
+	line-height:16px;
+}
+
+a.link {
+	font-family:tahoma,helvetica,arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	line-height:19px;
+}
+
+#msg-ct {
+	position:absolute;
+	left:680px;
+	top:17px;
+	width:217px;
+	height:22px;
+}
+
+#msg {
+	width:217px;
+	height:22px;
+	background-image:url(../../gui/images/msg-bg.png);
+	color:#777;
+	font-family:tahoma,helvetica,arial,sans-serif;
+	font-size:11px;
+	cursor:pointer;
+	visibility:hidden;
+}
+#msg-inner {
+	padding:5px 10px 0;
+	zoom:1;
+	line-height:12px;
+	text-align:center;
+}
+.msg-over {
+	color:#789030 !important;
+}
+
+#msg img {
+	width:19px;
+	height:19px;
+}

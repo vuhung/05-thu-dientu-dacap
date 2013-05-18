@@ -1,0 +1,60 @@
+# The entry contain all users who use to authenticate
+dn: dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: domain
+dc: truthinet
+
+# The default administrator for mail system. This entry must be added to 
+# entry which contain all users who use to authenticate.
+# If system had already administrator for mail system, this entry doesn't need to add.
+dn: cn=admin,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: organizationalRole
+cn: admin
+
+# The entry contain all user of system
+dn: ou=common,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: organizationalUnit
+ou: common
+
+dn: uid=admin,ou=common,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: iNetPerson
+objectClass: iNetCommonPerson
+birthday: 20080930085931Z
+c: VN
+mail: admin@truthinet.com
+preferredLanguage: Viet Nam
+sn: Administrator
+timeZone: +0700
+uid: admin
+userCode: 714949A9-013A-1000-F4AA-001485E4698E
+userPassword:: e1NNRDV9SnZ3UGJtWUovS0pyT3I5ZTVZek5EUWI5dExBQ0JSR0M=
+
+# The entry contain all domains of mail system
+dn: ou=mail,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: organizationalUnit
+ou: mail
+
+# The default user for mail server (Post-fix server use it to bind context). This entry must be added to 
+# entry which contain all domains mail system.
+dn: cn=ims,ou=mail,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+cn: ims
+userPassword:: e1NTSEF9RE0waXZnL0xNQXVYN1NMVHZtUmlnUDc5VFQ1dmk0K3g=
+
+# The entry contain all organization of mail system
+dn: ou=org,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: organizationalUnit
+ou: org
+
+# The entry contain all personal address book of mail system
+dn: ou=contact,dc=truthinet,dc=com,dc=vn
+objectClass: top
+objectClass: organizationalUnit
+ou: contact

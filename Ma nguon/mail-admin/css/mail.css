@@ -1,0 +1,77 @@
+/*****************************************************************
+	 Copyright 2008 by Nguyen Hoang Tu (nhtu@truthinet.com.vn)
+	 Licensed under the iNet Solutions Corp.,;
+	 you may not use this file except in compliance with the License.
+	 You may obtain a copy of the License at
+	 	http://www.truthinet.com/licenses
+	 Unless required by applicable law or agreed to in writing, software
+	 distributed under the License is distributed on an "AS IS" BASIS,
+	 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 See the License for the specific language governing permissions and
+	 limitations under the License.
+ *****************************************************************/
+
+.grid-show-rows .x-grid3-cell-inner{font-weight:bold; font-size:11px;}
+.icon-email-true{background-image:url(../images/mail/ics16/true.png) !important; width:16px; height:16px;}
+.icon-email-false{background-image:url(../images/mail/ics16/false.png) !important; width:16px; height:16px;}
+.icon-email-treeview{background-image:url(../images/mail/ics16/treeview.png) !important; width:16px; height:16px;}
+.icon-email-treeview-br{background-image:url(../images/mail/ics16/treeview-br.png) !important; width:16px; height:16px;}
+.icon-email-treeview-br{background-image:url(../images/mail/ics16/treeview-br.png) !important; width:16px; height:16px;}
+.icon-mail-home{background-image:url(../images/mail/ics16/mail-home.png) !important;}
+.icon-create-account{background-image:url(../images/account/account-add.png) !important;}
+.icon-create-group{background-image:url(../images/account/group.gif) !important;}
+.tree-mail-box{background-image:url(../images/mail/ics16/tree-mail-box.png) !important;}
+.mail-action-mail{background-image:url(../images/mail/ics16/mail.png) !important;}
+.mail-action-alias{background-image:url(../images/mail/ics16/alias-group.png) !important;}
+.icon-mail-add{background-image:url(../images/mail/ics16/add.png) !important;}
+.icon-mail-del{background-image:url(../images/mail/ics16/delete.gif) !important;}
+.icon-mail-update{background-image:url(../images/mail/ics16/update.png) !important;}
+.icon-email-createacc{background-image:url(../images/mail/ics16/account-mail.png) !important;}
+.icon-email-search{background-image:url(../images/mail/ics16/search.png) !important;}
+.icon-email-save{background-image:url(../images/mail/ics16/save.png) !important;}
+.icon-email-domain{background-image:url(../images/mail/ics16/treeview.png) !important}
+.email-treeview-text{font-weight:bold; font-size:11px;}
+.email-treeview-text a:active{background:#C8E4F7;border-bottom:solid 4px #ABD6F3;border-left:solid 2px #ABD6F3;}
+.email-treeview-text a:focus{background:#C8E4F7;border-bottom:solid 4px #ABD6F3;border-left:solid 2px #ABD6F3;}
+.email-treeview-text a:hover{background:#C8E4F7;border-bottom:solid 4px #ABD6F3;border-left:solid 2px #ABD6F3;}
+.icon-email-ismail{background-image:url(../images/mail/ics16/filter.png) !important; width:16px; height:16px;}
+.icon-ismail-true{background-image:url(../images/mail/ics16/account-mail.png) !important; width:16px; height:16px;}
+.icon-ismail-false{background-image:url(../images/mail/ics16/alias-group.png) !important; width:16px; height:16px;}
+.icon-menu-report-preview{background-image:url(../images/mail/ics16/statistic_preview.png) !important; width:16px; height:16px;}
+.icon-config-account{background:url(../images/mail/ics16/account-config.png) no-repeat !important;padding-left:20px;height:16px;}
+.icon-panel-config-account{background:url(../images/mail/ics16/config.png) no-repeat !important;}
+.icon-create-account-panel{background:url(../images/mail/ics16/add-account.png) no-repeat !important;}
+
+/************************* Action Task of Domain, Account *************************************************/
+.icon-menu-create-domain{background-image:url(../images/mail/ics16/treeview-br.png) !important;}
+.icon-menu-report{background-image:url(../images/mail/ics16/statistic.png) !important;}
+.icon-menu-account-create-new{background-image:url(../images/account/account-create-new.png) !important;}
+.icon-menu-account-change-pass{background-image:url(../images/account/account-changepass.png) !important;padding-left:20px;height:16px;}
+.icon-menu-account-add{background-image:url(../images/account/account-add.png) !important;padding-left:20px;height:16px;}
+.icon-menu-group-manager{background-image:url(../images/account/group.gif) !important;}
+.icon-menu-group-add-new{background-image:url(../images/account/add-group.gif) !important;}
+.icon-menu-mail-search{background-image:url(../images/mail/ics16/search.png) !important;}
+.icon-menu-mail-save{background-image:url(../images/ics16/save.png) !important;}
+.icon-menu-export{background-image:url(../images/ics16/export.png) !important;}
+.icon-menu-export-non-utf{background-image:url(../images/ics16/export-non-utf.png) !important;}
+.icon-menu-import{background-image:url(../images/ics16/import.png) !important;}
+.icon-menu-excel{background-image:url(../images/ics16/excel.png) !important;}
+.icon-menu-download{background-image:url(../images/ics16/download.png) !important;}
+.icon-menu-standardized{background-image:url(../images/ics16/standard.png) !important;}
+
+.icon-account-create-new{background:url(../images/account/account-create-new.png) no-repeat !important;}
+.icon-account-update{background:url(../images/mail/ics16/update.png) no-repeat !important;}
+.icon-account-delete{background:url(../images/mail/ics16/delete.gif) no-repeat !important;}
+.icon-account-reset-pass{background:url(../images/account/account-changepass.png) no-repeat !important;}
+.icon-account-lock{background:url(../images/mail/ics16/lock.png) no-repeat !important;}
+.icon-account-unlock{background:url(../images/mail/ics16/unlock.png) no-repeat !important;}
+.icon-account-add{background:url(../images/account/account-add.png) no-repeat !important;}
+.icon-account-waiting{background-image:url(../images/account/waiting.gif) !important; width:16px; height:16px;}
+.icon-account-check-valid{background-image:url(../images/account/check-valid.png) !important; width:16px; height:16px;}
+.icon-account-valid{background-image:url(../images/account/valid.png) !important; width:16px; height:16px;}
+.icon-account-invalid{background-image:url(../images/account/invalid.png) !important; width:16px; height:16px;}
+.icon-printer{background-image:url(../images/ics16/printer.png) !important; width:16px; height:16px;}
+.preview-account-text{
+	color: #808080;
+	font-weight:bold;
+}

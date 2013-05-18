@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/acegi-security.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/struts-core.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-common.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-core.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-security.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/web-ejb-base.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-mail-bf.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

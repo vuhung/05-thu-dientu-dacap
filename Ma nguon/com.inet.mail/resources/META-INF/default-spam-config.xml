@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<spam-config>
+	
+	<scanner 
+		calculator="com.inet.mail.spam.calculator.CompoundCalculator" 
+		headerParser="com.inet.mail.spam.filter.impl.GenericReceivedHeaderParser" 
+		result="com.inet.mail.spam.SpamScanResult" 
+		dnsResolver="com.inet.mail.spam.filter.impl.DNSResolverImpl" 
+		inetResolver="com.inet.mail.spam.filter.impl.InetAddressResolverImpl"  
+		boundary="0.01"/>
+				
+	<engine 
+		confidence="0.9" 
+		guess="0.5" 
+		esf="0.5" 
+		ftt="25"/>
+		
+	<plugin 
+		name="InvisiMailScannner" 
+		displayName="Empty Mail Scanner"
+		description="Detects emails which contain no body content and no subject.  This is a common indication of spam and/or denial of service messages"
+		priority="0" 
+		type="com.inet.mail.spam.plugin.InvisiMailScanner" 
+		properties="META-INF/scan/empty-mail.properties"/>
+	
+	<plugin 
+		name="VirusSpamScanner" 
+		priority="1" 
+		displayName="Virus and spam Detector"
+		description="Detects tags in header of this email to see party tool scans this message as VIRUS or SPAM marked"
+		type="com.inet.mail.spam.plugin.VirusSpamScanner" 
+		properties="META-INF/scan/virus-spam-check.properties"/>
+		
+	<!-- plugin 
+		name="RecipientScanner" 
+		priority="2" 
+		displayName="Bulk List Detector"
+		description="Detects excessive numbers of email recipients which can often indicate a mass distribution spam"
+		type="com.inet.mail.spam.plugin.RecipientScanner" 
+		properties="META-INF/scan/recipient.properties"/-->
+	
+	<!-- plugin 
+		name="SenderServerValidationScanner" 
+		priority="3" 
+		displayName="Server Fraud Detector"
+		description="Detects mail server fraud.  This can occur when the sending mail server reports a fraudulent internet IP address or domain"
+		type="com.inet.mail.spam.plugin.SenderServerValidationScanner" 
+		properties="META-INF/scan/sender-server-validation.properties"/-->
+		
+	<!-- plugin 
+		name="SenderAddressValidationScanner" 
+		priority="4" 
+		displayName="Fraud Detector"
+		description="Detects mail server fraud.  This can occur when the sending mail server reports a fraudulent internet IP address or domain"
+		type="com.inet.mail.spam.plugin.SenderAddressValidationScanner" 
+		properties="META-INF/scan/sender-address-validation.properties"/-->
+				
+	<!-- plugin 
+		name="FromAddressValidationScanner" 
+		priority="5" 
+		displayName="Forgery Detector"
+		description="Detects sender forgeries.  This can occur when a sender fraudulently reports their email address as different to their real address"
+		type="com.inet.mail.spam.plugin.FromAddressValidationScanner" 
+		properties="META-INF/scan/from-address-validation.properties"/-->		
+	
+	<plugin 
+		name="RBLScanner" 
+		priority="6" 
+		displayName="Real Time Black List Detector"
+		description="Checks the delivery history of an email looking for black-listed mail servers.  Also known as Realtime Blackhole Lists or RBLs"
+		type="com.inet.mail.spam.plugin.RBLScanner" 
+		properties="META-INF/scan/rbl-address.properties"/>
+</spam-config>

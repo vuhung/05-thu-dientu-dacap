@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.ext-ux-uploaddialog-addbtn{background: url('../images/ud/file-add.gif') no-repeat left center !important;}
+.ext-ux-uploaddialog-removebtn{background: url('../images/ud/file-remove.gif') no-repeat left center !important;}
+.ext-ux-uploaddialog-resetbtn{background: url('../images/ud/reset.gif') no-repeat left center !important;}
+.ext-ux-uploaddialog-uploadstartbtn{background: url('../images/ud/upload-start.gif') no-repeat left center !important;}
+.ext-ux-uploaddialog-uploadstopbtn{background: url('../images/ud/upload-stop.gif') no-repeat left center !important;}
+.ext-ux-uploaddialog-indicator-stoped{width: 16px;height: 16px;background: url('../images/ud/done.gif') no-repeat center center;}
+.ext-ux-uploaddialog-indicator-processing{width: 16px;height: 16px;	background: url('../images/ud/loading.gif') no-repeat center center;}
+.ext-ux-uploaddialog-state{text-align:center;background-position:center center;background-repeat:no-repeat;}
+.ext-ux-uploaddialog-state-0{background-image: url('../images/ud/uncheck.gif');}
+.ext-ux-uploaddialog-state-1{background-image: url('../images/ud/check.gif');}
+.ext-ux-uploaddialog-state-2{background-image: url('../images/ud/failed.gif');}
+.ext-ux-uploaddialog-state-3{background-image: url('../images/ud/file-uploading.gif');}
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-bar .x-progress-text div{display: none;}
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-text-back{position: absolute;left: 0px;right: 0px;}
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-text-back div{width: auto !important;white-space: nowrap;}
