@@ -1,0 +1,87 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+  "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+
+<tiles-definitions>
+  <!-- ========== LAYOUTS ========== -->
+
+  <!-- Base Layout -->
+  <definition name=".base"         page="/ui/index.jsp">
+    <put      name="header"        value="/ui/common/theme/header.ipt"/>
+    <put      name="menu"          value="/ui/common/theme/menu.ipt"/>
+    <put      name="navigate"      value="/ui/common/theme/navigate.ipt"/>
+    <put      name="eheader"       value="/ui/common/theme/eheader.ipt"/>
+    <put      name="footer"        value="iwebos footer"/>
+    <put      name="body"          value="iwebos body"/>
+  </definition>
+  
+  <!-- Base Login Layout -->
+  <definition name=".base.login"         page="/ui/secure/view/secure.jsp">
+    <put      name="body"          value="iwebos body"/>
+  </definition>
+  
+  <!-- Base Notice Layout -->
+  <definition name=".base.notice"         page="/ui/notices.jsp">
+    <put      name="body"          value="iwebos body"/>
+  </definition>
+  
+  <!-- notice layout -->
+  <definition name="iwebos.cas.failure" extends=".base.notice">
+  	<put	name="body"		value="/ui/theme/cas-failure-body.ipt"/>
+  </definition>
+  <definition name="iwebos.access.denied" extends=".base.notice">
+  	<put	name="body"		value="/ui/theme/access-denied-body.ipt"/>
+  </definition>
+  <definition name="iwebos.demo" extends=".base.notice">
+  	<put	name="body"		value="/ui/theme/demo-body.ipt"/>
+  </definition>    
+
+  <!-- log in layout -->
+  <definition name="iwebos.login" extends=".base.login">
+  	<put	name="body"		value="/ui/secure/theme/login-body.ipt"/>
+  </definition>
+
+  <!-- change password -->
+  <definition name="iwebos.changepw" extends=".base.login">
+  	<put	name="body"		value="/ui/secure/theme/changepw-body.ipt"/>
+  </definition>
+  
+  <!-- logged in Layout -->
+  <definition name="iwebos.welcome" extends=".base">
+  	<put	name="body"		value="/ui/mailad/theme/mailad-body.ipt"/>
+  </definition>
+  
+  <!-- mail adminstrator body content -->
+  <definition name="mailad.body" extends=".base">
+  	<put	name="body"		value="/ui/mailad/theme/mailad-body.ipt"/>
+  </definition>
+  
+  <!-- account management body content -->
+  <definition name="account.body" extends=".base">
+  	<put 	name="body"	value="/ui/account/theme/account-body.ipt" />
+  </definition>
+  
+  <!-- user management body content -->
+  <definition name="user.body" extends=".base">
+  	<put 	name="body"	value="/ui/org/theme/user-body.ipt" />
+  </definition>	
+  
+</tiles-definitions>

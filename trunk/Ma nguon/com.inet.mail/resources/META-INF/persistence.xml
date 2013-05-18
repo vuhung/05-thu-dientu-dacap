@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence>
+  <persistence-unit name="mail-ejb">
+    <jta-data-source>java:/documentum</jta-data-source>
+      <properties>
+	    <property name="hibernate.hbm2ddl.auto" value="update"/>
+	    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+	    <property name="hibernate.cache.use_query_cache" value="true"/>
+	    <property name="hibernate.jdbc.use_get_generated_keys" value="true" />            
+	    <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
+	    <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
+	    <!-- property name="hibernate.show_sql" value="true"/> 
+	    <property name="hibernate.format_sql" value="true"/ -->
+      </properties>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,31 @@
+<html>
+    <head>
+       <title>Welcome iNet Solution Web Oriented Services(Mail Domain)</title>
+       <script language="javascript">
+          var SLASH = '/';
+          var HTTP_PATTERN='http://';
+          var HTTPS_PATTERN='https://';
+          function gotourl(lurl){
+             // get url location.
+             var location = window.location.toString();
+             
+             var rootPath = '' ;
+             if(location.indexOf(HTTP_PATTERN) >= 0){
+                rootPath = HTTP_PATTERN ;
+             }else if(location.indexOf(HTTPS_PATTERN) >= 0){
+                rootPath = HTTPS_PATTERN ;
+             }
+             
+             var position = location.indexOf(SLASH, rootPath.length) ; 
+             if(position == 0) position = location.length ;
+             var server = location.substr(rootPath.length, position - rootPath.length) ;
+             rootPath = rootPath + server ;
+
+             window.location.href=rootPath + lurl ;
+          }
+       </script>
+    </head>
+    <body>
+      <script language="javascript">gotourl('/lotus/welcome.iws');</script>
+    </body>
+</html>

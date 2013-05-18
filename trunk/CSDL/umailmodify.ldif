@@ -1,0 +1,22 @@
+dn: uid=ndduc,ou=common,dc=truthinet,dc=com,dc=vn
+changetype: modify
+replace: userCode
+userCode: 0000011a379110ee-ac10010a008f7e20-fb1beb16
+-
+#add: title
+#title: Grand Poobah
+#-
+#add: jpegPhoto
+#jpegPhoto:< file:///tmp/modme.jpeg
+#-
+#delete: description   
+#-
+
+#dn: uid=ndduc,ou=common,dc=truthinet,dc=com,dc=vn
+#changetype: delete 
+
+dn: mail=ndduc@truthinet.com.vn,vd=truthinet.com.vn,ou=mail,dc=truthinet,dc=com,dc=vn
+changetype: modify
+replace: userCode
+userCode: 0000011a379110ee-ac10010a008f7e20-fb1beb16
+-

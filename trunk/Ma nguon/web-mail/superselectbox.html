@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>SuperBoxSelect remote Store Examples (compatible Ext 2.* -  Ext 3.*)</title>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+<link href="js/ext/resources/css/ext-all.css" media="screen" rel="Stylesheet" type="text/css" />
+
+<script src="js/ext/adapter/ext/ext-base.js" type="text/javascript"></script>
+<script src="js/ext/ext-all-debug.js" type="text/javascript"></script>
+
+<script src="js/inet/ui/common/states.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/inet/ui/common/control/SuperBoxSelect.js"></script>
+<link href="css/superboxselect.css" media="screen" rel="Stylesheet" type="text/css" />
+<style type="text/css">
+	body {
+		font:13px/1.3 arial,helvetica,clean,sans-serif;
+		*font-size:small;
+		*font:x-small;
+		padding: 20px !important;
+	}
+	#page {
+		width: 700px;
+	}
+	p {
+		color: #333;
+		margin-bottom: 7px;
+		font-size: 14px;
+	}
+	em {
+		font-style: italic;
+		color: #000;
+	}
+	code {
+		color: #000;
+	}
+	#intro p {
+		color: #000;
+		font-size: 15px;
+		margin-bottom: 20px;
+	}
+	h1 {
+		font-size: 1.6em;
+		line-height: 2.0em;
+		margin-bottom: 0.8em;
+	}
+	h2 {
+		font-size: 1.2em;
+		line-height: 1.6em;
+		margin-bottom: 0.6em;
+	}
+	.exForm{
+		padding: 20px 20px 20px 0px;
+	}
+	.x-tag {
+		color: #693;
+		background-image: url(tag_green.gif);
+		background-repeat: no-repeat;
+		background-position:  2px center;
+		padding-left: 17px !important;
+		*text-indent: 17px !important;
+    }
+	.x-flag{
+        background-image: url(libs/ext-3.0.1/resources/images/default/s.gif);
+        background-repeat: no-repeat;
+        background-position:  2px center;
+        text-indent: 17px !important;
+    }
+    .x-flag-au{
+        background-image: url(flags/Australia.png);
+    }
+    .x-flag-at{
+        background-image: url(flags/Austria.png);
+    }
+    .x-flag-ca{
+        background-image: url(flags/Canada.png);
+    }
+    .x-flag-fr{
+        background-image: url(flags/France.png);
+    }
+    .x-flag-it{
+        background-image: url(flags/Italy.png);
+    }
+    .x-flag-jp{
+        background-image: url(flags/Japan.png);
+    }
+    .x-flag-nz{
+        background-image: url("flags/New Zealand.png");
+    }
+    .x-flag-us{
+        background-image: url(flags/USA.png);
+    }
+	
+	.small {
+		font-size: small;
+	}
+	
+	#f2Form .x-superboxselect-item-focus {
+		color: #fff;
+	}
+</style>
+<script type="text/javascript">
+    var tempIdCounter = 0;
+    
+    Ext.onReady(function() {
+
+        Ext.QuickTips.init();
+        
+		
+//		var states = new Ext.data.JsonStore({
+//		 	id:'id',
+//			root:'rows',
+//		 	fields:[
+//			 	{name:'id', type:'int'},
+//				{name:'abbr', type:'string'},
+//				{name:'state', type:'string'},
+//				{name:'nick', type:'string'},
+//				{name:'cls', type:'string'}
+//		 	],
+//			url: 'sdata.txt',
+//			baseParams: {
+//		 		cmd:'GETSTATES'
+//		 	}
+//		});
+ 
+		 var states = new Ext.data.SimpleStore({
+					fields: ['abbr', 'state', 'nick'],
+					data: Ext.exampledata.states,
+					sortInfo: {field: 'state', direction: 'ASC'}
+				});
+      	var form1 = new Ext.form.FormPanel({
+            id:'f1Form',
+			renderTo: 'f1',
+            title:'Base Functionality',
+            autoHeight: true,
+			bodyStyle: 'padding:50px;',
+			width: 700,
+            items: [{
+                allowBlank:false,
+                id:'selector1',
+                xtype:'superboxselect',
+                fieldLabel: 'States',
+                emptyText: 'Select some US States',
+                resizable: true,
+				minChars: 2,
+                name: 'states',
+                anchor:'100%',
+                store: states,
+                mode: 'remote',
+                displayField: 'state',
+                displayFieldTpl: '{state} ({abbr})',
+                valueField: 'abbr',
+                value: 'CA,NY',
+				queryDelay: 0,
+				triggerAction: 'all'
+             }
+            ],
+			buttons: [{
+                text: "setValue('AK,NY,CO')",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector1').setValue('AK,NY,CO');
+                }
+            },{
+                text: 'getValue()',
+                scope: this,
+                handler: function(){
+                    alert(Ext.getCmp('selector1').getValue());
+                }
+            }, {
+                text: 'BasicForm.getValues()',
+                scope: this,
+                handler: function(){
+                    var v = form1.getForm().getValues(true);
+                    alert(v);
+                }
+            },{
+                text: "reset",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector1').reset();
+                }
+            },{
+                text: "disable",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector1').disable();
+                }
+            },{
+                text: "enable",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector1').enable();
+                }
+            }]
+        });
+		
+		var tagStore = new Ext.data.JsonStore({
+		 	id:'id',
+			root:'rows',
+		 	fields:[
+			 	{name:'id', type:'int'},
+				{name:'tag', type:'string'},
+				{name:'name', type:'string'}
+		 	],
+			url: 'fetchTags.php'
+		});
+		
+		var form2 = new Ext.form.FormPanel({
+            id:'f2Form',
+			renderTo: 'f2',
+            title:'Allowing New Data',
+            autoHeight: true,
+			bodyStyle: 'padding:50px;',
+			width: 700,
+            items: [{
+				allowBlank:false,
+				msgTarget: 'under',
+                allowAddNewData: true,
+                id:'selector2',
+                xtype:'superboxselect',
+                fieldLabel: 'Tags',
+                emptyText: 'Enter or select the category tags',
+                resizable: true,
+                name: 'tags',
+                anchor:'100%',
+                store: tagStore,
+                mode: 'remote',
+                displayField: 'name',
+                valueField: 'tag',
+                extraItemCls: 'x-tag',
+				queryDelay: 0,
+				triggerAction: 'all',
+				minChars: 1,
+                listeners: {
+                    beforeadditem: function(bs,v){
+                        //console.log('beforeadditem:', v);
+                        //return false;
+                    },
+                    additem: function(bs,v){
+                        //console.log('additem:', v);
+                    },
+                    beforeremoveitem: function(bs,v){
+                        //console.log('beforeremoveitem:', v);
+                        //return false;
+                    },
+                    removeitem: function(bs,v){
+                        //console.log('removeitem:', v);
+                    },
+                    newitem: function(bs,v){
+						v = v +'';
+                        v = v.slice(0,1).toUpperCase() + v.slice(1).toLowerCase();
+                        var newObj = {
+                            tag: v,
+                            name: v
+                        };
+                        bs.addNewItem(newObj);
+                    }
+                }
+             }
+            ],
+			buttons: [{
+                text: "Add Existing Tag (addItem)",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector2').addItem({tag:'Travel', name:'Travel'});
+                }
+            },{
+                text: "Add New Tag (addItem)",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector2').addItem({tag:'Beauty', name:'Beauty'});
+                }
+            },{
+                text: "Set New Values (setValueEx)",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector2').setValueEx([{tag:'Finance', name:'Finance'},{tag:'Gardening', name:'Gardening'}]);
+                }
+            },{
+                text: 'getValue()',
+                scope: this,
+                handler: function(){
+                    alert(Ext.getCmp('selector2').getValue());
+                }
+            },{
+                text: "reset",
+                scope: this,
+                handler: function(){
+                    Ext.getCmp('selector2').reset();
+                }
+            }]
+        });
+		
+    });
+</script>
+
+</head>
+<body>
+	<div id="page">
+
+		<h1>SuperBoxSelect remote Store Examples (compatible Ext 2.* -  Ext 3.*)</h1>
+		<div id="intro">
+			<p>SuperBoxSelect is an extension of the ComboBox component which displays selected items as labelled boxes within the form field. As seen on facebook, hotmail and other sites, it combines both auto-complete and multi-selection capabilities.</p>
+			<p>The SuperBoxSelect component was inspired by the BoxSelect component found here: http://efattal.fr/en/extjs/extuxboxselect/</p>
+			<p>See the full set of <a href="examples3.html">examples here</a>.</p>			
+		</div>
+
+		<h2>How the remote option works</h2>
+		<p>The remote functionality differs from that of a standard ComboBox, firstly because the SuperBoxSelect is multi-select enabled, and secondly because the SuperBoxSelect can allow for new data to be entered. The basic approach of the component is that it will remotely query autocompletion data (based on the <code>displayField</code>) or values (the <code>valueField</code>) (for instance when <code>setValue</code> is called). </p>
+		<p>The component therefore sets the <code>queryValuesIndicator</code> to <code>true</code> to notify the server that 'values' are being queried, and uses the <code>queryValuesDelimiter</code> to delimit the query param when multiple values are being looked up.</p>
+
+		<br />
+		<p><em>The <a href="#phpStart">PHP Code</a> is not a part of the component, it is a simple example shown only as a reference of how you could integrate the component with your server. I do not encourage you to write procedural code, nor to use globals, but this was the simplest for demonstration purposes.</em></p>
+		<br />
+		<h2>Example 1</h2>
+		<p>This example demonstrates the base functionality of auto-completion and multi-select capabilities. Apart from the <code>displayFieldTpl</code> config, all other functionality is as per the default behaviour.</p>
+
+		<div id="f1" class="exForm"></div>
+		<h2>Example 2</h2>
+		<p>This example demonstrates the <code>allowNewData</code> config, which allows new data to be added via the <code>addItem</code> and <code>setValueEx</code> methods. New data entered by the user is first sent to a callback function via the <code>newitem</code> event as shown in the source code.</p>
+
+		<p>The <code>extraItemCls</code> config property is also used in this example, and enables additional styling of the selected items.</p>
+		<div id="f2" class="exForm"></div>
+		<h2 id="phpStart">fetchStates.php Example</h2>
+		<pre><tt><font color="#990000">&lt;</font><font color="#990000">?</font>php
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">DB_NAME, DB_USER and DB_PW defines (outside web root)</font></i>
+
+    <b><font color="#000080">require_once</font></b><font color="#990000">(</font><font color="#FF0000">'</font><font color="#FF0000">../db.inc.php</font><font color="#FF0000">'</font><font color="#990000">)</font><font color="#990000">;</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">queryValuesIndicator and queryValuesDelimiter are used when querying (multiple) values and</font></i>
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">should be matched by the components config options of the same name.</font></i>
+
+    <font color="#009900">$queryValuesIndicator</font> <font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000">valuesqry</font><font color="#FF0000">'</font><font color="#990000">;</font>
+    <font color="#009900">$queryValuesDelimiter</font> <font color="#990000">=</font> <font color="#FF0000">"</font><font color="#FF0000">|</font><font color="#FF0000">"</font><font color="#990000">;</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">return instance of PDO</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#FF0000">{</font>
+        <font color="#009900">$dsn</font> <font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000">mysql:host=localhost;dbname=</font><font color="#FF0000">'</font> <font color="#990000">.</font> <font color="#009900">DB_NAME</font><font color="#990000">;</font>
+
+        <font color="#009900">$dbo</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">PDO</font></b><font color="#990000">(</font><font color="#009900">$dsn</font><font color="#990000">,</font><font color="#009900">DB_USER</font><font color="#990000">,</font><font color="#009900">DB_PW</font><font color="#990000">,</font><b><font color="#0000FF">array</font></b><font color="#990000">(</font><font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">ATTR_ERRMODE</font> <font color="#990000">=</font><font color="#990000">&gt;</font> <font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">ERRMODE_EXCEPTION</font><font color="#990000">,</font><font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">MYSQL_ATTR_INIT_COMMAND</font> <font color="#990000">=</font><font color="#990000">&gt;</font> <font color="#FF0000">"</font><font color="#FF0000">SET NAMES utf8</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">return</font></b> <font color="#009900">$dbo</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">build sql to query multiple values data from SuperBoxSelect</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">buildValuesQuery</font></b><font color="#990000">(</font><font color="#009900">$params</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+        <font color="#009900">$qry</font> <font color="#990000">=</font> <font color="#FF0000">"</font><font color="#FF0000">SELECT * FROM states WHERE</font><font color="#FF0000">"</font><font color="#990000">;</font>
+        <font color="#009900">$db</font> <font color="#990000">=</font> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <font color="#009900">$first</font> <font color="#990000">=</font> true<font color="#990000">;</font>
+        <b><font color="#0000FF">foreach</font></b><font color="#990000">(</font><font color="#009900">$params</font> <b><font color="#0000FF">as</font></b> <font color="#009900">$k</font> <font color="#990000">=</font><font color="#990000">&gt;</font> <font color="#009900">$v</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+            <b><font color="#0000FF">if</font></b><font color="#990000">(</font><font color="#990000">!</font><font color="#009900">$first</font><font color="#990000">)</font><font color="#FF0000">{</font>
+                <font color="#009900">$qry</font> <font color="#990000">.</font><font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000"> OR</font><font color="#FF0000">'</font><font color="#990000">;</font>
+
+            <font color="#FF0000">}</font>
+            <font color="#009900">$qry</font> <font color="#990000">.</font><font color="#990000">=</font> <font color="#FF0000">"</font><font color="#FF0000"> abbr=</font><font color="#FF0000">"</font> <font color="#990000">.</font> <font color="#009900">$db</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">quote</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">$v</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">;</font>
+
+            <font color="#009900">$first</font> <font color="#990000">=</font> false<font color="#990000">;</font>
+        <font color="#FF0000">}</font>       
+        <b><font color="#0000FF">return</font></b> <font color="#009900">$qry</font><font color="#990000">;</font>
+
+    <font color="#FF0000">}</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">build sql to query the display data from SuperBoxSelect (as used in autocomplete)</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">buildDisplayQuery</font></b><font color="#990000">(</font><font color="#009900">$q</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+        <font color="#009900">$db</font> <font color="#990000">=</font> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">return</font></b> <font color="#FF0000">"</font><font color="#FF0000">SELECT * FROM states WHERE state LIKE </font><font color="#FF0000">"</font> <font color="#990000">.</font> <font color="#009900">$db</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">quote</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">$q%</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">;</font>
+
+    <font color="#FF0000">}</font>
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">get the data for our response</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">getData</font></b><font color="#990000">(</font><font color="#009900">$q</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+        <b><font color="#0000FF">global</font></b> <font color="#009900">$queryValuesIndicator</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">global</font></b> <font color="#009900">$queryValuesDelimiter</font><font color="#990000">;</font>
+        <font color="#009900">$db</font> <font color="#990000">=</font> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">if</font></b><font color="#990000">(</font><font color="#009900">$_REQUEST</font><font color="#990000">[</font><font color="#009900">$queryValuesIndicator</font><font color="#990000">]</font> <font color="#990000">=</font><font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000">true</font><font color="#FF0000">'</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+            <font color="#009900">$params</font> <font color="#990000">=</font> <b><font color="#000000">explode</font></b><font color="#990000">(</font><font color="#009900">$queryValuesDelimiter</font><font color="#990000">,</font> <font color="#009900">$q</font><font color="#990000">)</font><font color="#990000">;</font>
+            <font color="#009900">$qry</font> <font color="#990000">=</font> <b><font color="#000000">buildValuesQuery</font></b><font color="#990000">(</font><font color="#009900">$params</font><font color="#990000">)</font><font color="#990000">;</font>   
+        <font color="#FF0000">}</font><b><font color="#0000FF">else</font></b><font color="#FF0000">{</font>
+
+            <font color="#009900">$qry</font> <font color="#990000">=</font> <b><font color="#000000">buildDisplayQuery</font></b><font color="#990000">(</font><font color="#009900">$q</font><font color="#990000">)</font><font color="#990000">;</font>
+        <font color="#FF0000">}</font>
+        <font color="#009900">$stmt</font> <font color="#990000">=</font> <font color="#009900">$db</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">query</font></b><font color="#990000">(</font><font color="#009900">$qry</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">return</font></b> <font color="#009900">$stmt</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">fetchAll</font></b><font color="#990000">(</font><font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">FETCH_OBJ</font><font color="#990000">)</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">ajaxify our response data </font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">setResponse</font></b><font color="#990000">(</font><font color="#009900">$data</font><font color="#990000">)</font><font color="#FF0000">{</font>
+        <font color="#009900">$res</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b><font color="#990000">(</font>
+
+            <font color="#FF0000">"</font><font color="#FF0000">success</font><font color="#FF0000">"</font><font color="#990000">=</font><font color="#990000">&gt;</font>true<font color="#990000">,</font>
+            <font color="#FF0000">"</font><font color="#FF0000">rows</font><font color="#FF0000">"</font><font color="#990000">=</font><font color="#990000">&gt;</font><font color="#009900">$data</font>
+        <font color="#990000">)</font><font color="#990000">;</font>
+
+        <font color="#009900">$d</font> <font color="#990000">=</font> <b><font color="#000000">json_encode</font></b><font color="#990000">(</font><font color="#009900">$res</font><font color="#990000">)</font><font color="#990000">;</font>
+        <b><font color="#000000">header</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">Content-type: text/html; charset=UTF-8</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#000000">header</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">Content-Size: </font><font color="#FF0000">"</font> <font color="#990000">.</font> <b><font color="#000000">strlen</font></b><font color="#990000">(</font><font color="#009900">$d</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">echo</font></b> <font color="#009900">$d</font><font color="#990000">;</font>
+
+    <font color="#FF0000">}</font>
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">get the data and set the response</font></i>
+    <font color="#009900">$res</font> <font color="#990000">=</font> <b><font color="#000000">getData</font></b><font color="#990000">(</font><font color="#009900">$_REQUEST</font><font color="#990000">[</font><font color="#FF0000">'</font><font color="#FF0000">query</font><font color="#FF0000">'</font><font color="#990000">]</font><font color="#990000">)</font><font color="#990000">;</font>
+
+    <b><font color="#000000">setResponse</font></b><font color="#990000">(</font><font color="#009900">$res</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#990000">?</font><font color="#990000">&gt;</font></tt></pre>
+	<h2>fetchTags.php Example</h2>
+	<pre><tt><font color="#990000">&lt;</font><font color="#990000">?</font>php
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">DB_NAME, DB_USER and DB_PW defines (outside web root)</font></i>
+
+    <b><font color="#000080">require_once</font></b><font color="#990000">(</font><font color="#FF0000">'</font><font color="#FF0000">../db.inc.php</font><font color="#FF0000">'</font><font color="#990000">)</font><font color="#990000">;</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">queryValuesIndicator and queryValuesDelimiter are used when querying (multiple) values and</font></i>
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">should be matched by the components config options of the same name.</font></i>
+
+    <font color="#009900">$queryValuesIndicator</font> <font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000">valuesqry</font><font color="#FF0000">'</font><font color="#990000">;</font>
+    <font color="#009900">$queryValuesDelimiter</font> <font color="#990000">=</font> <font color="#FF0000">"</font><font color="#FF0000">|</font><font color="#FF0000">"</font><font color="#990000">;</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">return instance of PDO</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#FF0000">{</font>
+        <font color="#009900">$dsn</font> <font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000">mysql:host=localhost;dbname=</font><font color="#FF0000">'</font> <font color="#990000">.</font> <font color="#009900">DB_NAME</font><font color="#990000">;</font>
+
+        <font color="#009900">$dbo</font> <font color="#990000">=</font> <b><font color="#0000FF">new</font></b> <b><font color="#000000">PDO</font></b><font color="#990000">(</font><font color="#009900">$dsn</font><font color="#990000">,</font><font color="#009900">DB_USER</font><font color="#990000">,</font><font color="#009900">DB_PW</font><font color="#990000">,</font><b><font color="#0000FF">array</font></b><font color="#990000">(</font><font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">ATTR_ERRMODE</font> <font color="#990000">=</font><font color="#990000">&gt;</font> <font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">ERRMODE_EXCEPTION</font><font color="#990000">,</font><font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">MYSQL_ATTR_INIT_COMMAND</font> <font color="#990000">=</font><font color="#990000">&gt;</font> <font color="#FF0000">"</font><font color="#FF0000">SET NAMES utf8</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">return</font></b> <font color="#009900">$dbo</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">build sql to query multiple values data from SuperBoxSelect</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">buildValuesQuery</font></b><font color="#990000">(</font><font color="#009900">$params</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+        <font color="#009900">$qry</font> <font color="#990000">=</font> <font color="#FF0000">"</font><font color="#FF0000">SELECT * FROM tags WHERE</font><font color="#FF0000">"</font><font color="#990000">;</font>
+        <font color="#009900">$db</font> <font color="#990000">=</font> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <font color="#009900">$first</font> <font color="#990000">=</font> true<font color="#990000">;</font>
+        <b><font color="#0000FF">foreach</font></b><font color="#990000">(</font><font color="#009900">$params</font> <b><font color="#0000FF">as</font></b> <font color="#009900">$k</font> <font color="#990000">=</font><font color="#990000">&gt;</font> <font color="#009900">$v</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+            <b><font color="#0000FF">if</font></b><font color="#990000">(</font><font color="#990000">!</font><font color="#009900">$first</font><font color="#990000">)</font><font color="#FF0000">{</font>
+                <font color="#009900">$qry</font> <font color="#990000">.</font><font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000"> OR</font><font color="#FF0000">'</font><font color="#990000">;</font>
+
+            <font color="#FF0000">}</font>
+            <font color="#009900">$qry</font> <font color="#990000">.</font><font color="#990000">=</font> <font color="#FF0000">"</font><font color="#FF0000"> tag=</font><font color="#FF0000">"</font> <font color="#990000">.</font> <font color="#009900">$db</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">quote</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">$v</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">;</font>
+
+            <font color="#009900">$first</font> <font color="#990000">=</font> false<font color="#990000">;</font>
+        <font color="#FF0000">}</font>       
+        <b><font color="#0000FF">return</font></b> <font color="#009900">$qry</font><font color="#990000">;</font>
+
+    <font color="#FF0000">}</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">build sql to query the display data from SuperBoxSelect (as used in autocomplete)</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">buildDisplayQuery</font></b><font color="#990000">(</font><font color="#009900">$q</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+        <font color="#009900">$db</font> <font color="#990000">=</font> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">return</font></b> <font color="#FF0000">"</font><font color="#FF0000">SELECT * FROM tags WHERE name LIKE </font><font color="#FF0000">"</font> <font color="#990000">.</font> <font color="#009900">$db</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">quote</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">$q%</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">;</font>
+
+    <font color="#FF0000">}</font>
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">get the data for our response</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">getData</font></b><font color="#990000">(</font><font color="#009900">$q</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+        <b><font color="#0000FF">global</font></b> <font color="#009900">$queryValuesIndicator</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">global</font></b> <font color="#009900">$queryValuesDelimiter</font><font color="#990000">;</font>
+        <font color="#009900">$db</font> <font color="#990000">=</font> <b><font color="#000000">getDb</font></b><font color="#990000">(</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">if</font></b><font color="#990000">(</font><font color="#009900">$_REQUEST</font><font color="#990000">[</font><font color="#009900">$queryValuesIndicator</font><font color="#990000">]</font> <font color="#990000">=</font><font color="#990000">=</font> <font color="#FF0000">'</font><font color="#FF0000">true</font><font color="#FF0000">'</font><font color="#990000">)</font><font color="#FF0000">{</font>
+
+            <font color="#009900">$params</font> <font color="#990000">=</font> <b><font color="#000000">explode</font></b><font color="#990000">(</font><font color="#009900">$queryValuesDelimiter</font><font color="#990000">,</font> <font color="#009900">$q</font><font color="#990000">)</font><font color="#990000">;</font>
+            <font color="#009900">$qry</font> <font color="#990000">=</font> <b><font color="#000000">buildValuesQuery</font></b><font color="#990000">(</font><font color="#009900">$params</font><font color="#990000">)</font><font color="#990000">;</font>   
+        <font color="#FF0000">}</font><b><font color="#0000FF">else</font></b><font color="#FF0000">{</font>
+
+            <font color="#009900">$qry</font> <font color="#990000">=</font> <b><font color="#000000">buildDisplayQuery</font></b><font color="#990000">(</font><font color="#009900">$q</font><font color="#990000">)</font><font color="#990000">;</font>
+        <font color="#FF0000">}</font>
+        <font color="#009900">$stmt</font> <font color="#990000">=</font> <font color="#009900">$db</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">query</font></b><font color="#990000">(</font><font color="#009900">$qry</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">return</font></b> <font color="#009900">$stmt</font><font color="#990000">-</font><font color="#990000">&gt;</font><b><font color="#000000">fetchAll</font></b><font color="#990000">(</font><font color="#009900">PDO</font><font color="#990000">:</font><font color="#990000">:</font><font color="#009900">FETCH_OBJ</font><font color="#990000">)</font><font color="#990000">;</font>
+    <font color="#FF0000">}</font>
+
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">ajaxify our response data</font></i>
+    <b><font color="#0000FF">function</font></b> <b><font color="#000000">setResponse</font></b><font color="#990000">(</font><font color="#009900">$data</font><font color="#990000">)</font><font color="#FF0000">{</font>
+        <font color="#009900">$res</font> <font color="#990000">=</font> <b><font color="#0000FF">array</font></b><font color="#990000">(</font>
+
+            <font color="#FF0000">"</font><font color="#FF0000">success</font><font color="#FF0000">"</font><font color="#990000">=</font><font color="#990000">&gt;</font>true<font color="#990000">,</font>
+            <font color="#FF0000">"</font><font color="#FF0000">rows</font><font color="#FF0000">"</font><font color="#990000">=</font><font color="#990000">&gt;</font><font color="#009900">$data</font>
+        <font color="#990000">)</font><font color="#990000">;</font>
+
+        <font color="#009900">$d</font> <font color="#990000">=</font> <b><font color="#000000">json_encode</font></b><font color="#990000">(</font><font color="#009900">$res</font><font color="#990000">)</font><font color="#990000">;</font>
+        <b><font color="#000000">header</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">Content-type: text/html; charset=UTF-8</font><font color="#FF0000">"</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#000000">header</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#FF0000">Content-Size: </font><font color="#FF0000">"</font> <font color="#990000">.</font> <b><font color="#000000">strlen</font></b><font color="#990000">(</font><font color="#009900">$d</font><font color="#990000">)</font><font color="#990000">)</font><font color="#990000">;</font>
+
+        <b><font color="#0000FF">echo</font></b> <font color="#009900">$d</font><font color="#990000">;</font>
+
+    <font color="#FF0000">}</font>
+    
+    <i><font color="#9A1900">//</font></i><i><font color="#9A1900">get the data and set the response</font></i>
+    <font color="#009900">$res</font> <font color="#990000">=</font> <b><font color="#000000">getData</font></b><font color="#990000">(</font><font color="#009900">$_REQUEST</font><font color="#990000">[</font><font color="#FF0000">'</font><font color="#FF0000">query</font><font color="#FF0000">'</font><font color="#990000">]</font><font color="#990000">)</font><font color="#990000">;</font>
+
+    <b><font color="#000000">setResponse</font></b><font color="#990000">(</font><font color="#009900">$res</font><font color="#990000">)</font><font color="#990000">;</font>
+<font color="#990000">?</font><font color="#990000">&gt;</font></tt></pre>
+
+	</div>
+</body>
+</html>

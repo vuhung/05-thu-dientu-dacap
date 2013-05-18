@@ -1,0 +1,115 @@
+# DEFAULT CACHE REGION
+# sets the default aux value for any non configured caches
+jcs.default=DC
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=100
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.default.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.default.elementattributes.IsEternal=true
+jcs.default.elementattributes.MaxLifeSeconds=600
+jcs.default.elementattributes.IdleTime=1
+jcs.default.elementattributes.IsSpool=true
+jcs.default.elementattributes.IsRemote=false
+jcs.default.elementattributes.IsLateral=true
+
+# SYSTEM CACHE
+
+# should be defined for the storage of group attribute list
+jcs.system.groupIdCache=
+jcs.system.groupIdCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.system.groupIdCache.cacheattributes.MaxObjects=10000
+jcs.system.groupIdCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+
+# CACHE REGIONS AVAILABLE
+
+#======================================================
+# Cache Regions for iWebOS purposes
+#======================================================
+
+# bean cache
+jcs.region.bean=DC
+jcs.region.bean.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.bean.cacheattributes.MaxObjects=500
+jcs.region.bean.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.bean.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.bean.elementattributes.IsEternal=true
+jcs.region.bean.elementattributes.MaxLifeSeconds=86400000
+jcs.region.bean.elementattributes.IdleTime=1
+jcs.region.bean.elementattributes.IsSpool=true
+jcs.region.bean.elementattributes.IsRemote=true
+jcs.region.bean.elementattributes.IsLateral=true
+
+# action cache
+jcs.region.action=DC
+jcs.region.action.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.action.cacheattributes.MaxObjects=500
+jcs.region.action.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.action.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.action.elementattributes.IsEternal=true
+jcs.region.action.elementattributes.MaxLifeSeconds=86400000
+jcs.region.action.elementattributes.IdleTime=1
+jcs.region.action.elementattributes.IsSpool=true
+jcs.region.action.elementattributes.IsRemote=true
+jcs.region.action.elementattributes.IsLateral=true
+
+# ajax Cache
+jcs.region.ajax=DC
+jcs.region.ajax.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.ajax.cacheattributes.MaxObjects=1000
+jcs.region.ajax.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.ajax.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.ajax.elementattributes.IsEternal=true
+jcs.region.ajax.elementattributes.MaxLifeSeconds=86400000
+jcs.region.ajax.elementattributes.IdleTime=1
+jcs.region.ajax.elementattributes.IsSpool=true
+jcs.region.ajax.elementattributes.IsRemote=true
+jcs.region.ajax.elementattributes.IsLateral=true
+
+# ajax Cache
+jcs.region.security=DC
+jcs.region.security.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.security.cacheattributes.MaxObjects=1000
+jcs.region.security.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.security.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.security.elementattributes.IsEternal=true
+jcs.region.security.elementattributes.MaxLifeSeconds=86400000
+jcs.region.security.elementattributes.IdleTime=1
+jcs.region.security.elementattributes.IsSpool=true
+jcs.region.security.elementattributes.IsRemote=true
+jcs.region.security.elementattributes.IsLateral=true
+
+# test Cache
+jcs.region.test=DC
+jcs.region.test.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.test.cacheattributes.MaxObjects=100
+jcs.region.test.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.test.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.region.test.elementattributes.IsEternal=true
+jcs.region.test.elementattributes.MaxLifeSeconds=86400000
+jcs.region.test.elementattributes.IdleTime=1
+jcs.region.test.elementattributes.IsSpool=true
+jcs.region.test.elementattributes.IsRemote=true
+jcs.region.test.elementattributes.IsLateral=true
+
+# AUXILIARY CACHES AVAILABLE
+
+# Primary Disk Cache -- faster than the rest because of memory key storage
+jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+jcs.auxiliary.DC.attributes.DiskPath=/home/dungnguyen/cache
+
+# distribute cache
+jcs.auxiliary.LTCP=org.apache.jcs.auxiliary.lateral.socket.tcp.LateralTCPCacheFactory
+jcs.auxiliary.LTCP.attributes=org.apache.jcs.auxiliary.lateral.socket.tcp.TCPLateralCacheAttributes
+jcs.auxiliary.LTCP.attributes.TransmissionTypeName=TCP
+jcs.auxiliary.LTCP.attributes.TcpServers=dungnguyen:1111
+jcs.auxiliary.LTCP.attributes.TcpListenerPort=1110
+jcs.auxiliary.LTCP.attributes.PutOnlyMode=false
+
+# Remote RMI Cache set up to failover
+jcs.auxiliary.RFailover=org.apache.jcs.auxiliary.remote.RemoteCacheFactory
+jcs.auxiliary.RFailover.attributes=org.apache.jcs.auxiliary.remote.RemoteCacheAttributes
+jcs.auxiliary.RFailover.attributes.RemoteTypeName=LOCAL
+jcs.auxiliary.RFailover.attributes.FailoverServers=dungnguyen:1111
+jcs.auxiliary.RFailover.attributes.GetOnly=false
+

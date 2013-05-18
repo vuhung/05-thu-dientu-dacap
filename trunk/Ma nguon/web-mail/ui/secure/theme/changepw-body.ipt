@@ -1,0 +1,76 @@
+<script type="text/javascript">
+	function checkPasswd(){
+		//the current form login
+		var __from = document.frmChangepw;
+		
+		// check empty password field
+		if (__from.old_password.value == "") {
+			document.getElementById("error_passwd").innerHTML = "$text.get('iwebos.passwd.msg.fail_oldpw')"
+			__from.old_password.select();
+			return false;
+		}
+		
+		//check the new password
+		if ((__from.new_password.value == "") || (__from.new_password.value !== frm.cf_new_password.value)){
+			document.getElementById("error_passwd").innerHTML = "$text.get('iwebos.passwd.msg.fail_newpw')"
+			__from.new_password.select();
+			return false;
+		}
+		
+		document.getElementById("error_passwd").innerHTML="";
+		return true;
+	}
+</script>
+<center>		
+	<div class="login-main" align="left">
+		<div id="login-company-logo"></div><div id="bglogin"></div>
+		<div id="login-form">
+			<div id="login-logo"></div>
+			<div id="login-info"><br />
+				<span>
+					$text.get('iwebos.passwd.title')
+					<br><br>$text.get('iwebos.passwd.welcome')
+					<br><a href="$path/welcome.iws">$text.get('iwebos.msg.homepage')</a>
+					&nbsp;|&nbsp;<a href="$path/logout.iws">$text.get('iwebos.msg.logout')</a>
+				</span>
+			</div>
+			<div id="login-info-left"><br/>
+				<span>$text.get('iwebos.passwd.left.welcome')</span><br/><br/>
+				<i>$text.get('iwebos.passwd.left.message')</i><br/><br/>
+				#if($null.isNotNull($passwd) && $passwd != true)
+					<span class="login-error-msg"><b>$text.get('iwebos.passwd.msg.fail')</b></span> 
+				#elseif($null.isNotNull($passwd) && $passwd == true)
+					<script type="text/javascript">
+						window.location = 'changepw-success.iws';
+					</script>
+					<span class="login-success-msg"><b>$text.get('iwebos.passwd.msg.sucess')</b></span>
+				#end
+					<b><div id="error_passwd" class="login-error-msg"></div></b> 
+			</div>
+			<div id="login-form-details"><br/>
+				<center><span>$text.get('iwebos.passwd.form.title')</span></center>
+				<form name="frmChangepw" action="$path/changepw.iws" method="post" onsubmit="return checkPasswd();">
+					<input name="iwebos-action" type="hidden" value="update">
+					<span class="login-input-label">$text.get('iwebos.passwd.form.oldpassword')</span>
+					<input name="old_password"  type="password" class="login-input"/>
+					<br/>
+					<span class="login-input-label">$text.get('iwebos.passwd.form.newpassword')</span>
+					<input name="new_password"  type="password" class="login-input"/>
+					<br/>
+					<span class="login-input-label">$text.get('iwebos.passwd.form.cfnewpassword')</span>
+					<input name="cf_new_password"  type="password" class="login-input"/>
+					<br/>
+					<p align="right">
+						<input type="submit" name="sbm-reg" class="login-button" value="$text.get('iwebos.passwd.form.update')">
+						<input type="reset" name="sbm-reg" class="login-button" value="$text.get('iwebos.passwd.form.reset')"> 
+					</p>
+				</form>
+			</div>
+		</div>
+		<div class="login-footer">
+			<div class="login-copyright">$text.get('iwebos.footer.copyright')</div>
+			<div class="login-copyright-email">$text.get('iwebos.footer.contactus'):&nbsp;<a href="mailto:info@truthinet.com.vn">info@truthinet.com.vn</a></div>
+			<div class="login-truthinet"><a target="_blank" href="http://www.truthinet.com.vn/home/mail/welcome.iws"><span class="login-truthinet-pw"></a></div>	
+		</div>
+	</div>
+</center>

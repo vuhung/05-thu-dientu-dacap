@@ -1,0 +1,25 @@
+<script type="text/javascript" src="js/inet/ui/mail/MailView.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/MailPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/ReportPanel.js"></script>
+<!--
+<script type="text/javascript" src="js/inet/ui/mail/CreateAlias.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/CreateEmail.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/DialogCreateDomain.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/MailPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/MailToolbar.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/TreeMailbox.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/InputEmailDialog.js"></script>
+-->
+<ul id="action-mail" class="x-hidden">
+	<li id="li-task-view-create-domain" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-create-domain"/>
+        <a id="task-view-create-domain" href="#"><b>$text.get('lotus.mail.create','rlotus')</b></a>
+	</li>
+	<li id="li-task-report" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-report"/>
+        <a id="task-report" href="#"><b>$text.get('lotus.report','rlotus')</b></a>
+	</li>	
+	<!--li id="no-task" style="display:none;">
+		<span>$text.get('lotus.mail.no_task','rlotus')</span>
+	</li-->
+</ul>

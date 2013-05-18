@@ -1,0 +1,27 @@
+# ndduc@truthinet.com.vn, truthinet.com.vn, mail, truthinet.com.vn
+dn: mail=ndduc@truthinet.com.vn,vd=truthinet.com.vn,ou=mail,dc=truthinet,dc=com,dc=vn
+vdHome: /home/vmail/domains
+forwardActive: FALSE
+objectClass: top
+objectClass: amavisAccount
+objectClass: VirtualForward
+objectClass: VirtualMailAccount
+objectClass: uniqueObject
+lastChange: 1226630690
+userCode: 82BCBCFD-013A-1000-E490-150813121982
+userPassword:: e1NNRDV9eEl1S3BPQ2RtbzlMRUFaTkszTDVOdjB0eUdJM01JZ0Q=
+accountActive: TRUE
+amavisBypassVirusChecks: TRUE
+mail: ndduc@truthinet.com.vn
+cn:: VsSDbiBIaeG7gW4=
+amavisBypassSpamChecks: TRUE
+amavisSpamTagLevel: -9999
+mailbox: truthinet.com.vn/ndduc/
+otherTransport: phamm:
+amavisSpamKillLevel: 6.0
+smtpAuth: TRUE
+sn:: VHLhuqdu
+creationDate: 20081114024450Z
+amavisSpamTag2Level: 5.5
+quota: 52428800
+

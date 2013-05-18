@@ -1,0 +1,9 @@
+<table cellspacing="0" class="sub-nav">
+	<tr>
+		<td>
+			<span>
+				<b>$text.get('iwebos.welcome')&nbsp;&nbsp;&nbsp;&nbsp;</b>
+			</span>
+		</td>
+	</tr>
+</table>

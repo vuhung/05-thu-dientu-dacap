@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- account controller -->
+	<bean id="accountContent" class="com.inet.web.controller.lotus.account.AccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="accountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- search account controller -->
+	<bean id="searchAccountContent" class="com.inet.web.controller.lotus.account.SearchAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="searchAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load account controller -->
+	<bean id="loadAccountContent" class="com.inet.web.controller.lotus.account.LoadAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="loadAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- user controller -->
+	<bean id="userContent" class="com.inet.web.controller.lotus.org.permission.UserAjaxContent" lazy-init="false">
+		<constructor-arg ref="userService"/>
+	</bean>
+	
+	<!-- load user controller -->
+	<bean id="loadUserContent" class="com.inet.web.controller.lotus.org.permission.LoadUserAjaxContent" lazy-init="false">
+		<constructor-arg ref="loadUserService"/>
+	</bean>
+	
+	<!-- search user controller -->
+	<bean id="searchUserContent" class="com.inet.web.controller.lotus.org.permission.SearchUserAjaxContent" lazy-init="false">
+		<constructor-arg ref="searchUserService"/>
+	</bean>
+	
+	<!-- group controller -->
+	<bean id="groupContent" class="com.inet.web.controller.lotus.org.permission.GroupAjaxContent" lazy-init="false">
+		<constructor-arg ref="groupService"/>
+	</bean>
+	
+	<!-- load group controller -->
+	<bean id="loadGroupContent" class="com.inet.web.controller.lotus.org.permission.LoadGroupAjaxContent" lazy-init="false">
+		<constructor-arg ref="loadGroupService"/>
+	</bean>
+	
+	<!-- mail domain controller -->
+	<bean id="mailDomainContent" class="com.inet.web.controller.mail.domain.MailDomainAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailDomainService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail account controller -->
+	<bean id="mailAccountContent" class="com.inet.web.controller.mail.MailAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail alias controller -->
+	<bean id="mailAliasContent" class="com.inet.web.controller.mail.MailAliasAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailAliasService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail import controller -->
+	<bean id="mailImportContent" class="com.inet.web.controller.mail.MailImportAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailImportService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail export controller -->
+	<bean id="mailExportContent" class="com.inet.web.controller.mail.MailExportAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailExportService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- standardized mail controller -->
+	<bean id="standardizedContent" class="com.inet.web.controller.mail.StandardizedAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="standardizedService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load mail domain controller -->
+	<bean id="loadMailDomainContent" class="com.inet.web.controller.mail.domain.LoadMailDomainAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="loadMailDomainService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load mail account controller -->
+	<bean id="loadMailAccountContent" class="com.inet.web.controller.mail.LoadMailAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="loadMailAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load mail alias controller -->
+	<bean id="loadMailAliasContent" class="com.inet.web.controller.mail.LoadMailAliasAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="loadMailAliasService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- search mail account controller -->
+	<bean id="searchMailAccountContent" class="com.inet.web.controller.mail.SearchMailAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="searchMailAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- report mail account controller -->
+	<bean id="reportMailAccountContent" class="com.inet.web.controller.mail.ReportMailAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="reportMailAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- search mail as account controller -->
+	<bean id="searchMailAsAccountContent" class="com.inet.web.controller.mail.SearchMailAsAccountAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="searchMailAsAccountService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- search mail alias controller -->
+	<bean id="searchMailAliasContent" class="com.inet.web.controller.mail.SearchMailAliasAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="searchMailAliasService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- report mail alias controller -->
+	<bean id="reportMailAliasAjaxContent" class="com.inet.web.controller.mail.ReportMailAliasAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="reportMailAliasService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load permission controller -->
+	<bean id="loadPermissionContent" class="com.inet.web.controller.mail.permission.LoadPermissionContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="loadPermissionService"/>
+		</constructor-arg>
+	</bean>
+	
+	
+	<!--  BEAN MAPPING  -->	
+	<!--  WebOS Menu Bean mapping -->
+	<bean id="webosLoginInfoBean" class="com.inet.web.controller.bean.mail.WebOSLoginInfoBean" lazy-init="false">
+		<constructor-arg>
+			<ref bean="loadAccountInfoService"/>
+		</constructor-arg>
+	</bean>	
+	
+	<!-- Change password bean -->
+	<bean id="changePasswdBean" class="com.inet.web.controller.bean.passwd.WebOSChangePasswdBean" lazy-init="false">
+		<constructor-arg>
+			<list>
+				<ref bean="mailConfigChagepwdService"/>							
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="lotusSystemChangepasswdService"/>
+		</constructor-arg>
+	</bean>
+</beans>

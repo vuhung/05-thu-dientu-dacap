@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Print Document</title>
+		<link rel="stylesheet" type="text/css" href="js/ext/resources/css/ext-all.css">
+		<link rel="stylesheet" type="text/css" href="js/ext/resources/css/extjs.css" />
+		<link rel="stylesheet" type="text/css" href="css/mail.css">	
+	</head>
+	<body>
+		<div id="showdocument"></div>
+		<script language="JavaScript">
+			var __parent = window.opener.parent.document;
+			var __htmlHeader = __parent.getElementById("readPanelHeader");
+			var __htmlBody = __parent.getElementById("mail-body-document");
+			var __print = document.getElementById("showdocument"); 
+			var __content = __htmlHeader.innerHTML + __htmlBody.innerHTML;
+			__print.innerHTML = __content ;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+[{
+	"rid":1,
+	"parent":-1,
+	"text":"Công ty iNet",
+	"children":[{
+		"id":1,
+		"parent":1,
+		"text":"Nguyễn Văn Dũng",
+		"leaf":true
+		},
+		{
+		"id":2,
+		"parent":1,
+		"text":"Trương Ngọc Tân",
+		"leaf":true
+		},
+		{
+		"id":3,
+		"parent":1,
+		"text":"Nguyễn Văn Hiền",
+		"leaf":true
+		}]
+},{
+	"rid":2,
+	"parent":-2,
+	"text":"ITA Bình Định",
+	"children":[{
+		"id":4,
+		"parent":1,
+		"text":"Nguyễn thành Vỹ",
+		"leaf":true
+		},
+		{
+		"id":5,
+		"parent":1,
+		"text":"Nguyễn Hoàng Tú",
+		"leaf":true
+		}]
+}]

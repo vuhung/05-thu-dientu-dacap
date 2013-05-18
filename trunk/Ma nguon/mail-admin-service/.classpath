@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resource"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-core.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/web-ejb-base.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/inet-ldap-full.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-security.jar"/>
+	<classpathentry kind="lib" path="lib/acegi-security.jar"/>
+	<classpathentry kind="lib" path="lib/spring-security-core.jar"/>
+	<classpathentry kind="lib" path="lib/spring.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/imail-client.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/inet-lotus-mail.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/inet-lotus.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-common.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.7.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.generic.runtimeTarget/JBoss v4.2"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

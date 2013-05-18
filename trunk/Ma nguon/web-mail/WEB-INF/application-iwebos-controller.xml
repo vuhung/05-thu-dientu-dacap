@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Ajax mapping -->
+	<!-- mail folder context -->
+	<bean id="mailFolderContent" class="com.inet.web.controller.mail.WebOSMailFolderAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailFolderService"/>
+		</constructor-arg>
+	</bean>
+	<!-- mail header context -->
+	<bean id="mailHeaderContent" class="com.inet.web.controller.mail.WebOSMailHeaderAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailHeaderService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail composer context -->
+	<bean id="mailComposerContent" class="com.inet.web.controller.mail.WebOSMailComposerAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailComposerService"/>
+		</constructor-arg>
+	</bean>	
+	
+	<!-- mail content context -->
+	<bean id="mailContent" class="com.inet.web.controller.mail.WebOSMailContentAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailContentService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail configure context -->
+	<bean id="mailConfigureContent" class="com.inet.web.controller.mail.WebOSMailConfigureAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailConfigureService"/>
+		</constructor-arg>
+	</bean>
+		
+	<!-- mail filter context -->
+	<bean id="mailFilterContent" class="com.inet.web.controller.mail.WebOSMailFilterAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailFilterService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail follow up context -->
+	<bean id="followUpContent" class="com.inet.web.controller.mail.WebOSMailFollowUpAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="followUpService"/>
+		</constructor-arg>
+	</bean>
+			
+	<!-- load mail folder transaction context -->
+	<bean id="loadMailFolderContent" class="com.inet.web.controller.mail.WebOSLoadMailFolderAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailFolderService"/>
+		</constructor-arg>
+	</bean>
+	<!-- load header transaction context -->
+	<bean id="loadMailHeaderContent" class="com.inet.web.controller.mail.WebOSLoadMailHeaderAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailHeaderService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load mail composer context -->
+	<bean id="loadMailComposerContent" class="com.inet.web.controller.mail.WebOSLoadMailComposerAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailComposerService"/>
+		</constructor-arg>
+	</bean>	
+	
+	<!-- load mail content context -->
+	<bean id="loadMailContent" class="com.inet.web.controller.mail.WebOSLoadMailContentAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailContentService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load mail configure context -->
+	<bean id="loadMailConfigureContent" class="com.inet.web.controller.mail.WebOSLoadMailConfigureAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailConfigureService"/>
+		</constructor-arg>
+	</bean>
+		
+	<!-- load mail filter context -->
+	<bean id="loadMailFilterContent" class="com.inet.web.controller.mail.WebOSLoadMailFilterAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailFilterService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- load mail follow up context -->
+	<bean id="loadFollowUpContent" class="com.inet.web.controller.mail.WebOSLoadMailFollowUpAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="followUpService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Search Address Book Content -->
+	<bean id="searchAddressBookContent" class=" com.inet.web.controller.addressbook.content.WebOSSearchAddressBookContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="searchAddressBookService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Address book content -->
+	<bean id="addressBookContent" class="com.inet.web.controller.addressbook.content.WebOSAddressBookContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="addressBookService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Quota content -->
+	<bean id="quotacontent" class="com.inet.web.controller.mail.WebOSLoadQuotaAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="quotaService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Recipient content -->
+	<bean id="recipientContent" class="com.inet.web.controller.mail.WebOSMailRecipientAjaxContent" lazy-init="false">
+		<constructor-arg>
+			<ref bean="mailRecipientService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!--  BEAN MAPPING  -->	
+	<!-- Change password bean -->
+	<bean id="changePasswdBean" class="com.inet.web.controller.bean.passwd.WebOSChangePasswdBean" lazy-init="false">
+		<constructor-arg>
+			<list>
+				<ref bean="mailConfigChagepasswdService"/>				
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="lotusSystemChangepwdService"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- WebOS bind context bean mapping -->
+	<bean id="webosBindContextBean" class="com.inet.web.controller.bean.WebOSBindContextBean" lazy-init="false">
+		<constructor-arg>
+			<ref bean="bindContextService"/>
+		</constructor-arg>
+	</bean>	
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-core.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/web-ejb-base.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/jta.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/inet-lotus-mail.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/inet-lotus.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-security.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/authenticate-client.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/iwebos-common.jar"/>
+	<classpathentry kind="lib" path="lib/user-authenticate-client.jar"/>
+	<classpathentry kind="lib" path="lib/acegi-security-cas.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang.jar"/>
+	<classpathentry kind="lib" path="lib/acegi-security.jar"/>
+	<classpathentry kind="lib" path="lib/spring-security-cas-client.jar"/>
+	<classpathentry kind="lib" path="lib/spring-security-core.jar"/>
+	<classpathentry kind="lib" path="lib/spring.jar"/>
+	<classpathentry kind="lib" path="lib/1.5/inet-ldap.jar"/>
+	<classpathentry kind="lib" path="lib/imail-client.jar"/>
+	<classpathentry kind="lib" path="lib/grid-client.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

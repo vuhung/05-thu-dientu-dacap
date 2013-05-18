@@ -1,0 +1,45 @@
+<script type="text/javascript" src="js/inet/ui/org/User.js"></script>
+<!--
+<script type="text/javascript" src="js/inet/ui/org/SearchUserToolbar.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/UserPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/CreateUserPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/GroupPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/CreateGroupPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/account/DialogCreateAccount.js"></script>
+<script type="text/javascript" src="js/inet/ui/account/DialogResetPwd.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/MemberGridPanel.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/SearchUserDialog.js"></script>
+<script type="text/javascript" src="js/inet/ui/org/DeleteUserDialog.js"></script>
+<script type="text/javascript" src="js/inet/ui/mail/DialogSearchAccount.js"></script>
+-->
+<ul id="action-user" class="x-hidden">
+	<li id="li-action-create-user" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-create-account"/>
+		<a id="user-create-new" href="#">$text.get('lotus.user.create','rlotus')</a>
+	</li>
+	<li id="li-action-manage-group" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-group-manager"/>
+		<a id="group-management" href="#">$text.get('lotus.group.management','rlotus')</a>
+	</li>
+	<li id="li-action-view-lotus-account" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-mail-search"/>
+		<a id="view-lotus-account" href="#">$text.get('lotus.view.lotus.account','rlotus')</a>
+	</li>
+	<li id="li-action-create-group" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-group-add-new"/>
+		<a id="group-create-new" href="#">$text.get('lotus.group.create','rlotus')</a>
+	</li>
+	<li id="li-action-group-save" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-mail-save"/>
+		<a id="group-save" href="#">$text.get('lotus.group.save','rlotus')</a>
+	</li>
+	<li id="li-action-user-save" style="display:none;">
+		<img src="$path/images/s.gif" class="icon-menu-mail-save"/>
+		<a id="user-save" href="#">$text.get('lotus.user.save','rlotus')</a>
+	</li>
+	<li id="li-action-user-search" style="display:none;">
+		<hr/><p><b><font color="#0A4BA3">$text.get('lotus.user.exist_account','rlotus')</font></b></p>
+		<img src="$path/images/s.gif" class="icon-menu-mail-search"/>
+		<a id="user-search" href="#">$text.get('lotus.user.account.search','rlotus')</a>
+	</li>
+</ul>

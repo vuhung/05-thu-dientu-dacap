@@ -1,0 +1,460 @@
+/*****************************************************************
+ Copyright 2008 by Nguyen Thanh Vy (ntvy@truthinet.com.vn)
+ Licensed under the iNet Solutions Corp.,;
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ http://www.truthinet.com/licenses
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ *****************************************************************/
+
+/****************************Dung chung********************************/
+
+/* Main header image */
+#header{
+	 background:url(../images/bg-header.png);
+}
+#hd h1 a {
+	background:transparent url(../images/i-logo.png) no-repeat;
+    position:relative;
+    float:left;
+    top: 5px;
+    left:10px;
+    height:31px;
+    width:228px;
+}
+
+#hd h1 a span {
+	display:none;
+}
+/******************* Menu styles **********************/
+#hd {
+	background:transparent url(../images/topbar.png)  repeat-x 5px bottom;
+   	height:90px;
+   	margin:0px 0px 0px 0px;
+   	position:relative;
+}
+
+#hd table.nav {
+	position:absolute;
+	margin-left:0;
+}
+
+#hd table.nav tr {
+}
+
+#hd table.nav tr td {
+	padding-top:1px;
+	padding-left:0;
+	padding-right:0;
+}
+
+#hd table.nav a, #hd table.main-nav a:hover, #hd table.main-nav a:visited {
+	color: #fff;
+}
+
+#hd table.nav a, #hd table.main-nav a span {
+	color: #fff;
+	display:block;
+}
+#hd table.nav a {
+	line-height:14px;
+}
+
+#hd table.nav a span {
+	padding:6px 15px 7px 15px;
+}
+
+#hd table.nav a span {
+	font-family:tahoma,helvetica,arial,sans-serif;
+	font-size:12px;
+}
+
+/* Main nav */
+#hd table.main-nav {
+	left:15px;
+	top:40px;
+}
+
+#hd table.main-nav tr {
+	height:28px;
+}
+
+#hd table.main-nav a:hover {
+	text-decoration:underline;
+}
+
+#hd table.main-nav a:hover span {
+	text-decoration:underline;
+}
+
+#hd table.main-nav td.active a {
+	background:transparent url(../images/nav-left.png) repeat-x;
+	text-decoration:none;
+}
+
+#hd table.main-nav td.active a span {
+	background:transparent url(../images/nav-right.png) no-repeat right 0;
+	font-weight:bold;
+	padding:7px 15px 6px 15px;
+	text-decoration:none;
+}
+
+/* Sub nav */
+#hd .sub-nav {
+	position:absolute;
+	left:7px;
+	top:67px;
+	height:21px;
+}
+#hd .sub-nav td {
+	font-size:11px;
+	color:#777;
+	font-family:tahoma,helvetica,arial,sans-serif;
+}
+#hd .sub-nav td span {
+	color:#777;
+}
+#hd .sub-nav td a {
+	color:#046BCA;
+	font-family:tahoma,helvetica,arial,sans-serif;
+}
+#hd .sub-nav td.spacer {
+	padding:0 5px;
+}
+/**********End menu*************/
+.icon-search {
+    background-image:url(../images/ics16/search.png) !important;
+}
+.icon-delete {
+    background-image:url(../images/ics16/xoa-hscv.png) !important;
+}
+.icon-save {
+    background-image:url(../images/ics16/save.png) !important;
+}
+.icon-reminder {
+    background-image:url(../images/ics16/reminder.png) !important;
+}
+.icon-refresh {
+    background-image:url(../images/ics16/refresh.png) !important;
+}
+/****************Tiep nhan - Phat hanh cong van****************/
+.icon-publish{background-image:url(../images/ics16/publishdoc.png) !important;}
+.icon-cqngoai{background-image:url(../images/ics16/cq-ngoai.png) !important;}
+.icon-chuyennoibo{background-image:url(../images/ics16/chuyen-noi-bo.png) !important;}
+.icon-doc-transfer{background-image:url(../images/ics16/chuyen.png) !important;}
+.icon-combine{background-image:url(../images/ics16/phoi-hop.png) !important;}
+.icon-store{background-image:url(../images/ics16/cat-vb.png) !important;}
+.icon-receive-doc{background-image:url(../images/ics16/receivedoc.png) !important;}
+.icon-transfer-document{background-image:url(../images/ics16/chuyen-vbbh.png) !important;}
+.icon-new-document{background-image:url(../images/ics16/new_document.png) !important;}
+.icon-document-delete{background-image:url(../images/ics16/xoa-vbdt.png) !important;}
+.icon-document-save{background-image:url(../images/ics16/save.png) !important;}
+.icon-document-draft{background-image:url(../images/ics16/draft.png) !important;}
+.icon-task-finish{background-image:url(../images/ics16/hoan-thanh.png) !important;}
+/**************************Cong van di den********************/
+.icon-indoc {
+    background-image:url(../images/ics16/indoc.png) !important;
+}
+.icon-outdoc {
+    background-image:url(../images/ics16/outdoc.png) !important;
+}
+.icon-transfer {
+    background-image:url(../images/ics16/process.png) !important;
+}
+/****************************xu ly cong van den*****************/
+.icon-know {
+    background-image:url(../images/ics16/de-biet.png) !important;
+}
+.icon-process_success {
+    background-image:url(../images/ics16/xu-ly-xong.png) !important;
+}
+.icon-create_ppw {
+    background-image:url(../images/ics16/lap-hscv.png) !important;
+}
+.icon-linked_ppw {
+    background-image:url(../images/ics16/gan-vao-hscv.png) !important;
+}
+.icon-linked_notification {
+    background-image:url(../images/ics16/gan-vao-hshb.png) !important;
+}
+/****************************Submit form*****************************/
+.icon-apply {
+    background-image:url(../images/ics16/apply.png) !important;
+}
+.icon-cancel {
+    background-image:url(../images/ics16/cancel.png) !important ;
+}
+/*************************Collapse and Expand***********************/
+.icon-collapse {
+    background-image:url(../images/ics16/expand.png) !important;
+}
+.icon-expand{
+    background-image:url(../images/ics16/collapse.png) !important;
+}
+/***************************Navigate*******************************/
+.icon-navigate_first {
+    background-image:url(../images/ics16/navigate_left2.png) !important;
+}
+.icon-navigate_prev {
+    background-image:url(../images/ics16/navigate_left.png) !important;
+}
+.icon-navigate_next {
+    background-image:url(../images/ics16/navigate_right.png) !important;
+}
+.icon-navigate_last {
+    background-image:url(../images/ics16/navigate_right2.png) !important;
+}
+/***************************Xu ly cong viec******************************/
+.icon-task-process-pp {background-image:url(../images/ics16/process_pp.png) !important;}
+.icon-task-process-return {background-image:url(../images/ics16/tra-lai.png) !important;}
+.icon-task-process-finish {background-image:url(../images/ics16/ket-thuc.png) !important;}
+.icon-task-no-task{background-image:url(../images/s.gif) !important;}
+.icon-task-precompleted{background-image:url(../images/ics16/xu-ly-xong.png) !important;}
+.icon-task-transfer{background-image:url(../images/ics16/chuyen.png) !important;}
+.icon-task-create-dw{background-image:url(../images/ics16/lap-hscv.png) !important;}
+.icon-task-update-dw{background-image:url(../images/ics16/gan-vao-hscv.png) !important;}
+.icon-task-update-fb{background-image:url(../images/ics16/gan-vao-hshb.png) !important;}
+.icon-task-return{background-image:url(../images/ics16/tra-lai.png) !important;}
+.icon-task-toknown{background-image:url(../images/ics16/de-biet.png) !important;}
+.icon-task-process{background-image:url(../images/ics16/process.png) !important;}
+.icon-task-new-doc{background-image:url(../images/ics16/new_document.png) !important;}
+.icon-task-transfer-doc{background-image:url(../images/ics16/chuyen.png) !important;}
+.icon-task-save-doc{background-image:url(../images/ics16/save.png) !important;}
+.icon-task-delete-doc{background-image:url(../images/ics16/xoa-vbdt.png) !important;}
+.icon-task-store-doc{background-image:url(../images/ics16/cat-vb.png) !important;}
+.icon-task-sent-out{background-image:url(../images/ics16/cq-ngoai.png) !important;}
+.icon-task-sent-in{background-image:url(../images/ics16/chuyen-noi-bo.png) !important;}
+.icon-task-publish-doc{background-image:url(../images/ics16/publishdoc.png) !important;}
+/*~ Document work ========================================================== */
+.icon-task-create-dw{background-image:url(../images/ics16/lap-hscv.png) !important;}
+.icon-task-delete-dw{background-image:url(../images/ics16/xoa-hscv.png) !important;}
+.icon-task-save-dw{background-image:url(../images/ics16/save.png) !important;}
+.icon-task-approve-dw{background-image:url(../images/ics16/approve.png) !important;}
+.icon-task-transfer-dw{background-image:url(../images/ics16/chuyen.png) !important;}
+.icon-task-transfer-dwr{background-image:url(../images/ics16/transfer-record.png) !important;}
+.icon-task-transfer-dwa{background-image:url(../images/ics16/transfer-admin.png) !important;}
+.icon-task-pre-completed{background-image:url(../images/ics16/xu-ly-xong.png) !important;}
+.icon-task-print-record{background-image:url(../images/ics16/printer-review.png) !important;}
+/*****Column Icon******/
+.x-grid3-hd-importantIcon {
+	background-image: url(../images/ics16/important.png) !important;
+	vertical-align: middle;
+	height:8px;
+	width:8px;
+	background-repeat:no-repeat;
+}
+.x-grid3-hd-sercurityIcon {
+	background-image: url(../images/ics16/security.png) !important;
+	vertical-align: middle;
+	height:8px;
+	width:8px;
+	background-repeat:no-repeat;
+}
+/****Background Preview Panel*/
+.preview {
+	background-image: url(../images/bgpreview.png)!important;
+}
+.preview-fieldlabel{
+	font-weight:bold;
+}
+.preview-text{
+	color:blue;
+}
+.watch-preview-h{
+	font-weight:bold;
+	font-size:small;
+	background-color:white;
+	/*color:blue;*/
+	
+}
+.watch-preview-fl{
+	font-weight:bold;
+}
+.watch-preview-t{
+	/*color:blue;*/
+}
+.watch-preview-ph{
+	font-weight:bold;
+	font-size:small;
+	color:white;
+	background-color:gray;
+}
+.watch-preview-hicon{
+	vertical-align:middle;
+	width: 22px;
+	height: 16px;
+	padding-bottom:2px;
+	background-image:url(../images/ics16/person.png) !important; background-repeat: no-repeat;
+}
+.watch-preview-content{
+	background-color:#F2F2F2;
+}
+.watch-preview-header{
+	background-color: #f2a31b;
+	color: white;
+}
+.preview-process-table{background-color: #F2F2F2; border: 1px; border-color: #F2F2F2; padding: 1px 1px 1px 1px;}
+.preview-process-table .preview-process-hd{height:22px; background-color: #F2A31B; color: white;}
+.preview-process-hd .preview-process-hd-text{font-weight: bold;}
+.preview-process-table .preview-process-content{background-color: #FFFFFF; padding: 0px 0px 0px 0px;}
+.preview-process-content .preview-process-label{line-height: 22px ;font-weight: normal; padding-left: 10px; color: blue; text-decoration: underline;}
+.preview-process-content .preview-process-text{padding-left: 40px; color: black;}
+/*******ContextMenu****************/
+.menu-today {
+	background-image: url(../images/flags/today.png)!important;
+}
+.menu-tomorrow {
+	background-image: url(../images/flags/tomorrow.png)!important;
+}
+.menu-nodate {
+	background-image: url(../images/flags/nodate.png)!important;
+}
+
+/* Summary*/
+.pw-s-notbook{width:48px;height:48px; vertical-align:middle;background: transparent url(../images/paperwork/notbook.png) no-repeat;}
+.pw-s-booked{width:48px;height:48px; vertical-align:middle;background: transparent url(../images/paperwork/booked.png) no-repeat;}
+.pw-s-processing{width:48px;height:48px; vertical-align:middle;background: transparent url(../images/paperwork/processing.png) no-repeat;}
+.dw-s-created{width:48px;height:48px; vertical-align:middle;background: transparent url(../images/paperwork/dw-created.png) no-repeat;}
+.dw-s-processing{width:48px;height:48px; vertical-align:middle;background: transparent url(../images/paperwork/dw-processing.png) no-repeat;}
+
+.intro{font-size:small;}
+/*============================ Intro CSS - nhtu: 22/08/2008 ============================*/
+#content{float:left;width:75%;padding-left:5px;text-align:justify;}
+#leftPanel{position:relative;top:100px;right:18px;float:right;width:20%;background:#FCFCFC;}
+#tag{color:red;}
+#intro-showlink li{padding-left:20px;}
+
+/*** Common styling ***/
+#intro-headbox{color:red;font-weight:bold;}
+#intro-content{position: relative;float: left;width:100%;border-left: 1px solid #E0E0E0;border-top: 1px solid #E0E0E0;background-color:#FFF;background:url(../images/paperwork/intro/intro-shBottom.gif) repeat-x bottom;}
+#intro-bottomleft{position:absolute;width:4px;height:4px;bottom:0;left:-1px;background:url(../images/paperwork/intro/intro-shLeft.gif) no-repeat bottom left;}
+#intro-bottomRight{position:absolute;width:4px;height:4px;bottom:0;right:-0px;background:url(../images/paperwork/intro/intro-shRight.gif) no-repeat bottom right;}
+#intro-showlink{padding:10px;min-height:110px;background:url(../images/paperwork/intro/intro-bgshowlink.gif) repeat-x bottom;margin-bottom:4px;margin-right:5px;}
+#intro-sideshadow{background:#ffffff url(../images/paperwork/intro/rightShadow.gif) repeat-y right;}
+#intro-menuCE{padding-left:20px;}
+.intro-submenu{padding-left:10px;}
+.intro-submenu li{background:url(../images/paperwork/intro/intro-submenu.gif) no-repeat left;padding-left:10px;}
+
+/*** Background Image ***/
+.body-paperwork-Intro{background:#ffffff url(../images/paperwork/intro/bg-receive.png) no-repeat right bottom fixed !important;}
+.body-paperwork-PaperworkHtml{background: #ffffff url(../images/paperwork/tech.gif) no-repeat right bottom fixed !important;}
+
+/*** Style Images menu Intro page ***/
+.icon-paperwork-menu .about{background: url(../images/paperwork/intro/gt.png) no-repeat;}
+.icon-paperwork-menu .systems{background: url(../images/paperwork/intro/htth.png) no-repeat;}
+.icon-paperwork-menu .manager{background: url(../images/paperwork/intro/qlhs.png) no-repeat;}
+.icon-paperwork-menu .members{background: url(../images/paperwork/intro/nv.png) no-repeat;}
+
+/*** Style Images menu PaperworkHtml ***/
+#intro-showlink .menu1{background: url(../images/paperwork/intro/gt.png) no-repeat;}
+#intro-showlink .menu2{background: url(../images/paperwork/intro/nv.png) no-repeat;}
+
+/***============================ nhtu End ============================***/
+
+/**
+ * Document Work.
+ */
+.doc-in .x-grid3-cell-inner{color:black;}
+.doc-draft .x-grid3-cell-inner{color:black;}
+.doc-related .x-grid3-cell-inner{color:black;}
+.doc-in .doc-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-in.png) no-repeat;cursor:default;}
+.doc-out .doc-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-out.png) no-repeat;cursor:default;}
+.doc-draft .doc-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-draft.png) no-repeat;cursor:default;}
+.doc-related .doc-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-related.png) no-repeat;cursor:default;}
+.doc-col-hd{width:15px; height:15px;background:transparent url(../images/s.gif) no-repeat;cursor:default;}
+/**
+ * menu document.
+ */
+.icon-doc-delete{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/delete-doc.png) no-repeat;cursor:default;}
+.icon-doc-in{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-in.png) no-repeat;cursor:default;}
+.icon-doc-draft{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-draft.png) no-repeat;cursor:default;}
+.icon-doc-related{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-related.png) no-repeat;cursor:default;}
+.icon-doc-related-ed{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-related-ed.png) no-repeat;cursor:default;}
+.icon-doc-related-file{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/doc-related-file.png) no-repeat;cursor:default;}
+.icon-doc-create-work-co{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-copy-origin.png) no-repeat;cursor:default;}
+.icon-doc-create-work-ex{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-exchange.png) no-repeat;cursor:default;}
+.icon-doc-create-work-rv{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-review.png) no-repeat;cursor:default;}
+
+.work-copy-origin .x-grid3-cell-inner{color:black;}
+.work-exchange .x-grid3-cell-inner{color:black;}
+.work-review .x-grid3-cell-inner{color:black;}
+.work-sendto .x-grid3-cell-inner{color:black;}
+.work-copy-origin .work-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-copy-origin.png) no-repeat;cursor:default;}
+.work-exchange .work-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-exchange.png) no-repeat;cursor:default;}
+.work-review .work-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-review.png) no-repeat;cursor:default;}
+.work-sendto .work-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-sendto.png) no-repeat;cursor:default;}
+.work-col-hd{width:15px; height:15px;background:transparent url(../images/s.gif) no-repeat;cursor:default;}
+/**
+ * menu work
+ */
+.icon-work-delete{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/delete-work.png) no-repeat;cursor:default;}
+.icon-work-co{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-copy-origin.png) no-repeat;cursor:default;}
+.icon-work-ex{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-exchange.png) no-repeat;cursor:default;}
+.icon-work-rv{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-review.png) no-repeat;cursor:default;}
+.icon-work-st{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/work-sendto.png) no-repeat;cursor:default;}
+.icon-work-load-result{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/load-work-result.png) no-repeat;cursor:default;}
+
+.combine-col-hd{width:15px; height:15px;background:transparent url(../images/s.gif) no-repeat;cursor:default;}
+.combine-grid{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/combine-person.png) no-repeat;cursor:default;}
+/**
+ * menu combine
+ */
+.icon-combine-add{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/combine-person.png) no-repeat;cursor:default;}
+.icon-combine-load-result{width:16px; height:16px;background:transparent url(../images/paperwork/dw/create/load-combine-result.png) no-repeat;cursor:default;}
+/**
+ * page icon
+ */
+.icon-page-copy {background-image:url(../images/paperwork/dw/create/work-copy-origin.png) !important;}
+.icon-page-exchange {background-image:url(../images/paperwork/dw/create/work-review.png) !important;}
+.icon-page-review {background-image:url(../images/paperwork/dw/create/work-review.png) !important;}
+.icon-page-sendto {background-image:url(../images/paperwork/dw/create/work-sendto.png) !important;}
+
+/**
+ * report
+ */
+table.main
+{
+background-color:#f1f1f1;
+padding:0px;
+border-top: 1px solid gray;
+border-left: 1px solid gray;
+border-bottom: 0px solid gray;
+border-right: 0px solid gray;
+}
+
+table.main th, table.main td 
+{
+border-top: 0px solid gray;
+border-left: 0px solid gray;
+border-bottom: 1px solid gray;
+border-right: 1px solid gray;
+}
+.docin-header-left{text-align:center;vertical-align:top;}
+.docin-header-left-parent{text-align:center;vertical-align:top;font-size:13px;}
+.docin-header-left-child{text-align:center;vertical-align:top;font-size:13px;font-weight:bold;}
+.docin-header-left-number{text-align:center;vertical-align:top;font-size:13px;}
+
+.docin-header-right{text-align:center;vertical-align:top;}
+.docin-header-right-top{text-align:center;vertical-align:top;font-size:13px;font-weight:bold;}
+.docin-header-right-center{text-align:center;vertical-align:top;font-size:14px;font-weight:bold;}
+
+.docin-header-center{padding-top:50px;text-align:center;}
+.docin-header-center-title{text-align:center;vertical-align:top;font-size:15px;font-weight:bold;}
+.docin-header-center-desc{text-align:center;vertical-align:top;font-size:14px;font-weight:bold;}
+.docin-header-center-date{text-align:center;vertical-align:top;font-size:14px;font-style:italic;}
+
+.docin-main-head{font-size:12px;font-weight:bold;vertical-align:middle;text-align:center;color:#FFFFFF;background-color:#666666;margin:2px;padding:3px;}
+.docin-main-total{padding-right:10px;text-align:right;font-weight:bold;}
+.report-header{font-family:Arial, Helvetica, sans-serif;font-size:15px;font-weight:bold;vertical-align:middle;text-align:center;}
+.report-header-content{font-family:Arial, Helvetica, sans-serif;font-size:13px;font-weight:bold;vertical-align:middle;padding-right:2px;text-align:right;}
+.report-header-result{font-family:Arial, Helvetica, sans-serif;font-size:13px;vertical-align:middle;text-align:left;padding-left:5px;border-bottom:1px dotted #666666;}
+.report-main-header{font-family:Arial, Helvetica, sans-serif;font-size:14px;font-weight:bold;vertical-align:middle;text-align:left;color:#FFFFFF;background-color:#666666;padding:3px;margin:2px;}
+.report-main-content{font-size:14px;padding-left:10px;margin:3px;}
+.report-main-result{font-size:14px;padding-left:20px;margin:3px;}
+.report-main-result-late{font-size:14px;padding-right:10px;margin:3px;text-align:right;}
+.report-main-result-num{padding-right:20px;text-align:right;margin:3px;}
+.report-main-result-num-late{padding-left:5px;margin:3px;}

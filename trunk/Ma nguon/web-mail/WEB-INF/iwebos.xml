@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iwebos xmlns="http://www.truthinet.com.vn/schema/iwebos"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.truthinet.com.vn/schema/iwebos http://www.truthinet.com.vn/schema/iwebos/iwebos-1.0.xsd">
+	<core integrated-with-spring="true" support-cache="true" web-data-scope="REQUEST" content-locator="distributedUploadContentLocator">
+		<cache 	prefix="iwebos"
+				separate-character="."
+				provider-class="com.inet.web.cache.provider.MemcachedProvider"
+				provider-config-file="/memcached-service.xml"/>
+		<application-server
+				name="jboss"
+				security-mode="true"
+				domain="iMailSecure"
+				authentication-namespace="serverAuthenticate"
+				namespace="applicationServer"/>
+		<client-security
+				mode="1"
+				key-size="128"/>
+	</core>
+</iwebos>

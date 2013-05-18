@@ -1,0 +1,29 @@
+<script type="text/javascript" src="js/inet/ui/mail/MailView.js"></script>
+<form id="viewdownloadAttach_">
+	<input type="hidden" name="contentId"/>
+	<input type="hidden" name="fkey"/>
+	<input type="hidden" name="emlkey"/>
+	<input type="hidden" name="style"/>
+	<input type="hidden" name="type"/>
+	<input type="hidden" name="bean"/>
+</form>
+<!-- Menu context contact-->
+<div id="divAddressContext" style="border: 1px solid #718BB7; display: none; position: absolute">
+	<ul class="cmenu">
+		<li><a id="ctx-write-mail" href="#" class="icon-email-write">$text.get('iwebos.mail.write_mail','rmail')</a></li>
+		<li><a id="ctx-add-contact" href="#"class="icon-email-add-contact">$text.get('iwebos.mail.add_contact','rmail')</a></li>
+	</ul>
+</div>
+<!-- task action -->		
+<ul id="task-action" class="x-hidden">
+	<table width=100%>
+		<tr>
+			<td width=100>
+				<div id="task-action-receive-href"><a id="action-check" class="task-action-viewall" href="#" ><b><span id='result-check-mail'>$text.get('iwebos.mail.checkmail','rmail')</span></b></a></div>
+			</td>
+			<td align='left'>
+				<div id="task-action-create-href"><a  id="action-create" class="task-action-create" href="#"><b>$text.get('iwebos.mail.compose','rmail')</b></a></div>
+			</td>
+		</tr>
+	</table>
+</ul>

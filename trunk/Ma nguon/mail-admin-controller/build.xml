@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mail-admin-controller" default="dist" basedir=".">
+	<property environment="env" />
+	<property name="src.base.dir" value="${basedir}/src" />
+	<property name="src.dir" value="${src.base.dir}" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property name="build.javadocs.dir" value="${build.dir}/apidocs" />
+	<property name="jboss.home.dir" value="${env.JBOSS_HOME}"/>
+	<property name="jboss.server.config.dir" value="default" />	
+	<property file="build.properties" />
+	
+	<path id="compile.classpath">
+		<pathelement location="${web-ejb-base.jar}"/>
+		<pathelement location="${iwebos-core.jar}"/>
+		<pathelement location="${iwebos-common.jar}"/>
+		<pathelement location="${iwebos-security.jar}"/>
+		<pathelement location="${mail-admin-service.jar}"/>
+		<pathelement location="${json-lib.jar}"/>
+		<pathelement location="${servlet-api.jar}"/>
+		<pathelement location="${struts-core.jar}"/>
+		<pathelement location="${acegi-security.jar}"/>
+	</path>	
+	
+	<selector id="select.mail-admin-controller.libmodule" description="--> mail administrator controller package">
+		<or>
+			<filename name="com/inet/web/controller/**"/>
+		</or>
+	</selector>
+		
+	<!-- ================================= 
+          target: init              
+         ================================= -->
+	<target name="init" description="--> initialization">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${build.dist.dir}" />
+	</target>	
+	
+	<!-- ================================= 
+          target: check-required              
+         ================================= -->
+	<target name="check-required" depends="init" description="--> check dependency libraries">
+		<condition property="required.lib">
+			<and>
+				<available file="${web-ejb-base.jar}" />
+				<available file="${iwebos-common.jar}" />
+				<available file="${iwebos-core.jar}" />
+				<available file="${mail-admin-service.jar}" />
+				<available file="${json-lib.jar}" />
+				<available file="${servlet-api.jar}" />
+				<available file="${struts-core.jar}" />
+			</and>
+		</condition>
+	</target>	
+	
+	<!-- ================================= 
+          target: javadoc              
+         ================================= -->
+    <target name="javadocs" description="--> Create the API documentation">
+        <mkdir dir="${build.javadocs.dir}"/>
+    	<javadoc source="${compile.source}" packagenames="${doc.package}" sourcepath="${src.dir}" destdir="${build.javadocs.dir}" author="true" 
+    		version="true" use="true" splitindex="true" noindex="false" windowtitle="${doc.title} v${doc.version} &lt;br> API Specification"
+    		header="&lt;b>${doc.title}&lt;br>&lt;font size='-1'>${doc.version}&lt;/font>&lt;/b>" 
+    		bottom="Copyright &#169; ${doc.year} iNet Solutions, Corp. All Rights Reserved.">
+    		<classpath refid="compile.classpath"/>
+    	</javadoc>
+    	<zip destfile="${build.dist.dir}/${doc.name}.zip" basedir="${build.javadocs.dir}">
+    	</zip>
+    </target>
+
+	
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="check-required" description="--> compile">
+		<javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="${compile.debug}" debuglevel="${compile.debuglevel}" deprecation="${compile.deprecation}" source="${compile.source}" target="${compile.target}">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>	
+	
+	<!--=================================
+		  target: iwebos-bf
+		================================= -->
+	<target name="mail-admin-controller" depends="compile" description="--> build mail administrator controller library">
+		<jar destfile="${build.dist.dir}/${build.mail-admin-controller.name}-${build.mail-admin-controller.version}.jar">
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-admin-controller.info}">
+					<attribute name="Specification-Title" value="${build.mail-admin-controllertitle}" />
+					<attribute name="Specification-Version" value="${build.mail-admin-controller.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-admin-controller.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-admin-controller.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-admin-controller.libmodule" />
+			</fileset>
+		</jar>		
+	</target>
+	
+	<target name="dist" depends="mail-admin-controller, javadocs" description="--> dist">		
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${build.javadocs.dir}" />
+	</target>
+	
+	<!-- ================================= 
+          target: deploy              
+         ================================= -->
+	<target name="deploy" depends="dist" description="--> deploy product">
+		<copy file="${build.dist.dir}/${build.mail-admin-controller.name}-${build.mail-admin-controller.version}.jar" tofile="${deploy.client}/${build.mail-admin-controller.name}.jar" />
+	</target>
+	
+	<!-- ================================= 
+          target: movetolib              
+         ================================= -->
+    <target name="movetolib" depends="mail-admin-controller, javadocs" description="--> copy build file to library">
+        <mkdir dir="${home.lib.path}/mail-admin-controller/${compile.target}"/>
+    	<mkdir dir="${home.lib.path}/mail-admin-controller/${compile.target}/api-docs"/>
+    	
+    	<copy todir="${home.lib.path}/mail-admin-controller/${compile.target}">
+    		<fileset dir="${build.dist.dir}">
+    			<include name="**/*.jar"/>
+    		</fileset>
+    	</copy>
+    	
+    	<copy todir="${home.lib.path}/mail-admin-controller/${compile.target}/api-docs">
+    		<fileset dir="${build.dist.dir}">
+    			<include name="**/*.zip"/>
+    		</fileset>
+    	</copy>
+    </target>
+
+	<!-- ================================= 
+          target: all              
+         ================================= -->
+    <target name="all" depends="movetolib" description="--> default target">        
+    	<delete dir="${build.classes.dir}"/>
+    </target>
+			
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="--> clean product">
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${build.javadocs.dir}" />
+		<delete dir="${build.dist.dir}" />
+		<delete dir="${build.dir}" />
+	</target>	
+</project>

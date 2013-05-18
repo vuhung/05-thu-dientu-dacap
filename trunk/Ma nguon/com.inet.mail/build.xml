@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="com.inet.mail" default="dist" basedir=".">
+	<property environment="env" />
+	<property name="src.base.dir" value="${basedir}/src" />
+	<property name="src.dir" value="${src.base.dir}" />
+	<property name="resources.dir" value="${basedir}/resources" />
+	<property name="test.dir" value="${src.base.dir}/test" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	<property name="build.resources.dir" value="${build.dir}/resources" />
+	<property name="build.unjar.dir" value="${build.dir}/unjar" />
+	<property name="build.unjar.lib" value="${build.unjar.dir}/lib" />
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property name="jboss.home.dir" value="/home/tntan/tools/jboss/jboss-4.2.1.GA"/>
+	<!--property name="jboss.home.dir" value="/home/tools/jboss-4.0.4"/-->
+	<property name="jboss.server.config.dir" value="default" />
+	<property name="keystore.name" value="www.p12" />
+	<property file="build.properties" />
+
+	<path id="compile.classpath">
+		<pathelement location="${commons-logging.jar}" />
+		<pathelement location="${jboss-ejb3.jar}" />
+		<pathelement location="${jboss-ejb3x.jar}" />
+		<pathelement location="${jboss-j2ee.jar}" />
+		<pathelement location="${jboss-annotations-ejb3.jar}" />
+		<pathelement location="${hibernate3.jar}" />
+		<pathelement location="${ejb3-persistence.jar}" />
+		<pathelement location="${hibernate-annotations.jar}" />
+		<pathelement location="${jboss-remoting.jar}" />
+		<pathelement location="${ejb-base.jar}"/>
+		<pathelement location="${activation.jar}"/>
+		<pathelement location="${authenticate.jar}"/>
+		<pathelement location="${spring.jar}"/>
+		<pathelement location="${mail.jar}"/>
+		<pathelement location="${velocity.jar}"/>		
+		<pathelement location="${javolution.jar}"/>
+		<pathelement location="${inet-lotus-account.jar}"/>
+		<pathelement location="${mstor-0.9.11.jar}"/>
+		<pathelement location="${jbossall-client.jar}"/>
+		<pathelement location="${iwebos-core.jar}"/>
+		<pathelement location="${log4j.jar}"/>		
+		<pathelement location="${commons-digester.jar}"/>
+		<pathelement location="${secure.jar}"/>
+		<pathelement location="${grid-service.jar}"/>
+		<pathelement location="${inet-ldap-spring.jar}"/>
+		<pathelement location="${jxl-2.6.jar}"/>
+	</path>
+
+	<path id="run.classpath">
+		<pathelement location="${basedir}" />
+		<pathelement location="${build.dist.dir}/${build.mail.name}-${build.mail.version}.jar" />
+		<pathelement location="${build.dist.dir}/${build.mail-client.name}-${build.mail-client.version}.jar" />
+	</path>
+
+	<selector id="select.mail-service.libmodule">
+		<or>
+			<filename name="com/inet/mail/**"/>
+		</or>
+	</selector>
+
+	<selector id="select.mail-client.libmodule">
+		<or>
+			<filename name="com/inet/mail/AbstractMailFactory.class"/>
+			<filename name="com/inet/mail/DraftMail.class"/>
+			<filename name="com/inet/mail/FetchMail.class"/>
+			<filename name="com/inet/mail/IMailFactory.class"/>
+			<filename name="com/inet/mail/MailConfigureFactory.class"/>
+			<filename name="com/inet/mail/conf/**"/>
+			<filename name="com/inet/mail/business/base/BaseMailBusiness.class" />
+			<filename name="com/inet/mail/**/*SL.class" />
+			<filename name="com/inet/mail/business/sr/*Base.class" />
+			<filename name="com/inet/mail/business/sr/MailBridgeRemote.class" />
+			<filename name="com/inet/mail/concurrent/**" />
+			<filename name="com/inet/mail/data/**" />
+			<filename name="com/inet/mail/core/**" />
+			<filename name="com/inet/mail/exception/**" />
+			<filename name="com/inet/mail/parser/**" />
+			<filename name="com/inet/mail/security/**" />
+			<filename name="com/inet/mail/service/**" />
+			<filename name="com/inet/mail/spam/**" />
+			<filename name="com/inet/mail/restore/**" />
+			<filename name="com/inet/mail/filter/**" />
+			<filename name="com/inet/mail/sun/**" />
+			<filename name="com/inet/mail/command/**" />
+			<filename name="com/inet/mail/persistence/**" />
+			<filename name="com/inet/mail/util/**" />
+			<and>
+				<not>
+					<filename name="com/inet/mail/util/ReadXls.java" />
+				</not>
+			</and>
+			<filename name="com/inet/news/business/*Base.class"/>
+			<filename name="com/inet/news/business/*SL.class"/>
+			<filename name="com/inet/mail/message/**" />
+		</or>
+	</selector>
+	
+	<selector id="select.mail-basic-service.libmodule">
+		<or>
+			<filename name="com/inet/mail/*.class" />
+			<filename name="com/inet/mail/business/base/**" />
+			<filename name="com/inet/mail/business/delivery/**" />
+			<filename name="com/inet/mail/business/template/**" />
+			<filename name="com/inet/mail/command/**" />
+			<filename name="com/inet/mail/concurrent/**" />
+			<filename name="com/inet/mail/conf/**"/>
+			<filename name="com/inet/mail/data/**" />
+			<filename name="com/inet/mail/exception/**" />
+			<filename name="com/inet/mail/parser/**" />
+			<filename name="com/inet/mail/persistence/Template*.class" />
+			<filename name="com/inet/mail/queue/**" />
+			<filename name="com/inet/mail/restore/**" />
+			<filename name="com/inet/mail/security/**" />
+			<filename name="com/inet/mail/service/**" />
+			<filename name="com/inet/mail/spam/**" />
+			<filename name="com/inet/mail/sun/**" />
+			<filename name="com/inet/mail/util/**" />
+			<and>
+				<not>
+					<filename name="com/inet/mail/util/ReadXls.java" />
+				</not>
+			</and>
+			<filename name="com/inet/mail/message/**" />
+		</or>
+	</selector>
+
+	<selector id="select.mail-basic-client.libmodule">
+		<or>
+			<filename name="com/inet/mail/*.class"/>
+			<filename name="com/inet/mail/business/base/BaseMailBusiness.class" />
+			<filename name="com/inet/mail/business/delivery/*SL.class" />
+			<filename name="com/inet/mail/command/**" />
+			<filename name="com/inet/mail/concurrent/**" />
+			<filename name="com/inet/mail/conf/**"/>
+			<filename name="com/inet/mail/data/**" />
+			<filename name="com/inet/mail/exception/**" />
+			<filename name="com/inet/mail/parser/**" />
+			<filename name="com/inet/mail/queue/**" />
+			<filename name="com/inet/mail/restore/**" />
+			<filename name="com/inet/mail/security/**" />
+			<filename name="com/inet/mail/service/**" />
+			<filename name="com/inet/mail/sun/**" />
+			<filename name="com/inet/mail/util/**" />
+			<and>
+				<not>
+					<filename name="com/inet/mail/util/ReadXls.java" />
+				</not>
+			</and>
+			<filename name="com/inet/mail/message/**" />
+		</or>
+	</selector>
+	
+	<selector id="select.resources">
+		<or>
+			<filename name="com/inet/mail/message/*"/>
+		</or>
+	</selector>
+	<!-- ================================= 
+          target: init              
+         ================================= -->
+	<target name="init" description="--> initialization">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${build.dist.dir}" />
+		<mkdir dir="${build.resources.dir}" />
+		<copy todir="${build.resources.dir}">
+			<fileset dir="${resources.dir}">
+				<exclude name="**/*.txt" />
+			</fileset>
+		</copy>		
+	</target>
+	<!-- ================================= 
+	          target: build-resources              
+	     ================================= -->
+	<target name="build-resources" description="Build resources,convert *.txt ->*..properties">
+		<delete dir="${resources.dir}">
+			<include name="**/*_vi.properties" />
+		</delete>
+		<native2ascii encoding="UTF-8" src="${resources.dir}" dest="${resources.dir}" includes="**/*.txt" ext=".properties" />
+	</target>
+
+	<!-- ================================= 
+          target: check-required              
+         ================================= -->
+	<target name="check-required" depends="init" description="--> check dependency libraries">
+		<condition property="required.lib">
+			<and>
+				<available file="${common-logging.jar}" />
+				<available file="${jboss-ejb3.jar}" />
+				<available file="${jboss-ejb3x.jar}" />
+				<available file="${jboss-j2ee.jar}" />
+				<available file="${jboss-annotations-ejb3.jar}" />
+				<available file="${hibernate3.jar}" />
+				<available file="${ejb3-persistence.jar}" />
+				<available file="${hibernate-annotations.jar}" />
+				<available file="${jboss-remoting.jar}" />
+				<available file="${ejb-base.jar}"/>
+				<available file="${activation.jar}"/>
+				<available file="${mail.jar}"/>
+				<available file="${mailapi.jar}"/>
+				<available file="${smtp.jar}"/>
+				<available file="${velocity.jar}"/>
+				<available file="${inetlib.jar}"/>
+				<available file="${javolution.jar}"/>
+				<available file="${authenticate.jar}"/>
+				<available file="${mstor-0.9.11.jar}"/>
+			</and>
+		</condition>
+	</target>
+
+	<!-- ================================= 
+          target: compile              
+         ================================= -->
+	<target name="compile" depends="check-required" unless="required.lib" description="--> compile">
+		<javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="${compile.debug}" debuglevel="${compile.debuglevel}" deprecation="${compile.deprecation}" source="${compile.source}" target="${compile.target}">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+
+	<!--=================================
+		 target: iMail Service
+		================================= -->
+	<target name="imail-service" depends="compile" description="--> build imail servcie library">
+		<!--Build iMail Service EJB and Client -->
+		<jar destfile="${build.dist.dir}/${build.mail.name}-${build.mail.version}.jar">
+			<metainf dir="${build.resources.dir}/${target.server}/META-INF" includes="**/*"/>
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail.info}">
+					<attribute name="Specification-Title" value="${build.mail.title}" />
+					<attribute name="Specification-Version" value="${build.mail.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail.title}" />
+					<attribute name="Implementation-Version" value="${build.mail.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-service.libmodule" />
+			</fileset>
+			<fileset dir="${build.resources.dir}">
+				<selector refid="select.resources"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<!--=================================
+		 target: iMail Client Service
+		================================= -->
+	<target name="imail-client" depends="compile" description="--> build imail client servcie library">
+		<!--Build iMail Client Service -->
+		<jar destfile="${build.dist.dir}/${build.mail-client.name}-${build.mail-client.version}.jar">
+			<metainf dir="${build.resources.dir}/${target.server}/META-INF" includes="**/*"/>
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-client.info}">
+					<attribute name="Specification-Title" value="${build.mail-client.title}" />
+					<attribute name="Specification-Version" value="${build.mail-client.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-client.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-client.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-client.libmodule" />
+			</fileset>
+			<fileset dir="${build.resources.dir}">
+				<selector refid="select.resources"/>
+			</fileset>			
+		</jar>
+	</target>
+	
+	<!--=================================
+		target: iMail Basic Service
+	================================= -->
+	<target name="imail-basic-service" depends="compile" description="--> build imail basic service library">
+		<!--Build iMail Bacic Service -->
+		<jar destfile="${build.dist.dir}/${build.mail-basic.name}-${build.mail-basic.version}.jar">
+			<metainf dir="${build.resources.dir}/${target.server}/META-INF" includes="**/*"/>
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-basic.info}">
+					<attribute name="Specification-Title" value="${build.mail-basic.title}" />
+					<attribute name="Specification-Version" value="${build.mail-basic.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-basic.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-basic.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-basic-service.libmodule" />
+			</fileset>
+			<fileset dir="${build.resources.dir}">
+				<selector refid="select.resources"/>
+			</fileset>			
+		</jar>
+	</target>
+	
+	<!--=================================
+		target: iMail Basic Client
+	================================= -->
+	<target name="imail-basic-client" depends="compile" description="--> build imail basic client library">
+		<!--Build iMail Basic Client -->
+		<jar destfile="${build.dist.dir}/${build.mail-basic-client.name}-${build.mail-client.version}.jar">
+			<metainf dir="${build.resources.dir}/${target.server}/META-INF" includes="**/*"/>
+			<manifest>
+				<attribute name="Build-By" value="${company.name}" />
+				<section name="${build.mail-client.info}">
+					<attribute name="Specification-Title" value="${build.mail-basic-client.title}" />
+					<attribute name="Specification-Version" value="${build.mail-basic-client.version}" />
+					<attribute name="Specification-Vendor" value="${company.name}" />
+					<attribute name="Implementation-Title" value="${build.mail-basic-client.title}" />
+					<attribute name="Implementation-Version" value="${build.mail-basic-client.version}" />
+					<attribute name="Implementation-Vendor" value="${company.name}" />
+				</section>
+			</manifest>
+			<fileset dir="${build.classes.dir}">
+				<selector refid="select.mail-basic-client.libmodule" />
+			</fileset>
+			<fileset dir="${build.resources.dir}">
+				<selector refid="select.resources"/>
+			</fileset>			
+		</jar>
+	</target>
+		
+	
+	<!-- ================================= 
+          target: dist              
+         ================================= -->
+	<target name="dist" depends="imail-service,imail-client,imail-basic-service,imail-basic-client" description="--> package product">
+		<!-- delete resource -->
+		<delete dir="${build.resources.dir}" />
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${build.unjar.dir}" />
+	</target>
+
+
+	<!-- ================================= 
+          target: deploy mail service              
+         ================================= -->
+	<target name="deploy-mail-service" depends="dist" description="--> deploy product">
+		<copy file="${build.dist.dir}/${build.mail-client.name}-${build.mail-client.version}.jar" todir="${deploy.client}" />
+		<copy file="${build.dist.dir}/${build.mail.name}-${build.mail.version}.jar" todir="${deploy.target}" />
+	</target>
+	
+	<!-- ================================= 
+	      target: deploy mail basic service
+	     ================================= -->
+	<target name="deploy-mail-basic-service" depends="dist" description="--> deploy product">
+		<copy file="${build.dist.dir}/${build.mail-basic-client.name}-${build.mail-basic-client.version}.jar" todir="${deploy.client}" />
+		<copy file="${build.dist.dir}/${build.mail-basic.name}-${build.mail-basic.version}.jar" todir="${deploy.target}" />
+	</target>
+
+	<!-- ================================= 
+          target: movetolib              
+         ================================= -->
+    <target name="movetolib" depends="dist" description="--> copy build file to library">
+        <mkdir dir="${home.lib.path}/mail/${compile.target}"/>
+    	<mkdir dir="${home.lib.path}/mail/${compile.target}/${target.server}"/>
+    	
+    	<copy todir="${home.lib.path}/mail/${compile.target}/${target.server}">
+    		<fileset dir="${build.dist.dir}">
+    			<include name="**/*.jar"/>
+    		</fileset>
+    	</copy>
+    </target>
+
+	<!-- ================================= 
+          target: all              
+         ================================= -->
+    <target name="all" depends="movetolib" description="--> default target">        
+    	<delete dir="${build.classes.dir}"/>
+    	<delete dir="${build.resources.dir}"/>
+    </target>	
+	
+	<target name="signjar" depends="imail-service,imail-client,imail-basic-service,imail-basic-client" description="--> sign the jar file">
+		<input message="Please enter your certificate password: " addproperty="keypass" />
+		<signjar jar="${build.dist.dir}/${build.mail.name}-${build.mail.version}.jar" 
+			storetype="pkcs12" keystore="${signature.path}/${keystore.name}" alias="1" storepass="${keypass}"/>
+		<signjar jar="${build.dist.dir}/${build.mail-client.name}-${build.mail-client.version}.jar" 
+			storetype="pkcs12" keystore="${signature.path}/${keystore.name}" alias="1" storepass="${keypass}"/>
+		<signjar jar="${build.dist.dir}/${build.mail-basic.name}-${build.mail-basic.version}.jar" 
+			storetype="pkcs12" keystore="${signature.path}/${keystore.name}" alias="1" storepass="${keypass}"/>
+		<signjar jar="${build.dist.dir}/${build.mail-basic-client.name}-${build.mail-client.version}.jar" 
+			storetype="pkcs12" keystore="${signature.path}/${keystore.name}" alias="1" storepass="${keypass}"/>
+	</target>	
+	
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="--> clean product">
+		<delete dir="${build.resources.dir}" />
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${build.dist.dir}" />
+		<delete dir="${build.unjar.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+
+
+	<!-- ================================= 
+          target: run-test
+         ================================= -->
+	<target name="run-test" description="--> run test">
+		<!--java classname="com.inet.data.Main" fork="yes" dir=".">
+			<classpath refid="run.classpath" />
+		</java-->
+	</target>
+</project>

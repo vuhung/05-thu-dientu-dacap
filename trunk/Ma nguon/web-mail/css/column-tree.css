@@ -1,0 +1,57 @@
+/*****************************************************************
+   Copyright 2006 by Dung Nguyen (dungnguyen@truthinet.com)
+
+   Licensed under the iNet Solutions Corp.,;
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.truthinet.com/licenses
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*****************************************************************/
+
+/**
+ * tree node style.
+ */
+.x-column-tree .x-tree-node,.x-column-tree .x-tree-node-el{zoom:1;}
+.x-column-tree .x-tree-selected{background:#d9e8fb;}
+.x-column-tree .x-tree-node a{line-height:18px;vertical-align:middle;}
+.x-column-tree .x-tree-node a span{}
+.x-column-tree .x-tree-node .x-tree-selected a span{background:transparent;color:#000;}
+.x-tree-col{float:left;overflow:hidden;padding:0 1px;zoom:1;}
+.x-tree-col-text, .x-tree-hd-text {overflow:hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;padding:3px 3px 3px 5px;white-space: nowrap;font:normal 11px arial, tahoma, helvetica, sans-serif;}
+.x-tree-headers{background: #f9f9f9 url(../js/ext/resources/images/default/grid/grid3-hrow.gif) repeat-x 0 bottom;cursor:default;zoom:1;}
+.x-tree-hd{float:left;overflow:hidden;border-left:1px solid #eee;border-right:1px solid #d0d0d0;}
+input.x-tree-node-cb{vertical-align:middle;margin-right:2px;}
+
+/**
+ * remove image.
+ */
+.task {
+    background-image:url(http://extjs.com/s.gif) !important;
+	width:1px;
+	height:1px;
+}
+
+
+/**
+ * Remove tree icon stylesheet.
+ */
+.x-tree-node-collapsed .x-tree-node-icon, .x-tree-node-expanded .x-tree-node-icon, .x-tree-node-leaf .x-tree-node-icon{
+	background-image:url(http://extjs.com/s.gif) !important;
+	width: 1px;
+	height: 1px;
+}
+
+/**
+ * Remove tree icon in x-tree-node-el
+ */
+.x-tree-node-el .x-tree-node-icon{
+	background-image:url(http://extjs.com/s.gif) !important;
+	width: 1px;
+	height: 1px;
+}

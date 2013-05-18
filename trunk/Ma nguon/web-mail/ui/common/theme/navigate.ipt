@@ -1,0 +1,12 @@
+<table cellspacing="0" class="sub-nav" width="99%">
+	<tr>
+		<td width="50%">
+			<span>
+				<b>$text.get('iwebos.welcome')&nbsp;&nbsp;&nbsp;&nbsp;</b>
+			</span>
+		</td>
+		<td width="50%" align="right">
+			<div id="quota-id" class="quota"></div>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,81 @@
+<script type="text/javascript">
+	function validate(){
+		//the current form login
+		var __form = document.login;
+		
+		// show error.
+		if(__form.username.value == ""){
+			document.getElementById("validate").innerHTML="$text.get('iwebos.login.error.msg')";
+			return false ;
+		}
+		
+		// clear error.
+		document.getElementById("validate").innerHTML="";
+		
+		// prepare data to submit to server, has domain.
+		var __username = __form.username.value ;
+		if(__form.j_domain.value !== ""){
+			if (__username.indexOf("@") == -1){
+				__username = __username + '@' + __form.j_domain.value ;
+			} else if (__username.indexOf("@") >= 0 && !__username.match(/binhthuan.gov.vn$/)) {
+			    __username = __username + '.binhthuan.gov.vn';
+			} 
+		}
+		
+		// setting username value.
+		__form.j_username.value = __username.toLowerCase();
+		
+		// submit data.
+		return true;
+	}
+
+	window.onload=function(){
+	    document.login.username.focus();
+	}
+</script>
+<center>
+	<div class="login-main" align="left">
+		<div id="login-company-logo"></div><div id="bglogin"></div>
+		<div id="login-form">
+			<div id="login-logo"></div>
+			<div id="login-info"><br/>
+				<span><div style="font-size: 19px;">$text.get('iwebos.login.title')</div><br/>$text.get('iwebos.login.welcome')</span>
+			</div>
+			<div id="login-info-left"><br/>
+				<span>$text.get('iwebos.login.left.welcome')</span><br/><br/><i>-&nbsp;$text.get('iwebos.login.left.message')</i><br/>
+				<i>-&nbsp;$text.get('iwebos.login.left.warning')$j_domain</i><br/><br/>
+				<div id="validate" class="login-error-msg"></div>
+			</div>
+			<div id="login-form-details"><br/>
+				<center><span>$text.get('iwebos.login.form.title')</span></center>
+				<form name="login" id="login" method="POST" action="$path/j_acegi_security_check" onsubmit="return validate();">						
+					<span class="login-input-label">$text.get('iwebos.login.form.username'):</span>
+					<input class="login-input" id="username" name="username" tabindex="1" type="text" value="" autocomplete="false"/>
+					<br/>
+					#if($null.isNotNull($j_domain))
+					<span align="right" style="font-weight:normal;">@$j_domain&nbsp;&nbsp;</span>
+					<br/>
+					#end
+					<span class="login-input-label">$text.get('iwebos.login.form.password'):</span>
+					<input class="login-input" id="j_password" name="j_password" tabindex="1" type="password" value="" autocomplete="off"/>
+					#if($null.isNotNull($j_domain))
+						<input id="j_domain" name="j_domain" type="hidden" value="$j_domain"/>
+					#else
+						<input id="j_domain" name="j_domain" type="hidden" value=""/>
+					#end
+					<input id="j_username" name="j_username" type="hidden"/>					
+					<br/>
+					<p align="right">
+						<input type="submit" class="login-button" value="$text.get('iwebos.login.form.login')"/>
+						<input type="reset" class="login-button" value="$text.get('iwebos.login.form.reset')"/>
+					</p>
+				</form>
+			</div>
+		</div>
+		<div class="login-footer">
+			<div class="login-copyright">$text.get('iwebos.footer.copyright')</div>
+			<div class="login-copyright-email">$text.get('iwebos.footer.contactus'):&nbsp;<a href="mailto:info@binhthuan.gov.vn">info@binhthuan.gov.vn</a></div>
+			<div class="login-truthinet"><a target="_blank" href="http://www.truthinet.com.vn/webmail/welcome.iws"><span class="login-truthinet-pw"></span></a></div>	
+		</div>
+	</div>
+</center>

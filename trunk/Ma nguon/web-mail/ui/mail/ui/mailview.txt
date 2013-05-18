@@ -1,0 +1,14 @@
+{"subject":"V/v: Xử lý giao diện phần cấu hình Mail Admin!",
+
+"from":" Hiền Nguyễn <nvhhien@trhuthinet.com.vn>",
+"receive":"tntan@truthinet.com.vn",
+"sent":1220438245000,
+
+"to":[{"address":"hiennguyen@truthinet.com.vn","name":"Hien Nguyen Van"},{"address":"lddthao@truthinet.com.vn","name":"lddthao"}],
+
+"cc":[{"address":"nhtu@truthinet.com","name":"Nguyen Hoang Tu"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"},{ "address":"ntvy@truthinet.com","name":"Nguyen The Vy"}],
+
+"attachments" :[{"fname":"nhtu.doc","fkey":"nhtukey123","icon":"doc"},{"fname":"phimvui.rar","fkey":"phimkey214","icon":"rar"},{"fname":"tailieu.zip","fkey":"tailieuXyHGs54","icon":"zip"},{"fname":"trinhdien.ppt","fkey":"hjgfh","icon":"ppt"},{"fname":"java-ebook.pdf","fkey":"pdfJg93","icon":"pdf"},{"fname":"LoiNhoVaoDoi.mp3","fkey":"KeyMp3764","icon":"mp3"},{"fname":"PhimhapDan.avi","fkey":"phimAbcH876","icon":"avi"}],
+
+"body":"<b>Chào người anh em!</b><br>Ha ha ha ha ha ha ha.<br><br><br>He he he he he he he.<br><br><br><br><br><br><br><br><br><br><br><br><br>Thân ái!<br><br>Tái bút: Chiều nay nhậu không?"}
+
